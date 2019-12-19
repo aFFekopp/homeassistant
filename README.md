@@ -35,3 +35,6 @@ All of my automations are in Node Red, Home Assistant is just my state machine. 
 - d1mini with ina219 current sensor and a relay to grab the doorbell signal and trigger the door opener
 - esp8266 with hx711 and load cells to check who's in bed
 
+![Example Room](docs/2.png)
+![Scooter](docs/3.png)
+![System Monitoring](docs/4.png)
