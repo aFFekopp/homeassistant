@@ -17,6 +17,7 @@ All of my automations are in Node Red, Home Assistant is just my state machine. 
 - reminder to open the window in the bathroom when a humidity threshold is reached
 - music following you
 - guest mode automations
+- and many more...
 
 ## Hardware
 
