@@ -1,0 +1,30 @@
+#################
+# INPUT_BOOLEAN #
+#################
+input_boolean:
+  play_media:
+    name: Play
+    initial: off
+    icon: mdi:playlist-play
+
+################
+# INPUT_SELECT #
+################
+input_select:
+  media_player_selection:
+    name: Media Player
+    icon: mdi:music
+    options:
+      - Überall
+      - Bad
+      - Küche
+      - Wohnzimmer
+
+  media_player_playlist:
+    name: Playlist
+    icon: mdi:playlist-music
+    options:
+      - Andre
+      - Mein Liedern
+      - planet radio
+      - planet radio blackbeats

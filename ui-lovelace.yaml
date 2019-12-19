@@ -1,0 +1,180 @@
+resources:
+  - url: /community_plugin/lovelace-slider-entity-row/slider-entity-row.js
+    type: js
+  - url: /community_plugin/custom-header/custom-header.js
+    type: module
+  - url: /community_plugin/bar-card/bar-card.js
+    type: js
+  - url: /community_plugin/lovelace-card-tools/card-tools.js
+    type: js
+  - url: /community_plugin/lovelace-popup-card/popup-card.js
+    type: js
+  - url: /community_plugin/button-card/button-card.js
+    type: module
+  - url: /community_plugin/mini-graph-card/mini-graph-card.js
+    type: module
+  - url: /community_plugin/mini-media-player/mini-media-player.js
+    type: module
+  - url: /community_plugin/vertical-stack-in-card/vertical-stack-in-card.js
+    type: js
+  - url: /community_plugin/lovelace-auto-entities/auto-entities.js
+    type: js
+  - url: /community_plugin/lovelace-card-mod/card-mod.js
+    type: js
+  - url: /community_plugin/weather-card/weather-card.js
+    type: module
+  
+  - type: css
+    url: 'https://fonts.googleapis.com/css?family=Raleway'
+  - type: css
+    url: 'https://fonts.googleapis.com/css?family=Oswald'
+
+custom_header:
+  #background: 'rgba(54, 57, 65, 0.9)' # CLEAR_DARK
+  #background: 'rgba(101, 140, 179, 0.8)' # NORD
+  compact_mode: true
+  background: 'var(--custom_cch_background)'
+  voice_hide: true
+  hide_help: true
+  hide_config: true
+  hide_tabs: '9'
+  chevrons: false
+  active_tab_color: 'var(--accent-color)'
+  notification_dot_color: 'var(--accent-color)'
+  all_tabs_color: 'var(--sidebar-icon-color)'
+  all_buttons_color: 'var(--sidebar-icon-color)'
+
+button_card_templates:
+  header:
+    styles:
+      card:
+        - height: 30px
+        - font-size: 14px
+    color_type: label-card
+    color: 'var(--secondary-background-color)'
+  header_clickable:
+    color_type: card
+    color: 'var(--secondary-background-color)'
+    show_icon: false
+    styles:
+      card:
+        - height: 30px
+        - font-size: 14px
+  header_light:
+    color_type: card
+    color: auto-no-temperature
+    show_icon: false
+    hold_action:
+      action: more-info
+    styles:
+      card:
+        - height: 30px
+        - font-size: 14px
+    state:
+      - color: 'var(--secondary-background-color)'
+        value: 'off'
+  esp:
+    styles:
+      card:
+        - height: 30px
+        - font-size: 14px
+    color_type: icon
+    show_name: false
+    show_icon: false
+    show_state: true
+  people_state:
+    show_state: true
+    show_icon: true
+    show_name: false
+    show_entity_picture: true
+    tap_action:
+      action: more-info
+    styles:
+      card:
+        - font-size: 14px
+    state:
+      - value: 'Abwesend'
+        styles:
+          icon:
+            - filter: grayscale(100%)
+      - value: 'Lange Abwesend'
+        styles:
+          icon:
+            - filter: grayscale(100%)
+      - value: 'Arbeit'
+        styles:
+          icon:
+            - filter: grayscale(100%)
+      - value: 'Anne & Fred'
+        styles:
+          icon:
+            - filter: grayscale(100%)
+      - value: 'Nicole & Marc'
+        styles:
+          icon:
+            - filter: grayscale(100%)
+      - value: 'Papito'
+        styles:
+          icon:
+            - filter: grayscale(50%)
+      - value: 'Angekommen'
+        styles:
+          icon:
+            - filter: grayscale(50%)
+      - value: 'Verlassen'
+        styles:
+          icon:
+            - filter: grayscale(100%)
+    style: |
+      img {
+        width: 100% !important;
+      }
+      #img-cell {
+        border-radius: 50px;
+        height: 50px !important;
+        width: 50px !important;
+      }
+      #state {
+        padding-top: 5px;
+      }
+  people_button:
+    show_state: false
+    show_icon: false
+    show_name: false
+    size: 16px
+    tap_action:
+      action: more-info
+    styles:
+      card:
+        - height: 27px
+        - font-size: 12px
+        - box-shadow: unset
+  floorplan:
+    color: 'var(--text-light-color)'
+    state:
+      - value: "off"
+        color: 'var(--primary-color)'
+    show_name: false
+    size: 65%
+    hold_action:
+      action: more-info
+    styles:
+      card:
+        - opacity: 0.65
+        - -webkit-box-shadow: 0px 0px 0px 0px
+        - box-shadow: 0px 0px 0px 0px
+  dash_button:
+    size: 25px
+    color_type: card
+    hold_action:
+      action: more-info
+    styles:
+      card:
+        - height: 70px
+        - font-size: 11px
+    style: !include lovelace/includes/style.yaml 
+     
+      
+
+title: Home Assistant
+views: !include_dir_list lovelace/views/

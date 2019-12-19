@@ -1,0 +1,186 @@
+icon: mdi:food-fork-drink
+title: Küche
+popup_cards:
+  media_player.uberall:
+    title: Media Player
+    card:
+      type: entities
+      entities: 
+        - type: 'custom:mini-media-player'
+          entity: media_player.uberall
+          group: true
+          hide:
+            name: true
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            mute: true
+            power: true
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_dot_bad
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_show_kuche
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_l_wohnzimmer
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_r_wohnzimmer
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+cards:
+  - type: horizontal-stack
+    cards:
+      - !include
+        - ../includes/graphs.yaml
+        - entity: sensor.bewegungsmelder_kuche_temperature
+          name: Temperatur
+          font_size_header: 12
+      - !include
+        - ../includes/graphs.yaml
+        - entity: sensor.bewegungsmelder_kuche_light_level
+          name: Helligkeit
+          font_size_header: 12
+
+  - type: horizontal-stack
+    style: !include ../includes/style.yaml
+    cards:
+      - type: custom:vertical-stack-in-card
+        cards:     
+          - type: "custom:button-card"
+            template: header_light
+            name: Küche
+            entity: light.kuche
+          - type: entities
+            entities:
+              - entity: light.kuchendecke
+                name: Decke
+                icon: mdi:ceiling-light
+                type: custom:slider-entity-row
+                hide_when_off: true
+                toggle: true
+              - entity: light.kuchenzeile
+                name: Zeile
+                icon: mdi:record
+                type: custom:slider-entity-row
+                hide_when_off: true
+                toggle: true
+              - entity: light.arbeitsplatte
+                name: Arbeitsplatte
+                icon: mdi:record
+                type: custom:slider-entity-row
+                hide_when_off: true
+                toggle: true
+              - entity: light.hangeschrank
+                name: Hängeschrank
+                icon: mdi:wall-sconce-flat
+                type: custom:slider-entity-row
+                hide_when_off: true
+                toggle: true
+              
+  - type: entities
+    style: !include ../includes/style.yaml
+    entities:
+      - entity: binary_sensor.bewegungsmelder_kuche_motion
+        name: Bewegungsmelder
+        secondary_info: last-changed
+
+  - type: conditional
+    conditions:
+      - entity: media_player.uberall
+        state_not: "off"
+      - entity: media_player.uberall
+        state_not: "standby"
+    card:
+      type: custom:mini-media-player
+      entity: media_player.uberall
+      name: Echo Show
+      source: icon
+      info: scroll
+      show_source: true
+      idle_view:
+        when_paused: true
+      hide:
+        volume: true
+        source: true
+        power_state: false
+  - type: conditional
+    conditions:
+      - entity: media_player.echo_show_kuche
+        state_not: "off"
+      - entity: media_player.echo_show_kuche
+        state_not: "standby"
+    card:
+      type: custom:mini-media-player
+      entity: media_player.echo_show_kuche
+      name: Echo Show
+      source: icon
+      info: scroll
+      show_source: true
+      idle_view:
+        when_paused: true
+      hide:
+        volume: true
+        source: true
+        power_state: false
+      shortcuts:
+        list:
+          - icon: mdi:spotify
+            name: "Playlist: Andre"
+            type: service
+            id: media_player.play_media
+            data:
+              entity_id: "media_player.echo_show_kuche"
+              media_content_id: "spiele meine playlist Andre in zufälliger reihenfolge"
+              media_content_type: "AMAZON_MUSIC"
+          - icon: mdi:spotify
+            name: "Playlist: Mein Liedern"
+            type: service
+            id: media_player.play_media
+            data:
+              entity_id: "media_player.echo_show_kuche"
+              media_content_id: "spiele meine playlist Mein Liedern in zufälliger reihenfolge"
+              media_content_type: "AMAZON_MUSIC"
+          - icon: mdi:radio
+            name: "Planet Radio"
+            type: service
+            id: media_player.play_media
+            data:
+              entity_id: "media_player.echo_show_kuche"
+              media_content_id: "planet radio"
+              media_content_type: "TUNEIN"
+          - icon: mdi:radio
+            name: "Planet Radio: Black Beats"
+            type: service
+            id: media_player.play_media
+            data:
+              entity_id: "media_player.echo_show_kuche"
+              media_content_id: "planet radio blackbeats"
+              media_content_type: "TUNEIN"
+          
+

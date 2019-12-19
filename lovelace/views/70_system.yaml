@@ -1,0 +1,241 @@
+icon: mdi:desktop-classic
+title: System
+cards:
+
+  - type: vertical-stack
+    style: !include ../includes/style.yaml
+    cards:
+      - type: conditional
+        conditions:
+          - entity: sensor.version_check
+            state: "False"
+        card:
+          type: custom:vertical-stack-in-card
+          cards: 
+            - type: "custom:button-card"
+              template: header
+              name: Hass.io Update
+            - type: entities
+              entities:
+                - sensor.version_current
+                - sensor.version_latest
+
+      - type: conditional
+        conditions:
+          - entity: sensor.hacs
+            state_not: "0"
+        card:
+          type: custom:vertical-stack-in-card
+          cards: 
+            - type: "custom:button-card"
+              template: header
+              name: HACS
+            - type: entities
+              entities:
+                - sensor.hacs
+
+      - type: custom:vertical-stack-in-card
+        cards: 
+          - type: "custom:button-card"
+            template: header
+            name: System Statistiken
+          - type: horizontal-stack
+            cards: 
+              - !include
+                - ../includes/graphs_embeded.yaml
+                - entity: sensor.processor_use
+                  name: CPU
+                  hours_to_show: 12
+                  points_per_hour: 4
+                  graph: bar
+              - !include
+                - ../includes/graphs_embeded.yaml
+                - entity: sensor.memory_use_percent
+                  name: Memory
+                  hours_to_show: 12
+                  points_per_hour: 4
+                  graph: bar
+              - !include
+                - ../includes/graphs_embeded.yaml
+                - entity: sensor.disk_use_percent
+                  name: Disk
+                  hours_to_show: 12
+                  points_per_hour: 4
+                  graph: bar
+          - type: entities
+            entities:
+              - sensor.cpu_speed
+              - sensor.cpu_temp
+              - sensor.db_size
+              - sensor.hass_io_uptime_pretty
+              - sensor.nuc_uptime
+      - type: custom:vertical-stack-in-card
+        cards:     
+          - type: "custom:button-card"
+            template: header_clickable
+            entity: input_boolean.button_battery
+          - type: conditional
+            conditions:
+              - entity: input_boolean.button_battery
+                state: "on"
+            card:
+              type: custom:auto-entities
+              card:
+                type: custom:bar-card
+                title_position: inside
+                align: split
+                attribute: battery_level
+                height: 20px
+                title_style:
+                  font-size: 10px
+                value_style:
+                  font-size: 10px
+                severity:
+                  - value: 10
+                    color: '#d16f6f'
+                  - value: 20
+                    color: '#d18b6f'
+                  - value: 30
+                    color: '#d1ad6f'
+              show_empty: false
+              filter:
+                include:
+                  - domain: sensor
+                    attributes:
+                      battery_level: "< 30"
+                  - domain: binary_sensor
+                    attributes:
+                      battery_level: "< 30"
+                exclude: 
+                  - entity_id: sensor.temperature_158d0001e89713
+
+          - type: "custom:button-card"
+            template: header_clickable
+            entity: input_boolean.button_stats
+            name: Lichter
+          - type: conditional
+            conditions:
+              - entity: input_boolean.button_stats
+                state: "on"
+            card:
+              type: custom:bar-card
+              unit_of_measurement: "h"
+              title_position: inside
+              columns: 5
+              height: 150px
+              target: 40
+              width: 100%
+              padding: 2px
+              direction: up
+              color: '#d1c96f'
+              entities:
+                - entity: sensor.flur_licht
+                  title: Flur
+                - entity: sensor.bad_licht
+                  title: Bad
+                - entity: sensor.kueche_licht
+                  title: Küche
+                - entity: sensor.wohnzimmer_licht
+                  title: Wohnz
+                - entity: sensor.schlafzimmer_licht
+                  title: Schlafz
+
+  - type: vertical-stack
+    style: !include ../includes/style.yaml
+    cards:
+      - type: custom:vertical-stack-in-card
+        cards: 
+          - type: "custom:button-card"
+            template: header
+            name: Netzmonitor
+          - type: horizontal-stack
+            cards:        
+              - type: custom:bar-card
+                entity: sensor.net_download_max
+                color: '#11ccaa'
+                indicator: 'off'
+                height: 12
+                title_position: inside
+                align: split
+                target: 100
+                max: sensor.net_download_max
+              - type: custom:bar-card
+                entity: sensor.net_upload_max
+                color: '#eeccaa'
+                indicator: 'off'
+                height: 12
+                title_position: inside
+                align: split
+                target: 10
+                max: sensor.net_upload_max
+          - type: horizontal-stack
+            cards:
+              - !include
+                - ../includes/graphs_embeded.yaml
+                - entity: sensor.net_download_cur_filtered
+                  name: Download
+                  align_icon: left
+                  points_per_hour: 4
+                  hours_to_show: 12
+                  extrema: true
+                  graph: bar
+              - !include
+                - ../includes/graphs_embeded.yaml
+                - entity: sensor.net_upload_cur
+                  name: Upload
+                  points_per_hour: 4
+                  hours_to_show: 12
+                  extrema: true
+                  graph: bar
+          - type: entities
+            entities:
+              - sensor.net_received_monthly
+              - sensor.net_sent_monthly
+              - binary_sensor.remote_ui
+              - sensor.net_uptime_pretty
+      
+      - type: custom:vertical-stack-in-card
+        cards:   
+          - type: "custom:button-card"
+            template: header
+            name: ESP Home
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                template: esp
+                entity: binary_sensor.d1_mini_doorbell_status
+                name: Doorbell
+                icon: mdi:chip
+                layout: icon_name
+                show_name: true
+                show_icon: true
+                show_state: false
+              - type: "custom:button-card"
+                template: esp
+                entity: sensor.d1mini_doorbell_wifi_signal
+              - type: "custom:button-card"
+                template: esp
+                entity: sensor.d1mini_doorbell_uptime_pretty
+                styles:
+                  card:
+                    - width: 200px
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                template: esp
+                entity: binary_sensor.esp8266_bed_status
+                name: Bed
+                icon: mdi:chip
+                layout: icon_name
+                show_name: true
+                show_icon: true
+                show_state: false
+              - type: "custom:button-card"
+                template: esp
+                entity: sensor.esp8266_bed_wifi_signal
+              - type: "custom:button-card"
+                template: esp
+                entity: sensor.esp8266_bed_uptime_pretty
+                styles:
+                  card:
+                    - width: 200px

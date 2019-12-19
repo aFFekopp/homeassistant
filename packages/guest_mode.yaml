@@ -1,0 +1,36 @@
+#################
+# INPUT_BOOLEAN #
+#################
+input_boolean:
+  guest_mode:
+    name: Guest Mode
+    icon: mdi:account-multiple
+
+################
+# INPUT_NUMBER #
+################
+input_number:
+  guest_mode_num_guests:
+    name: Gäste
+    icon: mdi:account-group
+    min: 0
+    max: 5
+    step: 1
+
+##################
+# INPUT_DATETIME #
+##################
+input_datetime:
+  guest_mode:
+    name: Timer
+    has_date: true
+    has_time: true
+
+##########
+# SENSOR #
+##########
+sensor:
+  - platform: template
+    sensors:
+      guest_mode_time_reached:
+        value_template: "{{ states('sensor.date_time') == (states.input_datetime.guest_mode.attributes.timestamp | int | timestamp_custom('%Y-%m-%d, %H:%M')) }}"

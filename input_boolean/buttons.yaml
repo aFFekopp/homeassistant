@@ -1,0 +1,8 @@
+button_battery:
+  name: Batterien
+
+button_gerate:
+  name: Geräte
+
+button_stats:
+  name: Statistiken

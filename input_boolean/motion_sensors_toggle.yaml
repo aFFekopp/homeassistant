@@ -1,0 +1,19 @@
+motion_sensor_kuche_toggle:
+  name: Küche - Bewegungsmelder
+  icon: mdi:motion-sensor
+
+motion_sensor_bad_toggle:
+  name: Bad - Bewegungsmelder
+  icon: mdi:motion-sensor
+
+motion_sensor_flur_toggle:
+  name: Flur - Bewegungsmelder
+  icon: mdi:motion-sensor
+
+motion_sensor_wohnzimmer_toggle:
+  name: Wohnzimmer - Bewegungsmelder
+  icon: mdi:motion-sensor
+
+motion_sensor_schlafzimmer_toggle:
+  name: Schlafzimmer - Bewegungsmelder
+  icon: mdi:motion-sensor

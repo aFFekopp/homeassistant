@@ -1,0 +1,6 @@
+kwh_cost:
+    name: Arbeitspreis
+    min: 0
+    max: 2
+    unit_of_measurement: Cent
+    mode: box

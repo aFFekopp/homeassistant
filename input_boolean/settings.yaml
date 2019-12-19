@@ -1,0 +1,10 @@
+follow_music:
+  name: Folgende Musik
+  icon: mdi:music
+cinema_lights:
+  name: Kino Licht
+  icon: mdi:theater
+beamer_playing:
+  name: Beamer an
+  initial: off
+  icon: mdi:theater

@@ -1,0 +1,198 @@
+- platform: systemmonitor
+  resources:
+    - type: memory_use_percent
+    - type: processor_use
+    - type: last_boot
+    - type: disk_use_percent
+      arg: /
+
+- platform: cpuspeed
+
+- platform: command_line
+  name: CPU Temp
+  command: "cat /sys/class/thermal/thermal_zone0/temp"
+  unit_of_measurement: "°C"
+  value_template: '{{ value | multiply(0.001) | round(2)  }}'
+
+- platform: sql
+  db_url: mysql://hass:recon1@core-mariadb/homeassistant?charset=utf8
+  queries:
+    - name: DB size
+      query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / 1048576, 2) "value" FROM information_schema.tables WHERE table_schema="homeassistant" GROUP BY table_schema;'
+      column: 'value'
+      unit_of_measurement: MB
+
+- platform: uptime
+  name: Hass.io Uptime
+
+## Version Check ###############################################################
+
+- platform: version
+  name: version_current
+
+- platform: version
+  name: version_latest
+  source: hassio
+
+- platform: template
+  sensors:
+    version_check:
+      value_template: "{{ states('sensor.version_latest') == states('sensor.version_current') }}"
+      friendly_name: "Ha UpToDate check"
+
+## Stats Home ##################################################################
+- platform: history_stats
+  name: Flur Licht
+  entity_id: light.flur
+  state: 'on'
+  type: time
+  end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  duration:
+    days: 30
+
+- platform: history_stats
+  name: Bad Licht
+  entity_id: light.bad
+  state: 'on'
+  type: time
+  end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  duration:
+    days: 30
+
+- platform: history_stats
+  name: Kueche Licht
+  entity_id: light.kuche
+  state: 'on'
+  type: time
+  end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  duration:
+    days: 30
+
+- platform: history_stats
+  name: Schlafzimmer Licht
+  entity_id: light.schlafzimmer
+  state: 'on'
+  type: time
+  end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  duration:
+    days: 30
+
+- platform: history_stats
+  name: Wohnzimmer Licht
+  entity_id: light.wohnzimmer
+  state: 'on'
+  type: time
+  end: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+  duration:
+    days: 30
+
+- platform: template
+  sensors:
+    hass_io_uptime_pretty:
+      friendly_name: Hass.io Uptime
+      value_template: >
+        {% if states('sensor.hass_io_uptime') == '0.0' %} 
+        Gerade neu gestartet...
+        {% else %}
+        {% macro phrase(value, name) %}
+        {%- set value = value | int %}
+        {%- set end = 's' if value > 1 else '' %}
+        {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
+        {%- endmacro %}
+        
+        {% set weeks = (states('sensor.hass_io_uptime') | int / 7) | int %}
+        {% set days = (states('sensor.hass_io_uptime') | int) - (weeks * 7) %}
+        {% set hours = (states('sensor.hass_io_uptime') | float - states('sensor.hass_io_uptime') | int) * 24 %}
+        {% set minutes = (hours - hours | int) * 60 %}
+
+        {{ [ phrase(weeks, 'week'), phrase(days, 'day'), phrase(hours, 'hr'), phrase(minutes, 'min') ] | select('!=','') | list | join(', ') }}
+        {% endif %}
+
+    net_uptime_pretty:
+      friendly_name: Verbunden
+      value_template: >
+        {% if states('sensor.net_uptime') == '0.0' %} 
+        Gerade neu gestartet...
+        {% else %}
+        {% macro phrase(value, name) %}
+        {%- set value = value | int %}
+        {%- set end = 's' if value > 1 else '' %}
+        {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
+        {%- endmacro %}
+        
+        {% set weeks = (states('sensor.net_uptime') | int / 7) | int %}
+        {% set days = (states('sensor.net_uptime') | int) - (weeks * 7) %}
+        {% set hours = (states('sensor.net_uptime') | float - states('sensor.net_uptime') | int) * 24 %}
+        {% set minutes = (hours - hours | int) * 60 %}
+
+        {{ [ phrase(weeks, 'week'), phrase(days, 'day'), phrase(hours, 'hr'), phrase(minutes, 'min') ] | select('!=','') | list | join(', ') }}
+        {% endif %}
+      
+    d1mini_doorbell_uptime_pretty:
+      friendly_name: D1 Mini Doorbell Uptime
+      value_template: >
+        {% if states('sensor.d1mini_doorbell_uptime') == '0.0' %} 
+        Gerade neu gestartet...
+        {% else %}
+        {% macro phrase(value, name) %}
+        {%- set value = value | int %}
+        {%- set end = 's' if value > 1 else '' %}
+        {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
+        {%- endmacro %}
+        
+        {% set weeks = (states('sensor.d1mini_doorbell_uptime') | int / 7) | int %}
+        {% set days = (states('sensor.d1mini_doorbell_uptime') | int) - (weeks * 7) %}
+        {% set hours = (states('sensor.d1mini_doorbell_uptime') | float - states('sensor.d1mini_doorbell_uptime') | int) * 24 %}
+        {% set minutes = (hours - hours | int) * 60 %}
+
+        {{ [ phrase(weeks, 'week'), phrase(days, 'day'), phrase(hours, 'hr'), phrase(minutes, 'min') ] | select('!=','') | list | join(', ') }}
+        {% endif %}
+    
+    esp8266_bed_uptime_pretty:
+      friendly_name: ESP32 Doorbell Uptime
+      value_template: >
+        {% if states('sensor.esp8266_bed_uptime') == '0.0' %} 
+        Gerade neu gestartet...
+        {% else %}
+        {% macro phrase(value, name) %}
+        {%- set value = value | int %}
+        {%- set end = 's' if value > 1 else '' %}
+        {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
+        {%- endmacro %}
+        
+        {% set weeks = (states('sensor.esp8266_bed_uptime') | int / 7) | int %}
+        {% set days = (states('sensor.esp8266_bed_uptime') | int) - (weeks * 7) %}
+        {% set hours = (states('sensor.esp8266_bed_uptime') | float - states('sensor.esp8266_bed_uptime') | int) * 24 %}
+        {% set minutes = (hours - hours | int) * 60 %}
+
+        {{ [ phrase(weeks, 'week'), phrase(days, 'day'), phrase(hours, 'hr'), phrase(minutes, 'min') ] | select('!=','') | list | join(', ') }}
+        {% endif %}
+        
+    nuc_uptime:
+        friendly_name: NUC Uptime
+        entity_id: sensor.time
+        value_template: >
+            {% set up_time = as_timestamp(now()) - as_timestamp(states('sensor.last_boot')) %}
+
+            {% set minutes = (up_time // 60) | int %}
+            {% set hours = (minutes // 60) %}
+            {% set days = (hours // 24) %}
+            {% set weeks = (days // 7) %}
+
+            {% set minutes = (minutes % 60) %}
+            {% set hours =  (hours % 24) %}
+            {% set days = (days % 7) %}
+
+            {% macro phrase(value, name) %}
+                        {%- set value = value %}
+                        {%- set end = 's' if value > 1 else '' %}
+                        {{- '{} {}{}'.format(value, name, end) if value | int > 0 else '' }}
+            {%- endmacro %}
+                        
+            {% set text = [ phrase(weeks, 'week'), phrase(days, 'day'), phrase(hours, 'hr'), phrase(minutes, 'min') ] | select('!=','') | list | join(', ') %}
+            {% set last_comma = text.rfind(',') %}
+            {% if last_comma != -1 %}
+                {% set text = text[:last_comma] + ',' + text[last_comma + 1:] %}
+            {% endif %}
+            
+            {{ text }}

@@ -1,0 +1,17 @@
+icon: mdi:map
+title: Map
+panel: true
+cards:
+  - type: map
+    #aspect_ratio: 16x9
+    default_zoom: 12
+    entities:
+      - device_tracker.niu
+      - device_tracker.google_maps_108265044794977597376
+      - device_tracker.google_maps_109408471456601103538       
+      - zone.home
+      - zone.elenaklinik
+      - zone.neovia
+      - zone.annefred
+      - zone.marcnicole
+      - zone.papito

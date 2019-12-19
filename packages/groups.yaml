@@ -1,0 +1,11 @@
+#########
+# GROUP #
+#########
+group:
+  motion-sensors:
+    entities:
+      - input_boolean.motion_sensor_bad_toggle
+      - input_boolean.motion_sensor_flur_toggle
+      - input_boolean.motion_sensor_kuche_toggle
+      - input_boolean.motion_sensor_schlafzimmer_toggle
+      - input_boolean.motion_sensor_wohnzimmer_toggle

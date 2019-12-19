@@ -1,0 +1,29 @@
+- name: ElenaKlinik
+  latitude: !secret zone_elena_lat
+  longitude: !secret zone_elena_long
+  radius: 250
+  icon: mdi:hospital-building
+
+- name: Neovia
+  latitude: !secret zone_neovia_lat
+  longitude: !secret zone_neovia_long
+  radius: 350
+  icon: mdi:factory
+
+- name: AnneFred
+  latitude: !secret zone_annefred_lat
+  longitude: !secret zone_annefred_long
+  radius: 150
+  icon: mdi:home-heart
+
+- name: MarcNicole
+  latitude: !secret zone_marcnicole_lat
+  longitude: !secret zone_marcnicole_long
+  radius: 150
+  icon: mdi:home-heart
+
+- name: Papito
+  latitude: !secret zone_papito_lat
+  longitude: !secret zone_papito_long
+  radius: 150
+  icon: mdi:home-heart

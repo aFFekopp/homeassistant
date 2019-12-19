@@ -1,0 +1,142 @@
+#################
+# INPUT_BOOLEAN #
+#################
+input_boolean:
+
+  enable_charge:
+    name: 'NIU Akku laden'
+    icon: mdi:power
+
+  niu_charge:
+    name: Charge
+
+##################
+# INPUT_DATETIME #
+##################
+
+input_datetime:
+  charge_time:
+    name: Ladebeginn
+    has_date: false
+    has_time: true
+
+##########
+# SENSOR #
+##########
+sensor:
+  - platform: template
+    sensors:
+      niu_charge_now:
+        value_template: '{{ states.sensor.time.state == states.input_datetime.charge_time.state[0:5] }}'
+        friendly_name: "Time to Charge"
+
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+
+  - platform: mqtt
+    name: "niu_mqtt_name"
+    state_topic: "home/niu/name"
+
+  - platform: mqtt
+    name: "niu_mqtt_type"
+    state_topic: "home/niu/type"
+
+  - platform: mqtt
+    name: "niu_mqtt_serialnumber"
+    state_topic: "home/niu/serialnumber"
+
+  - platform: mqtt
+    name: "niu_mqtt_framenumber"
+    state_topic: "home/niu/framenumber"
+
+  - platform: mqtt
+    name: "niu_mqtt_enginenumber"
+    state_topic: "home/niu/enginenumber"
+
+  - platform: mqtt
+    name: "niu_mqtt_position"
+    state_topic: "home/niu/connected"
+    json_attributes_topic: "home/niu/position"
+
+  - platform: mqtt
+    name: "niu_mqtt_batterynumber"
+    state_topic: "home/niu/batterynumber"
+
+  - platform: mqtt
+    name: "niu_mqtt_batterypct"
+    state_topic: "home/niu/batterypct"
+
+  - platform: mqtt
+    name: "niu_mqtt_batterygrade"
+    state_topic: "home/niu/batterygrade"
+
+  - platform: mqtt
+    name: "niu_mqtt_ecubatterypct"
+    state_topic: "home/niu/ecubatterypct"
+
+  - platform: mqtt
+    name: "niu_mqtt_estimatedmileage"
+    state_topic: "home/niu/estimatedmileage"
+
+  - platform: mqtt
+    name: "niu_mqtt_nowspeed"
+    state_topic: "home/niu/nowspeed"
+
+  - platform: mqtt
+    name: "niu_mqtt_lastdistance"
+    state_topic: "home/niu/lastdistance"
+
+  - platform: mqtt
+    name: "niu_mqtt_gpstimestamp"
+    state_topic: "home/niu/gpstimestamp"
+
+  - platform: mqtt
+    name: "niu_mqtt_batterychargecount"
+    state_topic: "home/niu/batterychargecount"
+
+  - platform: mqtt
+    name: "niu_mqtt_daysdriven"
+    state_topic: "home/niu/drivedayscount"
+
+  - platform: mqtt
+    name: "niu_mqtt_totalmileage"
+    state_topic: "home/niu/totalmileage"
+  
+  - platform: mqtt
+    name: "niu_mqtt_batterytemperaturedesc"
+    state_topic: "home/niu/batterytemperaturedesc"
+  
+  - platform: mqtt
+    name: "niu_mqtt_batterytemperature"
+    state_topic: "home/niu/batterytemperature"
+
+  - platform: mqtt
+    name: "niu_mqtt_lastrideavgspeed"
+    state_topic: "home/niu/lastrideavgspeed"
+  
+  - platform: mqtt
+    name: "niu_mqtt_lastridingtime"
+    state_topic: "home/niu/lastridingtime"
+
+binary_sensor:
+  - platform: mqtt
+    name: "niu_mqtt_charging"
+    state_topic: "home/niu/charging"
+    payload_on: '1'
+    payload_off: '0'
+
+  - platform: mqtt
+    name: "niu_mqtt_lockstatus"
+    state_topic: "home/niu/lockstatus"
+    payload_on: '1'
+    payload_off: '0'
+
+  - platform: mqtt
+    name: "niu_mqtt_batteryconnected"
+    state_topic: "home/niu/batteryconnected"
+    payload_on: 'true'
+    payload_off: 'false'
+

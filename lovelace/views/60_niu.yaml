@@ -1,0 +1,205 @@
+icon: mdi:motorbike
+title: NIU
+popup_cards:
+  device_tracker.niu:
+    title: NIU N1S
+    card:
+      type: entities
+      entities:
+        - device_tracker.niu
+        - sensor.niu_mqtt_gpstimestamp
+        - type: divider
+        - binary_sensor.niu_mqtt_charging
+        - sensor.niu_mqtt_nowspeed
+  sensor.niu_mqtt_name:
+    title: NIU N1S
+    card:
+      type: entities
+      entities:
+        - sensor.niu_mqtt_type
+        - sensor.niu_mqtt_serialnumber
+        - sensor.niu_mqtt_enginenumber
+        - sensor.niu_mqtt_framenumber
+  sensor.niu_mqtt_batterypct: 
+    title: NIU N1S
+    card:
+      type: entities
+      entities:
+        - sensor.niu_mqtt_batterynumber
+        - sensor.niu_mqtt_batterychargecount              
+        - sensor.niu_mqtt_batterygrade
+        - sensor.niu_mqtt_batterytemperature
+        - sensor.niu_mqtt_batterytemperaturedesc
+  sensor.niu_mqtt_ecubatterypct: sensor.niu_mqtt_batterypct
+  sensor.niu_mqtt_totalmileage:
+    title: NIU N1S
+    card:
+      type: entities
+      entities:
+        - sensor.niu_mqtt_lastdistance    
+        - sensor.niu_mqtt_estimatedmileage
+        - sensor.niu_mqtt_lastrideavgspeed
+        - sensor.niu_mqtt_lastridingtime
+        - sensor.niu_mqtt_daysdriven
+  sensor.niu_mqtt_lastdistance:
+    title: Karte
+    card:
+      type: map
+      aspect_ratio: 16:9
+      default_zoom: 12
+      entities:
+        - device_tracker.niu
+
+cards:
+  - type: picture-elements
+    style: !include ../includes/style.yaml
+    image: /local/niu.png
+    elements:
+      - type: state-icon
+        entity: device_tracker.niu
+        style:
+          top: 14%
+          left: 11%
+          "--iron-icon-height": 18px
+          "--iron-icon-width": 18px
+      - type: state-icon
+        entity: binary_sensor.niu_mqtt_lockstatus
+        style:
+          top: 6%
+          left: 85%
+          "--iron-icon-height": 18px
+          "--iron-icon-width": 18px
+      - type: state-icon
+        entity: binary_sensor.niu_mqtt_batteryconnected
+        style:
+          top: 6%
+          left: 77%
+          "--iron-icon-height": 18px
+          "--iron-icon-width": 18px
+      - type: icon
+        entity: sensor.niu_mqtt_lastdistance
+        icon: mdi:map
+        hold_action:
+          action: navigate
+          navigation_path: /lovelace/9/
+        style:
+          top: 6%
+          left: 93%
+          "--iron-icon-height": 18px
+          "--iron-icon-width": 18px
+      - type: state-label
+        entity: sensor.niu_mqtt_batterypct
+        style:
+          top: 91%
+          left: 32%
+          font-size: 180%
+          text-align: center
+      - type: state-label
+        entity: sensor.niu_mqtt_ecubatterypct
+        style:
+          top: 91%
+          left: 12%
+          font-size: 180%
+          text-align: center
+      - type: state-label
+        entity: sensor.niu_mqtt_totalmileage
+        style:
+          top: 91%
+          left: 79.5%
+          font-size: 180%
+          text-align: center
+          
+      - type: image
+        entity: sensor.niu_mqtt_name
+        image: /local/floorplan/floorplan_blank.png
+        style:
+          top: 50%
+          left: 50%
+          width: 55%
+          height: 45%
+
+  - type: horizontal-stack
+    style: !include ../includes/style.yaml
+    cards:
+      - type: custom:vertical-stack-in-card
+        cards:
+          - type: "custom:button-card"
+            template: header
+            name: Ladegerät
+          - type: horizontal-stack
+            cards:
+              - type: "custom:mini-graph-card"
+                entities:
+                  - sensor.hs110_voltage
+                name: Spannung
+                hours_to_show: 24
+                line_color: 'var(--accent-color)' 
+                font_size: 60
+                font_size_header: 12
+                animate: true
+                icon: mdi:power-socket
+                show: &show
+                  icon: false
+                  name: false
+                  fill: fade
+                align_state: center
+              - type: "custom:mini-graph-card"
+                entities:
+                  - sensor.hs110_current_a
+                name: Ampere
+                hours_to_show: 24
+                line_color: 'var(--accent-color)' 
+                font_size: 60
+                font_size_header: 12
+                animate: true
+                icon: mdi:flash
+                show: *show
+                align_state: center
+              - type: "custom:mini-graph-card"
+                entities:
+                  - sensor.hs110_current_power_w
+                name: Watt
+                hours_to_show: 24
+                line_color: 'var(--accent-color)' 
+                font_size: 60
+                font_size_header: 12
+                animate: true
+                icon: mdi:lightbulb
+                show: *show
+                align_state: center
+
+  - type: vertical-stack
+    cards:      
+      - type: vertical-stack
+        cards:
+          - type: "custom:button-card"
+            style: !include ../includes/style.yaml
+            template: header_clickable
+            entity: input_boolean.enable_charge              
+          - type: conditional
+            conditions:
+              - entity: input_boolean.enable_charge
+                state: "on"
+            card:          
+              type: entities
+              style: !include ../includes/style.yaml
+              entities:
+                - input_datetime.charge_time
+      
+      - type: horizontal-stack
+        style: !include ../includes/style.yaml
+        cards:
+          - type: custom:vertical-stack-in-card
+            cards:
+              - type: "custom:button-card"
+                template: header
+                name: Statistiken
+              - type: entities
+                entities:
+                  - switch.wohnzimmer
+                  - sensor.hs110_today_energy_kwh
+                  - sensor.hs110_total_energy_kwh
+                  - sensor.niu_watts_monthly
+                  - sensor.niu_watts_previous_month
+                  - sensor.niu_watts_yearly
+                  - sensor.niu_watts_cost

@@ -1,0 +1,45 @@
+icon: mdi:broom
+title: Flur
+cards:
+  - type: horizontal-stack
+    cards:
+      - !include
+        - ../includes/graphs.yaml
+        - entity: sensor.bewegungsmelder_flur_temperature
+          name: Temperatur
+          font_size_header: 12
+      - !include
+        - ../includes/graphs.yaml
+        - entity: sensor.bewegungsmelder_flur_light_level
+          name: Helligkeit
+          font_size_header: 12
+
+  - type: entities
+    style: !include ../includes/style.yaml
+    entities:
+      - entity: binary_sensor.klingel
+        secondary_info: last-changed
+      - input_number.klingel_volume
+      - switch.summer
+      - entity: input_boolean.open_door
+        name: Türe öffnen
+        icon: mdi:door-open
+      #- sensor.d1mini_doorbell_shunt_voltage
+  - type: entities
+    style: !include ../includes/style.yaml
+    entities:
+      - entity: light.flurdecke
+        name: Decke
+        icon: mdi:ceiling-light
+        type: custom:slider-entity-row
+        hide_when_off: true
+        toggle: true
+
+  - type: entities
+    style: !include ../includes/style.yaml
+    entities:
+      - entity: binary_sensor.bewegungsmelder_flur_motion
+        name: Bewegungsmelder
+        secondary_info: last-changed
+      - entity: binary_sensor.zha_flur_door_contact
+        secondary_info: last-changed

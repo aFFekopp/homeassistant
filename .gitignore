@@ -1,0 +1,19 @@
+# Ignore folders
+.cloud
+.storage
+deps
+esphome
+node-red
+tts
+www
+
+# Ignore files
+.google_maps_location_sharing.cookies.aff_hass_location_gmail_com
+.HA_VERSION
+.uuid
+alexa_media.andre@andreste.in.pickle
+home-assistant.log
+known_devices.yaml
+phue.conf
+secrets.yaml
+zigbee.db

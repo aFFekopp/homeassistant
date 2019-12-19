@@ -1,0 +1,29 @@
+#################
+# BINARY_SENSOR #
+#################
+
+binary_sensor:
+  - platform: template
+    sensors:
+      klingel:
+        friendly_name: "Klingel"
+        device_class: door
+        value_template: "{{ states('sensor.d1mini_doorbell_shunt_voltage')|float > 0.001 }}"
+
+#################
+# INPUT_BOOLEAN #
+#################
+input_boolean:
+  dingdong:
+    name: Ding Dong
+    initial: off
+
+################
+# INPUT_NUMBER #
+################
+input_number:
+  klingel_volume:
+    name: Klingel Lautstärke
+    min: 0
+    max: 100
+    step: 1

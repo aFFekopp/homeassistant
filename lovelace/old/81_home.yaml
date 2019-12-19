@@ -1,0 +1,770 @@
+icon: mdi:home-assistant
+title: Home
+id: Home
+#background: center / cover no-repeat url("/local/background.jpg") fixed
+#background: "right/auto linear-gradient(23deg, rgba(233,233,233,1) 0%, rgba(244,244,244,1) 34%, rgba(248,248,248,1) 100%)"
+popup_cards:
+  sensor.andre_status:
+    title: Andre
+    card:
+      type: vertical-stack       
+      cards:
+        - type: history-graph
+          entities:
+            - sensor.andre_status
+        - type: entities
+          entities:
+            - device_tracker.google_maps_108265044794977597376
+            - device_tracker.life360_andre
+            - device_tracker.andre_mi9t
+            - device_tracker.andre_mi9t_bt
+  sensor.julienne_status:
+    title: Julienne
+    card:
+      type: vertical-stack       
+      cards:
+        - type: history-graph
+          entities:
+            - sensor.julienne_status
+        - type: entities
+          entities:
+            - device_tracker.google_maps_109408471456601103538
+            - device_tracker.julienne_s10
+            - device_tracker.julienne_s10_bt
+  device_tracker.google_maps_108265044794977597376:
+    title: Karte
+    card:
+      type: map
+      aspect_ratio: 16:9
+      default_zoom: 12
+      entities:
+        - device_tracker.google_maps_108265044794977597376
+  device_tracker.google_maps_109408471456601103538:
+    title: Karte
+    card:
+      type: map
+      aspect_ratio: 16:9
+      default_zoom: 12
+      entities:
+        - device_tracker.google_maps_109408471456601103538
+  weather.openweathermap:
+    title: Weather
+    large: true
+    card:
+      type: iframe
+      url: https://embed.windy.com/embed2.html?lat=51.297&lon=9.571&zoom=10&level=surface&overlay=rain&menu=&message=&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=51.297&detailLon=9.571&metricWind=default&metricTemp=default&radarRange=-1
+  input_boolean.radio:
+    title: Radio
+    card:
+      type: entities
+      entities:
+        - input_select.radio_station
+  media_player.uberall:
+    title: Media Player
+    card:
+      type: entities
+      entities: 
+        - type: 'custom:mini-media-player'
+          entity: media_player.uberall
+          group: true
+          hide:
+            name: true
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            mute: true
+            power: true
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_dot_bad
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_show_kuche
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_l_wohnzimmer
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_r_wohnzimmer
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+  input_boolean.guest_mode:
+    title: Guest Mode
+    card:
+      type: entities
+      entities:
+        - input_boolean.guest_mode
+        - input_datetime.guest_mode
+cards:
+  - type: vertical-stack
+    cards: 
+      
+      ## PEOPLE STATUS ################################################################################################
+      - type: horizontal-stack
+        style: |
+          ha-card {
+            border: solid 1px var(--border-color);
+          }
+        cards:
+          - type: custom:vertical-stack-in-card
+            cards:
+              ## ANDRE CHARGING ##
+              - type: custom:bar-card
+                entity: sensor.handy_andre_battery
+                charge_entity: sensor.handy_andre_charging
+                indicator: 'off'
+                delay: 1000
+                severity: &severity_charging
+                  - value: 15
+                    color: '#d16f6f'
+                  - value: 30
+                    color: '#d18b6f'
+                  - value: 45
+                    color: '#d1ad6f'
+                  - value: 65
+                    color: '#d1c96f'
+                  - value: 75
+                    color: '#c0d16f'
+                  - value: 85
+                    color: '#99d16f'
+                  - value: 100
+                    color: '#6fd17b'
+                title_position: inside
+                height: 2px
+                title_style: &title_style_charging
+                  text-align: left
+                  font-size: 0px
+                bar_style: &bar_style_charging
+                  align-items: flex-start
+                  font-size: 10px
+                value_style: &value_style_charging
+                  font-size: 0px
+              - type: horizontal-stack
+                cards:
+                  ## ANDRE PERSON STATUS ##
+                  - type: custom:button-card
+                    template: people_state
+                    entity: sensor.andre_status
+                    entity_picture: /local/presence/andre.png
+                  - type: vertical-stack
+                    cards:                                             
+                      ## ANDRE BATTERY ##
+                      - type: custom:button-card
+                        template: people_button
+                        entity: sensor.handy_andre_battery
+                        show_state: true
+                      ## ANDRE MAP ICON ##
+                      - type: custom:button-card
+                        template: people_button
+                        entity: device_tracker.google_maps_108265044794977597376
+                        icon: mdi:map
+                        show_icon: true
+                        hold_action:
+                          action: navigate
+                          navigation_path: /lovelace/9/
+                      ## ANDRE LAST CHANGED ##
+                      - type: custom:button-card
+                        template: people_button
+                        entity: sensor.andre_status
+                        show_last_changed: true
+              ## CONDITIONAL PROXIMITY ##
+              - type: conditional
+                conditions:
+                  - entity: proximity.home_andre
+                    state_not: "0"
+                  - entity: proximity.home_andre
+                    state_not: "not set"
+                card:
+                  type: horizontal-stack
+                  cards:                                             
+                    ## ANDRE TRAVELDIR ##
+                    - type: custom:button-card
+                      template: people_button
+                      entity: sensor.proximity_traveldir_andre
+                      show_icon: true
+                      state: &state_traveldir
+                        - value: 'stationary'
+                          styles:
+                            icon:
+                              - color: 'rgba(0,0,0,0)'
+                        - value: 'towards'
+                          styles:
+                            icon:
+                              - color: '#c9ffba'
+                        - value: 'away_from'
+                          styles:
+                            icon:
+                              - color: '#ffbaba'
+                    ## ANDRE PROXIMITY HOME ##
+                    - type: custom:button-card
+                      template: people_button
+                      entity: proximity.home_andre
+                      show_state: true
+                      state: &state_proximity
+                        - value: '0'
+                          styles:
+                            state:
+                              - color: 'rgba(0,0,0,0)'
+                        - value: 'not set'
+                          styles:
+                            state:
+                              - color: 'rgba(0,0,0,0)'
+
+          - type: custom:vertical-stack-in-card
+            cards:
+              ## JULIENNE CHARGING ##
+              - type: custom:bar-card
+                entity: sensor.handy_julienne_battery
+                charge_entity: sensor.handy_julienne_charging
+                indicator: 'off'
+                delay: 1000
+                severity: *severity_charging
+                title_position: inside
+                height: 2px
+                title_style: *title_style_charging
+                bar_style: *bar_style_charging
+                value_style: *value_style_charging
+              - type: horizontal-stack
+                cards:
+                  ## JULIENNE PERSON STATUS ##
+                  - type: custom:button-card
+                    template: people_state
+                    entity: sensor.julienne_status
+                    entity_picture: /local/presence/julienne.png        
+                  - type: vertical-stack
+                    cards:  
+                      ## JULIENNE BATTERY ##
+                      - type: custom:button-card
+                        template: people_button
+                        entity: sensor.handy_julienne_battery
+                        show_state: true
+                      ## JULIENNE MAP ICON ##
+                      - type: custom:button-card
+                        template: people_button
+                        entity: device_tracker.google_maps_109408471456601103538
+                        icon: mdi:map
+                        show_icon: true
+                        hold_action:
+                          action: navigate
+                          navigation_path: /lovelace/9/
+                      ## JULIENNE LAST CHANGED ##
+                      - type: custom:button-card
+                        template: people_button
+                        entity: sensor.julienne_status
+                        show_last_changed: true
+              ## CONDITIONAL PROXIMITY ##
+              - type: conditional
+                conditions:
+                  - entity: proximity.home_julienne
+                    state_not: "0"
+                  - entity: proximity.home_julienne
+                    state_not: "not set"
+                card:
+                  type: horizontal-stack
+                  cards:                                             
+                    ## JULIENNE TRAVELDIR ##
+                    - type: custom:button-card
+                      template: people_button
+                      entity: sensor.proximity_traveldir_julienne
+                      show_icon: true
+                      state: *state_traveldir
+                    ## JULIENNE PROXIMITY HOME ##
+                    - type: custom:button-card
+                      template: people_button
+                      entity: proximity.home_julienne
+                      show_state: true
+                      state: *state_proximity
+      
+      ## FLOORPLAN ####################################################################################################
+      - type: picture-elements
+        style: |
+          ha-card {
+            border: solid 1px var(--border-color);
+          }
+        image: /local/floorplan/floorplan.png
+        elements:
+        - type: image
+          entity:  binary_sensor.zha_bad_window_contact
+          state_image:
+            "off": /local/floorplan/floorplan_blank.png
+            "on": /local/floorplan/floorplan_bad-window.png
+            "unavailable": /local/floorplan/floorplan_blank.png
+          tap_action:
+            action: none
+          style: &style_fullscreen
+            top: 50%
+            left: 50%
+            width: 100%
+        - type: image
+          entity:  input_select.humidity
+          state_image:
+            "low": /local/floorplan/floorplan_blank.png
+            "med": /local/floorplan/floorplan_bad-med.png
+            "high": /local/floorplan/floorplan_bad-high.png
+          tap_action:
+            action: none
+          style: *style_fullscreen
+        - type: image
+          entity:  binary_sensor.bewegungsmelder_bad_motion
+          state_image:
+            "off": /local/floorplan/floorplan_blank.png
+            "on": /local/floorplan/floorplan_bad-motion.png
+          tap_action:
+            action: none
+          style: *style_fullscreen
+        - type: image
+          entity:  binary_sensor.bewegungsmelder_flur_motion
+          state_image:
+            "off": /local/floorplan/floorplan_blank.png
+            "on": /local/floorplan/floorplan_flur-motion.png
+          tap_action:
+            action: none
+          style: *style_fullscreen
+        - type: image
+          entity:  binary_sensor.zha_flur_door_contact
+          state_image:
+            "off": /local/floorplan/floorplan_blank.png
+            "on": /local/floorplan/floorplan_flur-door.png
+            "unavailable": /local/floorplan/floorplan_blank.png
+          tap_action:
+            action: none
+          style: *style_fullscreen
+        - type: image
+          entity:  binary_sensor.bewegungsmelder_kuche_motion
+          state_image:
+            "off": /local/floorplan/floorplan_blank.png
+            "on": /local/floorplan/floorplan_kuche-motion.png
+          tap_action:
+            action: none
+          style: *style_fullscreen
+        - type: image
+          entity:  binary_sensor.bewegungsmelder_wohnzimmer_motion
+          state_image:
+            "off": /local/floorplan/floorplan_blank.png
+            "on": /local/floorplan/floorplan_wohnzimmer-motion.png
+          tap_action:
+            action: none
+          style: *style_fullscreen
+        - type: image
+          entity:  binary_sensor.bewegungsmelder_schlafzimmer_motion
+          state_image:
+            "off": /local/floorplan/floorplan_blank.png
+            "on": /local/floorplan/floorplan_schlafzimmer-motion.png
+            "unavailable": /local/floorplan/floorplan_blank.png
+          tap_action:
+            action: none
+          style: *style_fullscreen
+        - type: image
+          entity: input_boolean.motion_sensor_bad_toggle
+          state_image:
+            "on": /local/floorplan/floorplan_blank.png
+            "off": /local/floorplan/floorplan_bad-motion_off.png
+          tap_action:
+            action: none
+          style: *style_fullscreen
+        - type: image
+          entity: input_boolean.motion_sensor_flur_toggle
+          state_image:
+            "on": /local/floorplan/floorplan_blank.png
+            "off": /local/floorplan/floorplan_flur-motion_off.png
+          tap_action:
+            action: none
+          style: *style_fullscreen
+        - type: image
+          entity: input_boolean.motion_sensor_kuche_toggle
+          state_image:
+            "on": /local/floorplan/floorplan_blank.png
+            "off": /local/floorplan/floorplan_kuche-motion_off.png
+          tap_action:
+            action: none
+          style: *style_fullscreen
+        - type: image
+          entity: input_boolean.motion_sensor_wohnzimmer_toggle
+          state_image:
+            "on": /local/floorplan/floorplan_blank.png
+            "off": /local/floorplan/floorplan_wohnzimmer-motion_off.png
+          tap_action:
+            action: none
+          style: *style_fullscreen
+        - type: image
+          entity: input_boolean.motion_sensor_schlafzimmer_toggle
+          state_image:
+            "on": /local/floorplan/floorplan_blank.png
+            "off": /local/floorplan/floorplan_schlafzimmer-motion_off.png
+          tap_action:
+            action: none
+          style: *style_fullscreen
+        - type: image
+          entity: input_boolean.dingdong
+          state_image:
+            "on": /local/floorplan/floorplan_doorbell.png
+            "off": /local/floorplan/floorplan_blank.png
+            "unavailable": /local/floorplan/floorplan_blank.png
+          tap_action:
+            action: call-service
+            service: switch.turn_on
+            service_data: 
+              entity_id: switch.summer
+          style:
+            top: 12%
+            left: 60.5%
+            width: 12%
+        - type: image
+          entity: light.flur
+          state_image: &states_light
+            "on": /local/floorplan/floorplan_light-on.png
+            "off": /local/floorplan/floorplan_light-off.png
+            "unavailable": /local/floorplan/floorplan_blank.png
+          tap_action:
+            action: toggle
+          style:
+            top: 42%
+            left: 60.5%
+            width: 12%
+        - type: image
+          entity: light.badezimmerdecke
+          state_image: *states_light
+          tap_action:
+            action: toggle
+          style:
+            top: 33%
+            left: 41%
+            width: 12%
+        - type: image
+          entity: light.badezimmerspiegel
+          state_image: *states_light
+          tap_action:
+            action: toggle
+          style:
+            top: 42%
+            left: 48%
+            width: 9%
+        - type: image
+          entity: media_player.uberall
+          state_image: &states_media-player
+            "off": /local/floorplan/floorplan_blank.png
+            "standby": /local/floorplan/floorplan_blank.png
+            "idle": /local/floorplan/floorplan_music-paused.png
+            "paused": /local/floorplan/floorplan_music-paused.png
+            "playing": /local/floorplan/floorplan_music.png
+            "unavailable": /local/floorplan/floorplan_blank.png
+          style:
+            top: 38%
+            left: 53%
+            width: 6%
+        - type: image
+          entity: media_player.echo_dot_bad
+          state_image: *states_media-player
+          style:
+            top: 38%
+            left: 53%
+            width: 6%
+        - type: image
+          entity: light.hangeschrank
+          state_image: *states_light
+          tap_action:
+            action: toggle
+          style:
+            top: 54%
+            left: 45%
+            width: 9%
+        - type: image
+          entity: light.arbeitsplatte
+          state_image: *states_light
+          tap_action:
+            action: toggle
+          style:
+            top: 54%
+            left: 34%
+            width: 9%
+        - type: image
+          entity: light.kuchenzeile
+          state_image: *states_light
+          tap_action:
+            action: toggle
+          style:
+            top: 90%
+            left: 58%
+            width: 9%
+        - type: image
+          entity: media_player.uberall
+          state_image: *states_media-player
+          style:
+            top: 91%
+            left: 50%
+            width: 6%
+        - type: image
+          entity: media_player.echo_show_kuche
+          state_image: *states_media-player
+          style:
+            top: 91%
+            left: 50%
+            width: 6%
+        - type: image
+          entity: light.kuchendecke
+          state_image: *states_light
+          tap_action:
+            action: toggle
+          style:
+            top: 75%
+            left: 48%
+            width: 15%
+        - type: image
+          entity: light.wandfluter
+          state_image: *states_light
+          tap_action:
+            action: toggle
+          style:
+            top: 90%
+            left: 90%
+            width: 9%
+        - type: image
+          entity: light.wohnzimmer
+          state_image: *states_light
+          tap_action:
+            action: toggle
+          style:
+            top: 75%
+            left: 80%
+            width: 15%
+        - type: image
+          entity: media_player.uberall
+          state_image: *states_media-player
+          style:
+            top: 91%
+            left: 80%
+            width: 6%
+        - type: image
+          entity: media_player.heimkino
+          state_image: *states_media-player
+          style:
+            top: 91%
+            left: 80%
+            width: 6%
+        - type: image
+          entity: media_player.firetv_wohnzimmer
+          state_image:
+            "off": /local/floorplan/floorplan_blank.png
+            "idle": /local/floorplan/floorplan_beamer_paused.png
+            "unavailable": /local/floorplan/floorplan_blank.png
+            "paused": /local/floorplan/floorplan_beamer_paused.png
+            "standby": /local/floorplan/floorplan_beamer_paused.png
+            "playing": /local/floorplan/floorplan_beamer.png
+          tap_action:
+            action: call-service
+            service: media_player.media_play_pause
+            service_data: 
+              entity_id: media_player.firetv_wohnzimmer
+          hold_action:
+            action: call-service
+            service: media_player.turn_off
+            service_data: 
+              entity_id: media_player.firetv_wohnzimmer
+          style:
+            top: 49%
+            left: 80%
+            width: 7%
+        - type: image
+          entity: switch.wohnzimmer
+          state_image:
+            "off": /local/floorplan/floorplan_blank.png
+            "on": /local/floorplan/floorplan_plug-on.png
+            "unavailable": /local/floorplan/floorplan_blank.png
+          tap_action:
+            action: toggle
+          style:
+            top: 37%
+            left: 95%
+            width: 7%
+        - type: image
+          entity: light.schlafzimmer
+          state_image: *states_light
+          tap_action:
+            action: toggle
+          style:
+            top: 22%
+            left: 85%
+            width: 15%
+        - type: image
+          entity: binary_sensor.tv_schlafzimmer_netflix
+          state_image:
+            "off": /local/floorplan/floorplan_blank.png
+            "on": /local/floorplan/floorplan_netflix.png
+            "unavailable": /local/floorplan/floorplan_blank.png
+          tap_action:
+            action: none
+          style:
+            top: 39%
+            left: 90%
+            width: 7%
+        - type: image
+          entity: binary_sensor.tv_schlafzimmer
+          state_image:
+            "off": /local/floorplan/floorplan_blank.png
+            "on": /local/floorplan/floorplan_tv.png
+          tap_action:
+            action: none
+          style:
+            top: 39%
+            left: 85%
+            width: 7%
+        - type: image
+          entity: sensor.bed_people
+          state_image:
+            "0": /local/floorplan/floorplan_blank.png
+            "1": /local/floorplan/floorplan_bed-1.png
+            "2": /local/floorplan/floorplan_bed-2.png
+          tap_action:
+            action: none
+          style:
+            top: 10%
+            left: 85%
+            width: 7%
+        ## MENU ##
+        - type: "custom:button-card"
+          entity: sensor.time
+          color_type: card
+          color: 'var(--paper-card-background-color)'
+          show_state: true
+          show_name: false
+          show_icon: false
+          styles:
+            card:
+              - font-size: 17px
+              - -webkit-box-shadow: 0px 0px 0px 0px
+              - box-shadow: 0px 0px 0px 0px
+          style:
+            top: 9%
+            left: 13.8%
+            width: 22.5%
+        - type: "custom:button-card"
+          template: floorplan
+          entity: input_boolean.guest_mode
+          icon: mdi:account-multiple-outline
+          style:
+            top: 35%
+            left: 7.5%
+            width: 10%
+        - type: "custom:button-card"
+          template: floorplan
+          entity: input_boolean.dim_tv_boolean
+          icon: mdi:television
+          style:
+            top: 49%
+            left: 7.5%
+            width: 10%        
+        - type: "custom:button-card"
+          template: floorplan
+          entity: input_boolean.open_door
+          icon: mdi:door-open
+          style:
+            top: 49%
+            left: 20%
+            width: 10%
+        - type: "custom:button-card"
+          template: floorplan
+          entity: input_boolean.follow_music
+          icon: mdi:music
+          style:
+            top: 63%
+            left: 20%
+            width: 10%
+        - type: "custom:button-card"
+          template: floorplan
+          entity: input_boolean.radio
+          icon: mdi:radio-fm
+          style:
+            top: 63%
+            left: 7.5%
+            width: 10%
+        - type: "custom:button-card"
+          template: floorplan
+          entity: group.motion_sensors
+          icon: mdi:leak
+          style:
+            top: 77%
+            left: 7.5%
+            width: 10%
+        - type: "custom:button-card"
+          template: floorplan
+          entity: group.circadian_lighting
+          icon: mdi:theme-light-dark
+          style:
+            top: 77%
+            left: 20%
+            width: 10%
+        - type: "custom:button-card"
+          template: floorplan
+          entity: group.all_lights
+          icon: mdi:lightbulb-outline
+          style:
+            top: 91%
+            left: 7.5%
+            width: 10%
+        - type: "custom:button-card"
+          template: floorplan
+          color: 'var(--primary-color)'
+          icon: mdi:power
+          tap_action:
+            action: call-service
+            service: scene.turn_on
+            service_data:
+              entity_id: scene.all_off
+          style:
+            top: 91%
+            left: 20%
+            width: 10%
+
+  - type: vertical-stack
+    cards: 
+      - type: custom:simple-weather-card
+        style: |
+          ha-card {
+            border: solid 1px var(--border-color);
+          }
+        entity: weather.openweathermap
+        name: " "
+                        
+      ## MEDIA PLAYER #################################################################################################
+      - type: conditional
+        conditions:
+          - entity: media_player.uberall
+            state_not: "off"
+          - entity: media_player.uberall
+            state_not: "standby"
+        card:
+          type: custom:mini-media-player
+          entity: media_player.uberall
+          name: Google Home
+          artwork: full-cover
+          source: icon
+          info: scroll
+          idle_view:
+            when_paused: true
+          hide:
+            volume: true
+            source: true
+            power_state: false

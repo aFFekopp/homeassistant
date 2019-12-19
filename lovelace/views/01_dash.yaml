@@ -1,0 +1,780 @@
+icon: mdi:home-assistant
+title: Dashboard
+id: Dash
+popup_cards:
+  sensor.andre_status:
+    title: Andre
+    card:
+      type: vertical-stack       
+      cards:
+        - type: history-graph
+          entities:
+            - sensor.andre_status
+        - type: entities
+          entities:
+            - device_tracker.google_maps_108265044794977597376
+            - device_tracker.life360_andre
+            - device_tracker.andre_mi9t
+            - device_tracker.andre_mi9t_bt
+  sensor.julienne_status:
+    title: Julienne
+    card:
+      type: vertical-stack       
+      cards:
+        - type: history-graph
+          entities:
+            - sensor.julienne_status
+        - type: entities
+          entities:
+            - device_tracker.google_maps_109408471456601103538
+            - device_tracker.julienne_s10
+            - device_tracker.julienne_s10_bt
+  device_tracker.google_maps_108265044794977597376:
+    title: Karte
+    card:
+      type: map
+      aspect_ratio: 16:9
+      default_zoom: 12
+      entities:
+        - device_tracker.google_maps_108265044794977597376
+  device_tracker.google_maps_109408471456601103538:
+    title: Karte
+    card:
+      type: map
+      aspect_ratio: 16:9
+      default_zoom: 12
+      entities:
+        - device_tracker.google_maps_109408471456601103538
+  weather.openweathermap:
+    title: Weather
+    large: true
+    card:
+      type: iframe
+      url: https://embed.windy.com/embed2.html?lat=51.297&lon=9.571&zoom=10&level=surface&overlay=rain&menu=&message=&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=51.297&detailLon=9.571&metricWind=default&metricTemp=default&radarRange=-1
+  input_boolean.guest_mode:
+    title: Guest Mode
+    card:
+      type: entities
+      entities:
+        - input_boolean.guest_mode
+        - input_datetime.guest_mode
+  light.flur:
+    title: Flur
+    card:
+      type: entities
+      entities:
+        - entity: light.flurdecke
+          name: Decke
+          icon: mdi:ceiling-light
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+  light.bad:
+    title: Bad
+    card:
+      type: entities
+      entities:
+        - entity: light.bad
+          name: Bad
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+        - type: divider
+        - entity: light.badezimmerdecke_1
+          name: Lampe 1
+          icon: mdi:ceiling-light
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+        - entity: light.badezimmerdecke_2
+          name: Lampe 2
+          icon: mdi:ceiling-light
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+        - entity: light.badezimmerdecke_3
+          name: Lampe 3
+          icon: mdi:ceiling-light
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+        - entity: light.badezimmerspiegel
+          name: Spiegel
+          icon: mdi:led-strip
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+  light.kuche:
+    title: Küche
+    card:
+      type: entities
+      entities:
+        - entity: light.kuche
+          name: Küche
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+        - type: divider
+        - entity: light.kuchendecke
+          name: Decke
+          icon: mdi:ceiling-light
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+        - entity: light.kuchenzeile
+          name: Zeile
+          icon: mdi:record
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+        - entity: light.arbeitsplatte
+          name: Arbeitsplatte
+          icon: mdi:record
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+        - entity: light.hangeschrank
+          name: Hängeschrank
+          icon: mdi:wall-sconce-flat
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+  light.wohnzimmer:
+    title: Wohnzimmer
+    card:
+      type: entities
+      entities:
+        - entity: light.wohnzimmer
+          name: Wohnzimmer
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+        - type: divider
+        - entity: light.wohnzimmer_decke_1
+          name: Lampe 1
+          icon: mdi:track-light
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+        - entity: light.wohnzimmer_decke_2
+          name: Lampe 2
+          icon: mdi:track-light
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+        - entity: light.wohnzimmer_decke_3
+          name: Lampe 3
+          icon: mdi:track-light
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+        - entity: light.wohnzimmer_decke_4
+          name: Lampe 4
+          icon: mdi:track-light
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+        - entity: light.wandfluter
+          name: Wandfluter
+          icon: mdi:floor-lamp
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+  light.schlafzimmer:
+    title: Schlafzimmer
+    card:
+      type: entities
+      entities:
+        - entity: light.schlafzimmerdecke
+          name: Decke
+          icon: mdi:led-strip
+          type: custom:slider-entity-row
+          hide_when_off: true
+          toggle: true
+  sensor.temperature_mean:
+    title: Temperaturen
+    card:
+      type: entities
+      entities:
+        - entity: sensor.bewegungsmelder_flur_temperature
+          name: Flur
+        - entity: sensor.bewegungsmelder_bad_temperature
+          name: Bad
+        - entity: sensor.bewegungsmelder_kuche_temperature
+          name: Küche
+        - entity: sensor.bewegungsmelder_wohnzimmer_temperature
+          name: Wohnzimmer
+        - entity: sensor.bewegungsmelder_schlafzimmer_temperature
+          name: Schlafzimmer
+  sensor.light_level_mean:
+    title: Helligkeit
+    card:
+      type: entities
+      entities:
+        - entity: sensor.bewegungsmelder_flur_light_level
+          name: Flur
+        - entity: sensor.bewegungsmelder_bad_light_level
+          name: Bad
+        - entity: sensor.bewegungsmelder_kuche_light_level
+          name: Küche
+        - entity: sensor.bewegungsmelder_wohnzimmer_light_level
+          name: Wohnzimmer
+        - entity: sensor.bewegungsmelder_schlafzimmer_light_level
+          name: Schlafzimmer
+  input_select.media_player_selection:
+    title: Media
+    card:
+      type: entities
+      entities:
+        - input_select.media_player_selection
+        - input_select.media_player_playlist
+        - type: divider
+        - type: 'custom:mini-media-player'
+          entity: media_player.uberall
+          group: true
+          hide:
+            name: true
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            mute: true
+            power: true
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_dot_bad
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_show_kuche
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_l_wohnzimmer
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_r_wohnzimmer
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+  input_boolean.enable_charge:
+    title: NIU
+    card:
+      type: entities
+      entities:
+        - input_datetime.charge_time
+
+cards:
+
+  ## ROW 1 ###################################################################################################################
+  - type: vertical-stack
+    cards: 
+      
+      - !include
+        - ../includes/titles.yaml
+        - title: QUICK LINKS & INFOS
+
+      ## SHORTCUTS ##        
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            template: dash_button
+            entity: input_boolean.guest_mode
+            tap_action:
+              action: more-info
+          - type: "custom:button-card"
+            template: dash_button
+            entity: binary_sensor.remote_ui
+            tap_action:
+              action: call-service
+              service: cloud.remote_connect
+            hold_action:
+              action: call-service
+              service: cloud.remote_disconnect
+          - type: "custom:button-card"
+            template: dash_button
+            entity: input_boolean.cinema_lights
+          - type: "custom:button-card"
+            template: dash_button
+            entity: input_boolean.enable_charge 
+            name: Charge NIU
+            icon: mdi:motorbike
+            show_name: false
+            show_label: true
+            label: >
+              [[[
+                return states['input_datetime.charge_time'].state;
+              ]]]
+          - type: "custom:button-card"
+            template: dash_button
+            entity: input_select.media_player_selection
+            icon: mdi:play
+            show_state: true
+            show_name: false
+            color_type: icon
+            tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              service_data:
+                entity_id: input_boolean.play_media
+            styles:
+              card:
+                - background-color: '[[[ if (states["media_player.uberall"].state == "playing") return "var(--accent-color)";
+                                    if (states["media_player.heimkino"].state == "playing") return "var(--accent-color)";
+                                    if (states["media_player.echo_show_kuche"].state == "playing") return "var(--accent-color)";
+                                    if (states["media_player.echo_r_wohnzimmer"].state == "playing") return "var(--accent-color)";
+                                    if (states["media_player.echo_l_wohnzimmer"].state == "playing") return "var(--accent-color)";
+                                    if (states["media_player.echo_dot_bad"].state == "playing") return "var(--accent-color)";
+                                    else return "var(--custom_card_background)"; ]]]'
+              icon:
+                - color: '[[[ if (states["media_player.uberall"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.heimkino"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_show_kuche"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_r_wohnzimmer"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_l_wohnzimmer"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_dot_bad"].state == "playing") return "var(--custom_icon_light)";
+                          else return "var(--custom_icon_dark)"; ]]]'
+              state:
+                - color: '[[[ if (states["media_player.uberall"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.heimkino"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_show_kuche"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_r_wohnzimmer"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_l_wohnzimmer"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_dot_bad"].state == "playing") return "var(--custom_icon_light)";
+                          else return "var(--custom_icon_dark)"; ]]]'
+          
+
+      ## PEOPLE STATUS ##
+      - type: horizontal-stack
+        style: !include ../includes/style.yaml 
+        cards:
+          - type: custom:vertical-stack-in-card
+            cards:
+              ## ANDRE CHARGING ##
+              - type: custom:bar-card
+                entity: sensor.handy_andre_battery
+                charge_entity: sensor.handy_andre_charging
+                indicator: 'off'
+                delay: 1000
+                color: 'var(--accent-color)'
+                title_position: inside
+                height: 2px
+                title_style: &title_style_charging
+                  text-align: left
+                  font-size: 0px
+                bar_style: &bar_style_charging
+                  align-items: flex-start
+                  font-size: 10px
+                value_style: &value_style_charging
+                  font-size: 0px
+              - type: horizontal-stack
+                cards:
+                  ## ANDRE PERSON STATUS ##
+                  - type: custom:button-card
+                    template: people_state
+                    entity: sensor.andre_status
+                    entity_picture: /local/presence/andre.png
+                  - type: vertical-stack
+                    cards:                                             
+                      ## ANDRE BATTERY ##
+                      - type: custom:button-card
+                        template: people_button
+                        entity: sensor.handy_andre_battery
+                        show_state: true
+                      ## ANDRE MAP ICON ##
+                      - type: custom:button-card
+                        template: people_button
+                        entity: device_tracker.google_maps_108265044794977597376
+                        icon: mdi:map
+                        show_icon: true
+                        hold_action:
+                          action: navigate
+                          navigation_path: /lovelace/9/
+                      ## ANDRE LAST CHANGED ##
+                      - type: custom:button-card
+                        template: people_button
+                        entity: sensor.andre_status
+                        show_last_changed: true
+              ## CONDITIONAL PROXIMITY ##
+              - type: conditional
+                conditions:
+                  - entity: proximity.home_andre
+                    state_not: "0"
+                  - entity: proximity.home_andre
+                    state_not: "not set"
+                card:
+                  type: horizontal-stack
+                  cards:                                             
+                    ## ANDRE TRAVELDIR ##
+                    - type: custom:button-card
+                      template: people_button
+                      entity: sensor.proximity_traveldir_andre
+                      show_icon: true
+                      state: &state_traveldir
+                        - value: 'stationary'
+                          styles:
+                            icon:
+                              - color: 'rgba(0,0,0,0)'
+                        - value: 'towards'
+                          styles:
+                            icon:
+                              - color: '#c9ffba'
+                        - value: 'away_from'
+                          styles:
+                            icon:
+                              - color: '#ffbaba'
+                    ## ANDRE PROXIMITY HOME ##
+                    - type: custom:button-card
+                      template: people_button
+                      entity: proximity.home_andre
+                      show_state: true
+                      state: &state_proximity
+                        - value: '0'
+                          styles:
+                            state:
+                              - color: 'rgba(0,0,0,0)'
+                        - value: 'not set'
+                          styles:
+                            state:
+                              - color: 'rgba(0,0,0,0)'
+
+          - type: custom:vertical-stack-in-card
+            cards:
+              ## JULIENNE CHARGING ##
+              - type: custom:bar-card
+                entity: sensor.handy_julienne_battery
+                charge_entity: sensor.handy_julienne_charging
+                indicator: 'off'
+                delay: 1000
+                color: 'var(--accent-color)'
+                title_position: inside
+                height: 2px
+                title_style: *title_style_charging
+                bar_style: *bar_style_charging
+                value_style: *value_style_charging
+              - type: horizontal-stack
+                cards:
+                  ## JULIENNE PERSON STATUS ##
+                  - type: custom:button-card
+                    template: people_state
+                    entity: sensor.julienne_status
+                    entity_picture: /local/presence/julienne.png        
+                  - type: vertical-stack
+                    cards:  
+                      ## JULIENNE BATTERY ##
+                      - type: custom:button-card
+                        template: people_button
+                        entity: sensor.handy_julienne_battery
+                        show_state: true
+                      ## JULIENNE MAP ICON ##
+                      - type: custom:button-card
+                        template: people_button
+                        entity: device_tracker.google_maps_109408471456601103538
+                        icon: mdi:map
+                        show_icon: true
+                        hold_action:
+                          action: navigate
+                          navigation_path: /lovelace/9/
+                      ## JULIENNE LAST CHANGED ##
+                      - type: custom:button-card
+                        template: people_button
+                        entity: sensor.julienne_status
+                        show_last_changed: true
+              ## CONDITIONAL PROXIMITY ##
+              - type: conditional
+                conditions:
+                  - entity: proximity.home_julienne
+                    state_not: "0"
+                  - entity: proximity.home_julienne
+                    state_not: "not set"
+                card:
+                  type: horizontal-stack
+                  cards:                                             
+                    ## JULIENNE TRAVELDIR ##
+                    - type: custom:button-card
+                      template: people_button
+                      entity: sensor.proximity_traveldir_julienne
+                      show_icon: true
+                      state: *state_traveldir
+                    ## JULIENNE PROXIMITY HOME ##
+                    - type: custom:button-card
+                      template: people_button
+                      entity: proximity.home_julienne
+                      show_state: true
+                      state: *state_proximity
+      
+      ## WEATHER
+      - type: custom:weather-card
+        style: |
+          ha-card {
+            border: solid 1px var(--border-color);
+            font-family: Raleway;
+          }
+          .spacer {
+          padding-top: 0em;
+          }
+          .current {
+          padding-top: 0em;
+          padding-left: 1em;
+          margin-top: -1em;
+          margin-bottom: 0em;
+          }
+          .temp {
+          font-size: 3.2em;
+          position: sticky;
+          }
+          .tempc {
+          font-size: 1.5em;
+          position: sticky;
+          }
+          .forecast {
+          margin-top: -3.5em;
+          margin-bottom: -0.7em;
+          }
+          .forecast .day:first-child {
+          margin-left: 7.5em;
+          }
+          .day {
+          border-right: none;
+          line-height: 2;
+          }
+          .precipitation {
+          display: none
+          }
+          .icon {
+          width: 40px;
+          height: 40px;
+          }
+          .icon.bigger {
+          width: 4em;
+          height: 4em;
+          left: 2.5em;
+          top: 8em;
+          }
+        entity: weather.openweathermap
+        current: true
+        details: false
+        forecast: true
+          
+  ## ROW 2 ###################################################################################################################
+  - type: vertical-stack
+    cards: 
+      
+      - !include
+        - ../includes/titles.yaml
+        - title: LICHTER & RÄUME
+
+      ## LICHTER ##
+      - type: horizontal-stack
+        cards:
+          - type: "custom:button-card"
+            template: dash_button
+            entity: light.flur
+            icon: mdi:broom
+            double_tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              service_data:
+                entity_id: input_boolean.motion_sensor_flur_toggle
+            styles:
+              card:
+                - background: '[[[if (states["binary_sensor.bewegungsmelder_flur_motion"].state == "on"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
+                              if (states["binary_sensor.bewegungsmelder_flur_motion"].state == "on"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
+                              if (states["input_boolean.motion_sensor_flur_toggle"].state == "off"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
+                              if (states["input_boolean.motion_sensor_flur_toggle"].state == "off"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
+                              if (entity.state == "on") return "var(--accent-color)";
+                              else return "var(--paper-card-background-color)"; ]]]'
+          - type: "custom:button-card"
+            template: dash_button
+            entity: light.bad
+            icon: mdi:shower-head
+            double_tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              service_data:
+                entity_id: input_boolean.motion_sensor_bad_toggle
+            styles:
+              card:
+                - background: '[[[if (states["binary_sensor.bewegungsmelder_bad_motion"].state == "on"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
+                              if (states["binary_sensor.bewegungsmelder_bad_motion"].state == "on"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
+                              if (states["input_boolean.motion_sensor_bad_toggle"].state == "off"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
+                              if (states["input_boolean.motion_sensor_bad_toggle"].state == "off"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
+                              if (entity.state == "on") return "var(--accent-color)";
+                              else return "var(--paper-card-background-color)"; ]]]'
+              grid:
+                - position: relative
+              custom_fields:
+                music:
+                  - position: absolute
+                  - left: 4%
+                  - top: 1%
+            custom_fields:
+              music: >
+                [[[ 
+                if (states['media_player.echo_dot_bad'].state == "playing" || states['media_player.uberall'].state == "playing") return '<ha-icon icon="mdi:volume-high" style="width: 18px; height: 18px; color: rgba(255,255,255,0.8);"></ha-icon>'; 
+                ]]]
+          - type: "custom:button-card"
+            template: dash_button
+            entity: light.kuche
+            icon: mdi:food-fork-drink
+            double_tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              service_data:
+                entity_id: input_boolean.motion_sensor_kuche_toggle
+            styles:
+              card:
+                - background: '[[[if (states["binary_sensor.bewegungsmelder_kuche_motion"].state == "on"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
+                              if (states["binary_sensor.bewegungsmelder_kuche_motion"].state == "on"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
+                              if (states["input_boolean.motion_sensor_kuche_toggle"].state == "off"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
+                              if (states["input_boolean.motion_sensor_kuche_toggle"].state == "off"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
+                              if (entity.state == "on") return "var(--accent-color)";
+                              else return "var(--paper-card-background-color)"; ]]]'
+              grid:
+                - position: relative
+              custom_fields:
+                music:
+                  - position: absolute
+                  - left: 4%
+                  - top: 1%
+            custom_fields:
+              music: >
+                [[[ 
+                if (states['media_player.echo_show_kuche'].state == "playing" || states['media_player.uberall'].state == "playing") return '<ha-icon icon="mdi:volume-high" style="width: 18px; height: 18px; color: rgba(255,255,255,0.8);"></ha-icon>'; 
+                ]]]
+          - type: "custom:button-card"
+            template: dash_button
+            entity: light.wohnzimmer
+            icon: mdi:sofa
+            double_tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              service_data:
+                entity_id: input_boolean.motion_sensor_wohnzimmer_toggle
+            styles:
+              card:
+                - background: '[[[if (states["binary_sensor.bewegungsmelder_wohnzimmer_motion"].state == "on"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
+                              if (states["binary_sensor.bewegungsmelder_wohnzimmer_motion"].state == "on"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
+                              if (states["input_boolean.motion_sensor_wohnzimmer_toggle"].state == "off"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
+                              if (states["input_boolean.motion_sensor_wohnzimmer_toggle"].state == "off"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
+                              if (entity.state == "on") return "var(--accent-color)";
+                              else return "var(--paper-card-background-color)"; ]]]'
+              grid:
+                - position: relative
+              custom_fields:
+                music:
+                  - position: absolute
+                  - left: 4%
+                  - top: 1%
+            custom_fields:
+              music: >
+                [[[ 
+                if (states['media_player.heimkino'].state == "playing" || states['media_player.uberall'].state == "playing") return '<ha-icon icon="mdi:volume-high" style="width: 18px; height: 18px; color: rgba(255,255,255,0.8);"></ha-icon>'; 
+                ]]]
+          - type: "custom:button-card"
+            template: dash_button
+            entity: light.schlafzimmer
+            icon: mdi:bed-empty
+            double_tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              service_data:
+                entity_id: input_boolean.motion_sensor_schlafzimmer_toggle
+            styles:
+              card:
+                - background: '[[[if (states["binary_sensor.bewegungsmelder_schlafzimmer_motion"].state == "on"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
+                              if (states["binary_sensor.bewegungsmelder_schlafzimmer_motion"].state == "on"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
+                              if (states["input_boolean.motion_sensor_schlafzimmer_toggle"].state == "off"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
+                              if (states["input_boolean.motion_sensor_schlafzimmer_toggle"].state == "off"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
+                              if (entity.state == "on") return "var(--accent-color)";
+                              else return "var(--paper-card-background-color)"; ]]]'
+              grid:
+                - position: relative
+              custom_fields:
+                bed_people:
+                  - position: absolute
+                  - right: 2%
+                  - top: 1%
+            custom_fields:
+              bed_people: >
+                [[[ 
+                if (states['sensor.bed_people'].state == 1) return '<ha-icon icon="mdi:account" style="width: 18px; height: 18px; color: rgba(255,255,255,0.8);"></ha-icon>'; 
+                if (states['sensor.bed_people'].state == 2) return '<ha-icon icon="mdi:account-multiple" style="width: 18px; height: 18px; color: rgba(255,255,255,0.8);"></ha-icon>';
+                ]]]
+
+      - !include
+        - ../includes/titles.yaml
+        - title: SENSOREN
+      
+      ## TEMPERATUR / LICHT / LUFTFEUCHTIGKEIT ##
+      - type: horizontal-stack
+        cards:
+          - !include
+            - ../includes/graphs.yaml
+            - entity: sensor.temperature_mean
+              name: Temperatur
+          - !include
+            - ../includes/graphs.yaml
+            - entity: sensor.light_level_mean
+              name: Helligkeit
+          - !include
+            - ../includes/graphs.yaml
+            - entity: sensor.zha_bad_multisensor_humidity
+              name: Luftfeuchtigkeit
+
+      ## DOWNLOAD / UPLOAD ## 
+      - type: horizontal-stack
+        cards:
+          - !include
+            - ../includes/graphs.yaml
+            - entity: sensor.net_download_cur_filtered
+              name: Download
+              align_icon: left
+              hours_to_show: 12
+              points_per_hour: 4
+              graph: bar
+          - !include
+            - ../includes/graphs.yaml
+            - entity: sensor.net_upload_cur
+              name: Upload
+              hours_to_show: 12
+              points_per_hour: 4
+              graph: bar
+
+  ## ROW 3 ###################################################################################################################
+  # - type: vertical-stack
+  #   cards: 
+
+  #     - type: "custom:button-card"
+  #       template: heading
+  #       name: KARTE
+
+  #     ## KARTE ##                  
+  #     - type: map
+  #       style: !include ../includes/style.yaml
+  #       aspect_ratio: 16x9
+  #       default_zoom: 14
+  #       dark_mode: false
+  #       entities:
+  #         - device_tracker.niu
+  #         - device_tracker.google_maps_108265044794977597376
+  #         - device_tracker.google_maps_109408471456601103538       

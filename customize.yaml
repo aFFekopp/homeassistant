@@ -1,0 +1,224 @@
+sensor.niu_watts_yearly:
+  friendly_name: Jahresverbrauch
+  unit_of_measurement: kWh
+switch.wohnzimmer:
+  friendly_name: NIU Ladegerät
+  icon: mdi:power-plug
+sensor.niu_watts_monthly:
+  friendly_name: Monatsverbrauch
+  unit_of_measurement: kWh
+sensor.humidity_158d0001e89713:
+  friendly_name: Luftfeuchtigkeit
+  icon: mdi:water-percent
+binary_sensor.door_window_sensor_158d0001e6330a:
+  friendly_name: Eingangstüre
+  icon: mdi:door
+input_boolean.guest_mode:
+  friendly_name: Gast Modus
+sensor.niu_watts_previous_month:
+  friendly_name: Letzter Monat
+  icon: mdi:counter
+  unit_of_measurement: kWh
+sensor.niu_watts_cost:
+  friendly_name: Jahreskosten
+  icon: mdi:currency-eur
+  unit_of_measurement: €
+input_number.kwh_cost:
+  friendly_name: Kosten für eine kWh
+  icon: mdi:currency-eur
+  unit_of_measurement: €
+sensor.hs110_total_energy_kwh:
+  icon: mdi:flash
+sensor.hs110_today_energy_kwh:
+  icon: mdi:flash
+input_boolean.notify_door_left_open:
+  friendly_name: Haustür Warnung
+sensor.version_ha_local:
+  friendly_name: Home Assistant Version
+sensor.version_ha_docker:
+  friendly_name: Latest Docker Version
+  icon: mdi:docker
+input_select.radio_station:
+  friendly_name: Radiosender
+binary_sensor.door_window_sensor_158d0002b942e1:
+  friendly_name: Fenster
+  icon: mdi:window-closed
+sensor.niu_mqtt_batterychargecount:
+  friendly_name: Ladezyklen
+  icon: mdi:battery-outline
+sensor.niu_mqtt_batteryconnected:
+  friendly_name: Batterie verbunden
+  icon: mdi:battery-outline
+sensor.niu_mqtt_batterygrade:
+  friendly_name: Batteriezustand
+  icon: mdi:battery-plus
+  unit_of_measurement: '%'
+sensor.niu_mqtt_batterynumber:
+  friendly_name: Batterienummer
+  icon: mdi:battery
+sensor.niu_mqtt_batterypct:
+  friendly_name: Ladung
+  icon: mdi:battery-outline
+  unit_of_measurement: '%'
+sensor.niu_mqtt_charging:
+  friendly_name: Ladevorgang
+  icon: mdi:battery-charging
+sensor.niu_mqtt_daysdriven:
+  friendly_name: Gesamtfahrzeit
+  icon: mdi:calendar
+  unit_of_measurement: d
+sensor.niu_mqtt_ecubatterypct:
+  friendly_name: ECU-Batterie
+  icon: mdi:battery-outline
+  unit_of_measurement: '%'
+sensor.niu_mqtt_enginenumber:
+  friendly_name: Motornummer
+  icon: mdi:engine
+sensor.niu_mqtt_estimatedmileage:
+  friendly_name: Reststrecke
+  icon: mdi:map-marker
+  unit_of_measurement: km
+sensor.niu_mqtt_framenumber:
+  friendly_name: Fahrgestellnummer
+  icon: mdi:motorbike
+sensor.niu_mqtt_gpstimestamp:
+  device_class: timestamp
+  friendly_name: Letzte GPS aktualisierung
+  icon: mdi:map
+sensor.niu_mqtt_lastdistance:
+  friendly_name: Letzte Fahrstrecke
+  icon: mdi:map-marker-distance
+  unit_of_measurement: km
+sensor.niu_mqtt_lockstatus:
+  friendly_name: Fahrsperre
+  icon: mdi:lock
+sensor.niu_mqtt_name:
+  friendly_name: Name
+  icon: mdi:motorbike
+sensor.niu_mqtt_nowspeed:
+  friendly_name: Aktuelle Geschwindigkeit
+  icon: mdi:speedometer
+  unit_of_measurement: km/h
+sensor.niu_mqtt_position:
+  friendly_name: Position
+  icon: mdi:map
+sensor.niu_mqtt_serialnumber:
+  friendly_name: Seriennummer
+  icon: mdi:motorbike
+sensor.niu_mqtt_totalmileage:
+  friendly_name: Gesamtfahrstrecke
+  icon: mdi:map
+  unit_of_measurement: km
+sensor.niu_mqtt_type:
+  friendly_name: Typ
+  icon: mdi:motorbike
+device_tracker.niu:
+  entity_picture: /local/niu.jpg
+  friendly_name: NIU
+binary_sensor.niu_mqtt_charging:
+  device_class: plug
+  friendly_name: Ladevorgang
+binary_sensor.niu_mqtt_lockstatus:
+  device_class: moving
+  friendly_name: Unterwegs
+binary_sensor.niu_mqtt_batteryconnected:
+  device_class: plug
+  friendly_name: Batterie verbunden
+input_boolean.dim_tv_boolean:
+  friendly_name: TV Dimmer
+  icon: mdi:television
+sensor.db_size:
+  icon: mdi:database
+sensor.version_current:
+  friendly_name: Aktuell
+sensor.version_latest:
+  friendly_name: Neueste
+binary_sensor.tv_schlafzimmer:
+  device_class: power
+  icon: mdi:television
+input_boolean.motion_sensor_bad_toggle:
+  friendly_name: Bewegungsmelder - Bad
+input_boolean.motion_sensor_kuche_toggle:
+  friendly_name: Bewegungsmelder - Küche
+input_boolean.motion_sensor_flur_toggle:
+  friendly_name: Bewegungsmelder - Flur
+input_boolean.motion_sensor_wohnzimmer_toggle:
+  friendly_name: Bewegungsmelder - Wohnzimmer
+input_boolean.motion_sensor_schlafzimmer_toggle:
+  friendly_name: Bewegungsmelder - Schlafzimmer
+sensor.hacs:
+  friendly_name: Plugins / Components
+sensor.bed_weight_filtered:
+  friendly_name: Bett Gewicht
+  icon: mdi:weight-kilogram
+sensor.bed_people:
+  icon: mdi:hotel
+  unit_of_measurement: Personen
+sensor.people_home:
+  icon: mdi:account-multiple
+  unit_of_measurement: Personen
+input_boolean.auto_open_door:
+  icon: mdi:door-open
+binary_sensor.remote_ui:
+  icon: mdi:cloud
+sensor.net_received_monthly:
+  friendly_name: Download
+  icon: mdi:download
+sensor.net_sent_monthly:
+  friendly_name: Upload
+  icon: mdi:upload
+sensor.net_download_cur_filtered:
+  friendly_name: Download
+sensor.bewegungsmelder_minmax_temp:
+  friendly_name: Bewegungsmelder - minmax temp
+  icon: mdi:thermometer
+sensor.bewegungsmelder_minmax_lux:
+  friendly_name: Bewegungsmelder - minmax lux
+  icon: mdi:brightness-5
+binary_sensor.tv_wohnzimmer:
+  device_class: power
+  icon: mdi:television
+sensor.net_uptime:
+  icon: mdi:lan-connect
+sensor.hass_io_uptime:
+  icon: mdi:home-assistant
+  unit_of_measurement: Tage
+sensor.last_boot:
+  friendly_name: NUC Uptime
+  icon: mdi:desktop-tower
+sensor.nuc_uptime:
+  icon: mdi:desktop-tower
+sensor.net_uptime_pretty:
+  icon: mdi:lan-connect
+sensor.hass_io_uptime_pretty:
+  icon: mdi:home-assistant
+sensor.niu_mqtt_batterytemperature:
+  friendly_name: Batterietemperatur
+  icon: mdi:thermometer
+  unit_of_measurement: °C
+sensor.niu_mqtt_batterytemperaturedesc:
+  friendly_name: Batterietemperatur
+  icon: mdi:thermometer
+sensor.niu_mqtt_lastrideavgspeed:
+  friendly_name: Letzte Durchschnittsgeschwindigkeit
+  icon: mdi:speedometer
+  unit_of_measurement: km/h
+sensor.niu_mqtt_lastridingtime:
+  friendly_name: Letzte Fahrzeit
+  icon: mdi:clock
+  unit_of_measurement: Minuten
+device_tracker.andre_mi9t:
+  friendly_name: Andre-Mi9T
+device_tracker.andre_mi9t_bt:
+  friendly_name: Andre-Mi9T-BT
+input_number.klingel_volume:
+  icon: mdi:volume-high
+binary_sensor.klingel:
+  icon: mdi:alarm-bell
+binary_sensor.zha_flur_door_contact:
+  icon: mdi:door
+binary_sensor.zha_bad_window_contact:
+  icon: mdi:window-closed-variant
+group.motion_sensors:
+  friendly_name: Bewegungsmelder
+  icon: mdi:leak

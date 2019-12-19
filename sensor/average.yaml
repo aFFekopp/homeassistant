@@ -1,0 +1,28 @@
+- platform: min_max
+  name: temperature_max
+  entity_ids:
+    - sensor.bewegungsmelder_flur_temperature
+    - sensor.bewegungsmelder_bad_temperature
+    - sensor.bewegungsmelder_kuche_temperature
+    - sensor.bewegungsmelder_wohnzimmer_temperature
+    - sensor.bewegungsmelder_schlafzimmer_temperature
+
+- platform: min_max
+  name: light_level_max
+  entity_ids:
+    - sensor.bewegungsmelder_flur_light_level
+    - sensor.bewegungsmelder_bad_light_level
+    - sensor.bewegungsmelder_kuche_light_level
+    - sensor.bewegungsmelder_wohnzimmer_light_level
+    - sensor.bewegungsmelder_schlafzimmer_light_level
+
+- platform: template
+  sensors:
+    temperature_mean:
+      value_template: "{{ (state_attr('sensor.temperature_max', 'mean')|float) }}"
+      unit_of_measurement: "°C"
+      friendly_name: "Temperatur"
+    light_level_mean:
+      value_template: "{{ (state_attr('sensor.light_level_max', 'mean')|float) }}"
+      unit_of_measurement: "lx"
+      friendly_name: "Helligkeit"

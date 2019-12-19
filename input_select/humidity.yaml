@@ -1,0 +1,6 @@
+humidity:
+  name: Humidity
+  options:
+    - low
+    - med
+    - high

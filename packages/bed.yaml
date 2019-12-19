@@ -1,0 +1,45 @@
+#################
+# INPUT_BOOLEAN #
+#################
+input_boolean:
+  in_bed:
+    name: Im Bett
+    initial: off
+    
+##########
+# SENSOR #
+##########
+sensor:
+  - platform: filter
+    name: "bed_weight_filtered"
+    entity_id: sensor.bed_weight
+    filters:
+      - filter: range
+        lower_bound: 0
+        #upper_bound: 100
+
+  - platform: template
+    sensors:
+      bed_people:
+        friendly_name: 'Personen im Bett'
+        value_template: >
+          {% if states('sensor.bed_weight_filtered') | int < 15 %}
+            0
+          {% elif 15 <= states('sensor.bed_weight_filtered') | int < 80 %}
+            1
+          {% else %}
+            2
+          {% endif %}
+
+  - platform: template
+    sensors:
+      people_home:
+        friendly_name: 'Personen Zuhause'
+        value_template: >
+          {% if (states("person.julienne") == "home") and (states("person.andre") == "home")  %}
+            2
+          {% elif (states("person.julienne") != "home") and (states("person.andre") == "home") or (states("person.julienne") == "home") and (states("person.andre") != "home") %}
+            1
+          {% else %}
+            0
+          {% endif %}

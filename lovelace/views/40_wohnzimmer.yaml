@@ -1,0 +1,196 @@
+icon: mdi:sofa
+title: Wohnzimmer
+popup_cards:
+  media_player.uberall:
+    title: Media Player
+    card:
+      type: entities
+      entities: 
+        - type: 'custom:mini-media-player'
+          entity: media_player.uberall
+          group: true
+          hide:
+            name: true
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            mute: true
+            power: true
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_dot_bad
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_show_kuche
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_l_wohnzimmer
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_r_wohnzimmer
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+cards:
+  - type: horizontal-stack
+    cards:
+      - !include
+        - ../includes/graphs.yaml
+        - entity: sensor.bewegungsmelder_wohnzimmer_temperature
+          name: Temperatur
+          font_size_header: 12
+      - !include
+        - ../includes/graphs.yaml
+        - entity: sensor.bewegungsmelder_wohnzimmer_light_level
+          name: Helligkeit
+          font_size_header: 12
+
+  - type: horizontal-stack
+    style: !include ../includes/style.yaml
+    cards:
+      - type: custom:vertical-stack-in-card
+        cards:     
+          - type: "custom:button-card"
+            template: header_light
+            name: Deckenleuchte
+            entity: light.wohnzimmer
+          - type: entities
+            entities:
+              - entity: light.wohnzimmer_decke_1
+                name: Lampe 1
+                icon: mdi:track-light
+                type: custom:slider-entity-row
+                hide_when_off: true
+                toggle: true
+              - entity: light.wohnzimmer_decke_2
+                name: Lampe 2
+                icon: mdi:track-light
+                type: custom:slider-entity-row
+                hide_when_off: true
+                toggle: true
+              - entity: light.wohnzimmer_decke_3
+                name: Lampe 3
+                icon: mdi:track-light
+                type: custom:slider-entity-row
+                hide_when_off: true
+                toggle: true
+              - entity: light.wohnzimmer_decke_4
+                name: Lampe 4
+                icon: mdi:track-light
+                type: custom:slider-entity-row
+                hide_when_off: true
+                toggle: true
+
+  - type: vertical-stack
+    style: !include ../includes/style.yaml
+    cards:        
+      - type: custom:vertical-stack-in-card
+        cards:     
+          - type: "custom:button-card"
+            template: header_light
+            name: Wandfluter
+            entity: light.wandfluter
+          - type: entities
+            entities:
+              - entity: light.wandfluter
+                name: Wandfluter
+                icon: mdi:floor-lamp
+                type: custom:slider-entity-row
+                hide_when_off: true
+                toggle: true
+          
+      - type: entities
+        style: !include ../includes/style.yaml
+        entities:
+          - entity: binary_sensor.bewegungsmelder_wohnzimmer_motion
+            name: Bewegungsmelder
+            secondary_info: last-changed
+
+      - type: conditional
+        conditions:
+          # - entity: media_player.chromecast
+          #   state_not: "off"
+          - entity: media_player.firetv_wohnzimmer
+            state_not: "unavailable"
+        card:
+          type: custom:mini-media-player
+          entity: media_player.firetv_wohnzimmer
+          name: Beamer
+          icon: mdi:projector
+          source: icon
+          hide: 
+            power: true
+            volume: true
+          shortcuts:
+            columns: 4 # Max buttons per row
+            buttons:
+              - icon: mdi:netflix
+                type: source
+                id: com.netflix.ninja
+              - icon: mdi:amazon
+                type: source
+                id: com.amazon.tv.launcher
+              - icon: mdi:youtube
+                type: source
+                id: com.amazon.firetv.youtube
+
+      - type: conditional
+        conditions:
+          - entity: media_player.uberall
+            state_not: "off"
+          - entity: media_player.uberall
+            state_not: "standby"
+        card:
+          type: custom:mini-media-player
+          entity: media_player.uberall
+          name: Heimkino
+          source: icon
+          info: scroll
+          show_source: true
+          idle_view:
+            when_paused: true
+          hide:
+            volume: true
+            source: true
+            power_state: false
+      - type: conditional
+        conditions:
+          - entity: media_player.heimkino
+            state_not: "off"
+          - entity: media_player.heimkino
+            state_not: "standby"
+        card:
+          type: custom:mini-media-player
+          entity: media_player.heimkino
+          name: Heimkino
+          source: icon
+          info: scroll
+          show_source: true
+          idle_view:
+            when_paused: true
+          hide:
+            volume: true
+            source: true
+            power_state: false

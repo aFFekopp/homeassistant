@@ -1,0 +1,6 @@
+open_door:
+  name: Open Door
+  initial: off
+
+auto_open_door:
+  name: Automatischer Türöffner

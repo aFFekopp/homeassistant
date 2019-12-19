@@ -1,0 +1,54 @@
+- platform: fritzbox_netmonitor
+  host: 192.168.0.1
+
+- platform: template
+  sensors:
+    net_download_max:
+      value_template: "{{ (state_attr('sensor.fritz_netmonitor', 'max_byte_rate_down')|float / 125000)|round(1) }}"
+      unit_of_measurement: "Mbit/s"
+      friendly_name: "Down"
+      icon_template: mdi:download
+  
+    net_upload_max:
+        value_template: "{{ (state_attr('sensor.fritz_netmonitor', 'max_byte_rate_up')|float / 125000)|round(1) }}"
+        unit_of_measurement: "Mbit/s"
+        friendly_name: "Up"
+        icon_template: mdi:upload
+
+    net_download_cur:
+        value_template: "{{ (state_attr('sensor.fritz_netmonitor', 'transmission_rate_down')|float / 125000)|round(1) }}"
+        unit_of_measurement: "Mbit/s"
+        friendly_name: "Download"
+        icon_template: mdi:download
+    
+    net_upload_cur:
+        value_template: "{{ (state_attr('sensor.fritz_netmonitor', 'transmission_rate_up')|float / 125000)|round(1) }}"
+        unit_of_measurement: "Mbit/s"
+        friendly_name: "Upload"
+        icon_template: mdi:upload
+    
+    net_received:
+        value_template: "{{ (state_attr('sensor.fritz_netmonitor', 'bytes_received')|float / 1000000)|round(0) }}"
+        unit_of_measurement: "MB"
+        friendly_name: "Empfangen"
+        icon_template: mdi:file
+    
+    net_sent:
+        value_template: "{{ (state_attr('sensor.fritz_netmonitor', 'bytes_sent')|float / 1000000)|round(0) }}"
+        unit_of_measurement: "MB"
+        friendly_name: "Gesendet"
+        icon_template: mdi:file
+
+    net_uptime:
+        value_template: "{{ (state_attr('sensor.fritz_netmonitor', 'uptime')|float / 86400)|round(1) }}"
+        unit_of_measurement: "Tage"
+        friendly_name: "Verbunden"
+        icon_template: mdi:calendar
+
+- platform: filter
+  name: "net_download_cur_filtered"
+  entity_id: sensor.net_download_cur
+  filters:
+    - filter: range
+      lower_bound: 0
+      upper_bound: 100
