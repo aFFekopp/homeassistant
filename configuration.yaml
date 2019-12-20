@@ -69,20 +69,11 @@ media_player:
       'com.amazon.avod':
         - 'media_session_state'
   
-
 ## HUE ##################################################################################
 hue:
   bridges:
     - host: 192.168.0.22
       allow_hue_groups: true
-
-## XIAOMI ###############################################################################
-# xiaomi_aqara:
-#   discovery_retry: 5
-#   gateways:
-#     - host: 192.168.0.25
-#       mac: !secret xiaomi_aquara_mac
-#       key: !secret xiaomi_aquara_key
 
 ## DEVICE TRACKERS ######################################################################
 device_tracker:
