@@ -30,7 +30,6 @@ resources:
     url: 'https://fonts.googleapis.com/css?family=Oswald'
 
 custom_header:
-  #background: 'rgba(54, 57, 65, 0.9)' # CLEAR_DARK
   #background: 'rgba(101, 140, 179, 0.8)' # NORD
   compact_mode: true
   background: 'var(--custom_cch_background)'
