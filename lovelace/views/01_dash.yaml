@@ -5,7 +5,7 @@ popup_cards:
   sensor.andre_status:
     title: Andre
     card:
-      type: vertical-stack       
+      type: custom:vertical-stack-in-card
       cards:
         - type: history-graph
           entities:
@@ -19,7 +19,7 @@ popup_cards:
   sensor.julienne_status:
     title: Julienne
     card:
-      type: vertical-stack       
+      type: custom:vertical-stack-in-card
       cards:
         - type: history-graph
           entities:
