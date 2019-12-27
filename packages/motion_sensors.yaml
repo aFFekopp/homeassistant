@@ -27,20 +27,25 @@ input_boolean:
 ##################
 input_datetime:
   motion_sensor_flur:
-    name: Flur
+    name: Bewegungsmelder Timeout
     has_time: true
+    initial: 01:00
   motion_sensor_bad:
-    name: Timer
+    name: Bewegungsmelder Timeout
     has_time: true
+    initial: 01:00
   motion_sensor_kuche:
-    name: Timer
+    name: Bewegungsmelder Timeout
     has_time: true
+    initial: 03:00
   motion_sensor_wohnzimmer:
-    name: Timer
+    name: Bewegungsmelder Timeout
     has_time: true
+    initial: 02:00
   motion_sensor_schlafzimmer:
-    name: Timer
+    name: Bewegungsmelder Timeout
     has_time: true
+    initial: 01:00
 
 #########
 # TIMER #
