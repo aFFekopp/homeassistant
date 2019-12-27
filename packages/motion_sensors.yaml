@@ -1,0 +1,58 @@
+#################
+# INPUT_BOOLEAN #
+#################
+input_boolean:
+  motion_sensor_kuche_toggle:
+    name: Küche - Bewegungsmelder
+    icon: mdi:motion-sensor
+
+  motion_sensor_bad_toggle:
+    name: Bad - Bewegungsmelder
+    icon: mdi:motion-sensor
+
+  motion_sensor_flur_toggle:
+    name: Flur - Bewegungsmelder
+    icon: mdi:motion-sensor
+
+  motion_sensor_wohnzimmer_toggle:
+    name: Wohnzimmer - Bewegungsmelder
+    icon: mdi:motion-sensor
+
+  motion_sensor_schlafzimmer_toggle:
+    name: Schlafzimmer - Bewegungsmelder
+    icon: mdi:motion-sensor
+
+##################
+# INPUT_DATETIME #
+##################
+input_datetime:
+  motion_sensor_flur:
+    name: Flur
+    has_time: true
+  motion_sensor_bad:
+    name: Timer
+    has_time: true
+  motion_sensor_kuche:
+    name: Timer
+    has_time: true
+  motion_sensor_wohnzimmer:
+    name: Timer
+    has_time: true
+  motion_sensor_schlafzimmer:
+    name: Timer
+    has_time: true
+
+#########
+# TIMER #
+#########
+timer:
+  bewegungsmelder_flur:
+    duration: '01:00:00'
+  bewegungsmelder_bad:
+    duration: '01:00:00'
+  bewegungsmelder_kuche:
+    duration: '03:00:00'
+  bewegungsmelder_wohnzimmer:
+    duration: '02:00:00'
+  bewegungsmelder_schlafzimmer:
+    duration: '01:00:00'

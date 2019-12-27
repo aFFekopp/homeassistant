@@ -188,5 +188,4 @@ input_number: !include_dir_merge_named input_number
 scene: !include scenes.yaml
 script: !include_dir_merge_named scripts
 sensor: !include_dir_merge_list sensor
-timer: !include_dir_merge_named timer
 zone: !include zones.yaml
