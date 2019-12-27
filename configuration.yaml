@@ -152,11 +152,6 @@ binary_sensor:
     command: '/usr/bin/nmap -p9080 192.168.0.37 | /bin/grep open > /dev/null && (echo ON) || (echo OFF)'
     device_class: power
 
-hacs:
-  token: !secret hacs_token
-  theme: true
-  python_script: true
-
 proximity:
   home_julienne: 
     ignored_zones:
