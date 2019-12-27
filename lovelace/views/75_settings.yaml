@@ -45,7 +45,6 @@ cards:
               - input_boolean.notifications
               - input_boolean.auto_open_door
               - input_boolean.notify_door_left_open
-              - input_boolean.follow_music
               - input_boolean.cinema_lights
 
       - type: custom:vertical-stack-in-card
