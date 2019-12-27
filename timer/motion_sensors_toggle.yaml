@@ -1,0 +1,10 @@
+bewegungsmelder_flur:
+  duration: '01:00:00'
+bewegungsmelder_bad:
+  duration: '01:00:00'
+bewegungsmelder_kuche:
+  duration: '03:00:00'
+bewegungsmelder_wohnzimmer:
+  duration: '02:00:00'
+bewegungsmelder_schlafzimmer:
+  duration: '01:00:00'
