@@ -1,0 +1,59 @@
+# lovelace_gen
+type: "custom:button-card"
+template: dash_button
+entity: {{ light }} #light.bad
+icon: {{ icon }} #mdi:shower-head
+double_tap_action:
+  action: call-service
+  service: input_boolean.toggle
+  service_data:
+    entity_id: {{ motion_sensor_toggle }} #input_boolean.motion_sensor_bad_toggle
+styles:
+  card:
+    - background: >
+        [[[
+        if (states['{{ motion_sensor }}'].state == "on"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
+        if (states['{{ motion_sensor }}'].state == "on"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
+        if (entity.state == "on") return "var(--accent-color)";
+        else return "var(--paper-card-background-color)"; 
+        ]]]
+  grid:
+    - position: relative
+  custom_fields:
+    music:
+      - position: absolute
+      - left: 4%
+      - top: 1%
+    timer:
+      - position: absolute
+      - right: 3%
+      - top: 0%
+    bed_people:
+      - position: absolute
+      - right: 2%
+      - top: 1%
+custom_fields:
+  music: >
+    [[[ 
+    if (states['{{ media_player }}'].state == "playing" || states['media_player.uberall'].state == "playing") return '<ha-icon icon="mdi:volume-high" style="width: 18px; height: 18px; color: rgba(255,255,255,0.8);"></ha-icon>'; 
+    else return "";
+    ]]]
+  timer:
+    card:
+      type: custom:state-switch
+      entity: {{ motion_sensor_timer }} #timer.bewegungsmelder_bad
+      states:
+        active: 
+          type: "custom:button-card"
+          template: timer
+          entity: {{ motion_sensor_timer }}
+          tap_action:
+            action: call-service
+            service: input_boolean.turn_on
+            service_data:
+              entity_id: {{ motion_sensor_toggle}}
+  bed_people: >
+    [[[ 
+    if ('{{ light }}' == "light.schlafzimmer" && states['sensor.bed_people'].state == 1) return '<ha-icon icon="mdi:account" style="width: 18px; height: 18px; color: rgba(255,255,255,0.8);"></ha-icon>'; 
+    if ('{{ light }}' == "light.schlafzimmer" && states['sensor.bed_people'].state == 2) return '<ha-icon icon="mdi:account-multiple" style="width: 18px; height: 18px; color: rgba(255,255,255,0.8);"></ha-icon>';
+    ]]]

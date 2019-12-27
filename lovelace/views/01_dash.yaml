@@ -361,8 +361,7 @@ cards:
                           if (states["media_player.echo_l_wohnzimmer"].state == "playing") return "var(--custom_icon_light)";
                           if (states["media_player.echo_dot_bad"].state == "playing") return "var(--custom_icon_light)";
                           else return "var(--custom_icon_dark)"; ]]]'
-          
-
+        
       ## PEOPLE STATUS ##
       - type: horizontal-stack
         style: !include ../includes/style.yaml 
@@ -524,6 +523,10 @@ cards:
       
       ## WEATHER
       - type: custom:weather-card
+        entity: weather.openweathermap
+        current: true
+        details: false
+        forecast: true
         style: |
           ha-card {
             border: solid 1px var(--border-color);
@@ -570,10 +573,6 @@ cards:
           left: 2.5em;
           top: 8em;
           }
-        entity: weather.openweathermap
-        current: true
-        details: false
-        forecast: true
           
   ## ROW 2 ###################################################################################################################
   - type: vertical-stack
@@ -586,140 +585,50 @@ cards:
       ## LICHTER ##
       - type: horizontal-stack
         cards:
-          - type: "custom:button-card"
-            template: dash_button
-            entity: light.flur
-            icon: mdi:broom
-            double_tap_action:
-              action: call-service
-              service: input_boolean.toggle
-              service_data:
-                entity_id: input_boolean.motion_sensor_flur_toggle
-            styles:
-              card:
-                - background: '[[[if (states["binary_sensor.bewegungsmelder_flur_motion"].state == "on"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
-                              if (states["binary_sensor.bewegungsmelder_flur_motion"].state == "on"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
-                              if (states["input_boolean.motion_sensor_flur_toggle"].state == "off"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
-                              if (states["input_boolean.motion_sensor_flur_toggle"].state == "off"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
-                              if (entity.state == "on") return "var(--accent-color)";
-                              else return "var(--paper-card-background-color)"; ]]]'
-          - type: "custom:button-card"
-            template: dash_button
-            entity: light.bad
-            icon: mdi:shower-head
-            double_tap_action:
-              action: call-service
-              service: input_boolean.toggle
-              service_data:
-                entity_id: input_boolean.motion_sensor_bad_toggle
-            styles:
-              card:
-                - background: '[[[if (states["binary_sensor.bewegungsmelder_bad_motion"].state == "on"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
-                              if (states["binary_sensor.bewegungsmelder_bad_motion"].state == "on"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
-                              if (states["input_boolean.motion_sensor_bad_toggle"].state == "off"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
-                              if (states["input_boolean.motion_sensor_bad_toggle"].state == "off"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
-                              if (entity.state == "on") return "var(--accent-color)";
-                              else return "var(--paper-card-background-color)"; ]]]'
-              grid:
-                - position: relative
-              custom_fields:
-                music:
-                  - position: absolute
-                  - left: 4%
-                  - top: 1%
-            custom_fields:
-              music: >
-                [[[ 
-                if (states['media_player.echo_dot_bad'].state == "playing" || states['media_player.uberall'].state == "playing") return '<ha-icon icon="mdi:volume-high" style="width: 18px; height: 18px; color: rgba(255,255,255,0.8);"></ha-icon>'; 
-                ]]]
-          - type: "custom:button-card"
-            template: dash_button
-            entity: light.kuche
-            icon: mdi:food-fork-drink
-            double_tap_action:
-              action: call-service
-              service: input_boolean.toggle
-              service_data:
-                entity_id: input_boolean.motion_sensor_kuche_toggle
-            styles:
-              card:
-                - background: '[[[if (states["binary_sensor.bewegungsmelder_kuche_motion"].state == "on"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
-                              if (states["binary_sensor.bewegungsmelder_kuche_motion"].state == "on"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
-                              if (states["input_boolean.motion_sensor_kuche_toggle"].state == "off"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
-                              if (states["input_boolean.motion_sensor_kuche_toggle"].state == "off"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
-                              if (entity.state == "on") return "var(--accent-color)";
-                              else return "var(--paper-card-background-color)"; ]]]'
-              grid:
-                - position: relative
-              custom_fields:
-                music:
-                  - position: absolute
-                  - left: 4%
-                  - top: 1%
-            custom_fields:
-              music: >
-                [[[ 
-                if (states['media_player.echo_show_kuche'].state == "playing" || states['media_player.uberall'].state == "playing") return '<ha-icon icon="mdi:volume-high" style="width: 18px; height: 18px; color: rgba(255,255,255,0.8);"></ha-icon>'; 
-                ]]]
-          - type: "custom:button-card"
-            template: dash_button
-            entity: light.wohnzimmer
-            icon: mdi:sofa
-            double_tap_action:
-              action: call-service
-              service: input_boolean.toggle
-              service_data:
-                entity_id: input_boolean.motion_sensor_wohnzimmer_toggle
-            styles:
-              card:
-                - background: '[[[if (states["binary_sensor.bewegungsmelder_wohnzimmer_motion"].state == "on"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
-                              if (states["binary_sensor.bewegungsmelder_wohnzimmer_motion"].state == "on"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
-                              if (states["input_boolean.motion_sensor_wohnzimmer_toggle"].state == "off"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
-                              if (states["input_boolean.motion_sensor_wohnzimmer_toggle"].state == "off"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
-                              if (entity.state == "on") return "var(--accent-color)";
-                              else return "var(--paper-card-background-color)"; ]]]'
-              grid:
-                - position: relative
-              custom_fields:
-                music:
-                  - position: absolute
-                  - left: 4%
-                  - top: 1%
-            custom_fields:
-              music: >
-                [[[ 
-                if (states['media_player.heimkino'].state == "playing" || states['media_player.uberall'].state == "playing") return '<ha-icon icon="mdi:volume-high" style="width: 18px; height: 18px; color: rgba(255,255,255,0.8);"></ha-icon>'; 
-                ]]]
-          - type: "custom:button-card"
-            template: dash_button
-            entity: light.schlafzimmer
-            icon: mdi:bed-empty
-            double_tap_action:
-              action: call-service
-              service: input_boolean.toggle
-              service_data:
-                entity_id: input_boolean.motion_sensor_schlafzimmer_toggle
-            styles:
-              card:
-                - background: '[[[if (states["binary_sensor.bewegungsmelder_schlafzimmer_motion"].state == "on"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
-                              if (states["binary_sensor.bewegungsmelder_schlafzimmer_motion"].state == "on"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
-                              if (states["input_boolean.motion_sensor_schlafzimmer_toggle"].state == "off"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
-                              if (states["input_boolean.motion_sensor_schlafzimmer_toggle"].state == "off"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_off),var(--custom_motion_off) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
-                              if (entity.state == "on") return "var(--accent-color)";
-                              else return "var(--paper-card-background-color)"; ]]]'
-              grid:
-                - position: relative
-              custom_fields:
-                bed_people:
-                  - position: absolute
-                  - right: 2%
-                  - top: 1%
-            custom_fields:
-              bed_people: >
-                [[[ 
-                if (states['sensor.bed_people'].state == 1) return '<ha-icon icon="mdi:account" style="width: 18px; height: 18px; color: rgba(255,255,255,0.8);"></ha-icon>'; 
-                if (states['sensor.bed_people'].state == 2) return '<ha-icon icon="mdi:account-multiple" style="width: 18px; height: 18px; color: rgba(255,255,255,0.8);"></ha-icon>';
-                ]]]
+          - !include
+            - ../includes/dash_lights.yaml
+            - light: light.flur
+              icon: mdi:broom
+              motion_sensor: binary_sensor.bewegungsmelder_flur_motion
+              motion_sensor_toggle: input_boolean.motion_sensor_flur_toggle
+              media_player: light.flur
+              motion_sensor_timer: timer.bewegungsmelder_flur
+
+          - !include
+            - ../includes/dash_lights.yaml
+            - light: light.bad
+              icon: mdi:shower-head
+              motion_sensor: binary_sensor.bewegungsmelder_bad_motion
+              motion_sensor_toggle: input_boolean.motion_sensor_bad_toggle
+              media_player: media_player.echo_dot_bad
+              motion_sensor_timer: timer.bewegungsmelder_bad
+
+          - !include
+            - ../includes/dash_lights.yaml
+            - light: light.kuche
+              icon: mdi:food-fork-drink
+              motion_sensor: binary_sensor.bewegungsmelder_kuche_motion
+              motion_sensor_toggle: input_boolean.motion_sensor_kuche_toggle
+              media_player: media_player.echo_show_kuche
+              motion_sensor_timer: timer.bewegungsmelder_kuche
+          
+          - !include
+            - ../includes/dash_lights.yaml
+            - light: light.wohnzimmer
+              icon: mdi:sofa
+              motion_sensor: binary_sensor.bewegungsmelder_wohnzimmer_motion
+              motion_sensor_toggle: input_boolean.motion_sensor_wohnzimmer_toggle
+              media_player: media_player.heimkino
+              motion_sensor_timer: timer.bewegungsmelder_wohnzimmer
+
+          - !include
+            - ../includes/dash_lights.yaml
+            - light: light.schlafzimmer
+              icon: mdi:bed-empty
+              motion_sensor: binary_sensor.bewegungsmelder_schlafzimmer_motion
+              motion_sensor_toggle: input_boolean.motion_sensor_schlafzimmer_toggle
+              media_player: light.schlafzimmer
+              motion_sensor_timer: timer.bewegungsmelder_schlafzimmer
 
       - !include
         - ../includes/titles.yaml
