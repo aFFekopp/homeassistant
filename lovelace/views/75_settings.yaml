@@ -1,5 +1,36 @@
 icon: mdi:settings
 title: Einstellungen
+popup_cards:
+  input_boolean.motion_sensor_flur_toggle:
+    title: Timeout
+    card:
+      type: entities
+      entities:
+        - input_datetime.motion_sensor_flur
+  input_boolean.motion_sensor_bad_toggle:
+    title: Timeout
+    card:
+      type: entities
+      entities:
+        - input_datetime.motion_sensor_bad
+  input_boolean.motion_sensor_kuche_toggle:
+    title: Timeout
+    card:
+      type: entities
+      entities:
+        - input_datetime.motion_sensor_kuche
+  input_boolean.motion_sensor_wohnzimmer_toggle:
+    title: Timeout
+    card:
+      type: entities
+      entities:
+        - input_datetime.motion_sensor_wohnzimmer
+  input_boolean.motion_sensor_schlafzimmer_toggle:
+    title: Timeout
+    card:
+      type: entities
+      entities:
+        - input_datetime.motion_sensor_schlafzimmer
 cards:
   - type: vertical-stack
     style: !include ../includes/style.yaml
