@@ -1,13 +1,17 @@
 # lovelace_gen
 type: "custom:button-card"
 template: dash_button
-entity: {{ light }} #light.bad
-icon: {{ icon }} #mdi:shower-head
+entity: {{ light }}
+icon: {{ icon }}
+tap_action:
+  action: more-info
+hold_action:
+  action: toggle
 double_tap_action:
   action: call-service
   service: input_boolean.toggle
   service_data:
-    entity_id: {{ motion_sensor_toggle }} #input_boolean.motion_sensor_bad_toggle
+    entity_id: {{ motion_sensor_toggle }}
 styles:
   card:
     - background: >
@@ -41,7 +45,7 @@ custom_fields:
   timer:
     card:
       type: custom:state-switch
-      entity: {{ motion_sensor_timer }} #timer.bewegungsmelder_bad
+      entity: {{ motion_sensor_timer }}
       states:
         active: 
           type: "custom:button-card"
