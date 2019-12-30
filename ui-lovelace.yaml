@@ -97,7 +97,7 @@ button_card_templates:
       - value: 'Abwesend'
         styles:
           icon:
-            - filter: grayscale(100%)
+            - filter: grayscale(100%) #blur(5px)
       - value: 'Lange Abwesend'
         styles:
           icon:
