@@ -1,4 +1,4 @@
-## 🐵 aFFekopps Home Assistant Configuration 
+## aFFekopps Home Assistant Configuration 🐵
 
 This is my Home Assistant configuration. My HA Machine is an [Intel NUC BOXNUC6CAYH](https://ark.intel.com/content/www/de/de/ark/products/95062/intel-nuc-kit-nuc6cayh.html) with 4GB RAM and 120GB SSD. It's running [Ubuntu](https://ubuntu.com) 18.04 with [Hass.io](https://www.home-assistant.io/hassio/installation/#alternative-install-on-a-generic-linux-host) in Docker.
 
@@ -13,7 +13,7 @@ This is my Home Assistant configuration. My HA Machine is an [Intel NUC BOXNUC6C
 ---
 ![My Home Assistant Default View](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/1.png)
 <details>
-<summary>More Screenshots Here</summary>
+<summary>More Screenshots</summary>
 
 ![Example Room](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/2.png)
 ![Scooter](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/3.png)
