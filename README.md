@@ -12,7 +12,7 @@ This is my Home Assistant configuration. My HA Machine is an [Intel NUC BOXNUC6C
 ## Screenshot
 ![My Home Assistant Default View](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/1.png)
 <details>
-<summary>More Screenshots Here</summary>
+<summary>More Screenshots</summary>
 
 ![Example Room](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/2.png)
 ![Scooter](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/3.png)
