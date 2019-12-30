@@ -1,17 +1,13 @@
 # aFFekopps Home Assistant Configuration
 
-<img align="right" src="https://www.home-assistant.io/images/home-assistant-logo.svg">
-
 This is my Home Assistant configuration. My HA Machine is an [Intel NUC BOXNUC6CAYH](https://ark.intel.com/content/www/de/de/ark/products/95062/intel-nuc-kit-nuc6cayh.html) with 4GB RAM and 120GB SSD. It's running [Ubuntu](https://ubuntu.com) 18.04 with [Hass.io](https://www.home-assistant.io/hassio/installation/#alternative-install-on-a-generic-linux-host) in Docker.
 
-<p align="center">
 ![HAVERSION](https://img.shields.io/badge/homeassistant-0.103.2-blue)
 ![STARS](https://img.shields.io/github/stars/aFFekopp/homeassistant?color=yellow&style=flat-square)
 ![ISSUES](https://img.shields.io/github/issues-raw/aFFekopp/homeassistant?style=flat-square)
 ![ACTIVITY](https://img.shields.io/github/commit-activity/w/aFFekopp/homeassistant?style=flat-square)
 ![LASTCOMMIT](https://img.shields.io/github/last-commit/aFFekopp/homeassistant?style=flat-square)
 ![SIZE](https://img.shields.io/github/repo-size/aFFekopp/homeassistant?style=flat-square)
-</p>
 
 ## Screenshot
 
