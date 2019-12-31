@@ -32,18 +32,12 @@ resources:
     url: 'https://fonts.googleapis.com/css?family=Oswald'
 
 custom_header:
-  #background: 'rgba(101, 140, 179, 0.8)' # NORD
   compact_mode: true
-  background: 'var(--custom_cch_background)'
   voice_hide: true
   hide_help: true
   hide_config: true
   hide_tabs: '9'
   chevrons: false
-  active_tab_color: 'var(--accent-color)'
-  notification_dot_color: 'var(--accent-color)'
-  all_tabs_color: 'var(--sidebar-icon-color)'
-  all_buttons_color: 'var(--sidebar-icon-color)'
 
 button_card_templates:
   header:
