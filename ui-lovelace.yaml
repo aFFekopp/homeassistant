@@ -30,6 +30,8 @@ resources:
     url: 'https://fonts.googleapis.com/css?family=Raleway'
   - type: css
     url: 'https://fonts.googleapis.com/css?family=Oswald'
+  - type: css
+    url: 'https://fonts.googleapis.com/css?family=Quicksand'
 
 custom_header:
   compact_mode: true
