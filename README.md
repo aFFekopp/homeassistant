@@ -11,7 +11,7 @@ This is my Home Assistant configuration. My HA Machine is an [Intel NUC BOXNUC6C
 
 ## Screenshot
 
-![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/1.png)
+![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/1.jpg)
 
 ## Hardware
 
@@ -79,11 +79,11 @@ All of my automations are in Node Red, Home Assistant is just my state machine. 
 
 #### PC
 
-![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/1-1.png) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/2.png)
+![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/1-1.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/2.jpg)
 :-------------------------:|:-------------------------:
-![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/3.png) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/4.png)
-![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/5.png) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/6.png)
-![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/7.png) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/8.png)
+![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/3.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/4.jpg)
+![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/5.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/6.jpg)
+![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/7.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/8.jpg)
 
 #### Android
 
