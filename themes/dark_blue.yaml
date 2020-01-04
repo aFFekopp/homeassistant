@@ -21,7 +21,7 @@ dark_blue:
   
   # Main Colors
   app-header-background-color: 'var(--background-color)'
-  accent-color: '#1f8efa'
+  accent-color: '#1A89F5'
   accent-medium-color: 'var(--accent-color)'
 
   # Background
@@ -32,16 +32,16 @@ dark_blue:
   
   # Card
   card-background-color: 'var(--paper-card-background-color)'
-  paper-card-background-color: '#2f3b52'
+  paper-card-background-color: 'rgba(47,59,82,0.6)'
   ha-card-box-shadow: "0px 0px 0px 0px"
-  ha-card-border-radius: "3px"
+  ha-card-border-radius: "5px"
   border-color: 'rgba(0,0,0,0)' 
   
   # Icons
   paper-item-icon-color: 'var(--text-color)'    
   paper-item-icon-active-color: 'var(--accent-color)'   
   
-  # Left Menu
+  # Sidebar
   paper-listbox-background-color: 'var(--background-color)'
   sidebar-icon-color: '#98a7b9'
   sidebar-selected-icon-color: 'var(--accent-color)'
@@ -64,6 +64,9 @@ dark_blue:
   switch-checked-button-color: 'var(--accent-color)'
   switch-unchecked-track-color: 'var(--background-color-2)'
   switch-checked-track-color: 'var(--background-color-2)'
+
+  # Popups
+  paper-dialog-background-color: 'rgba(47,59,82,0.8)'
   
   # Custom Header
   ch-background: 'var(--background-color)'
@@ -77,10 +80,11 @@ dark_blue:
   custom_icon_light: '#ffffff'
   custom_icon_dark: '#ffffff'
   custom_card_background: 'var(--paper-card-background-color)'
-  custom_motion_off: 'rgba(255,102,102,0.5)'
+  custom_motion_off: 'rgba(255,102,102,0.6)'
   custom_motion_detected: 'rgba(31,142,250,0.9)'
-
-  
-
+  custom_graph_color_1: 'rgba(247,53,67,1)'
+  custom_graph_color_2: 'rgba(222,176,107,1)'
+  custom_graph_color_3: 'rgba(0,202,139,1)'
+  custom_graph_color_4: 'rgba(139,64,156,1)'
   
 # box-shadow: 2px 5px 0px 1px rgba(27,45,62,0.6);
