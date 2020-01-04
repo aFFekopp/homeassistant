@@ -78,7 +78,7 @@ dark_blue:
   custom_icon_dark: '#ffffff'
   custom_card_background: 'var(--paper-card-background-color)'
   custom_motion_off: 'rgba(255,102,102,0.5)'
-  custom_motion_detected: 'var(--background-color-2)'
+  custom_motion_detected: 'rgba(31,142,250,0.9)'
 
   
 
