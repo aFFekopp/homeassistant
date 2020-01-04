@@ -1,0 +1,9 @@
+  |
+  ha-card {
+    border: solid 1px var(--border-color);
+    font-family: var(--primary-font-family);
+  }
+  .card-content {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
