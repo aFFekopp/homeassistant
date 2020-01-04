@@ -11,14 +11,7 @@ This is my Home Assistant configuration. My HA Machine is an [Intel NUC BOXNUC6C
 
 ## Screenshot
 
-![My Home Assistant Default View](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/1.png)
-<details>
-<summary>More Screenshots</summary>
-
-![Example Room](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/2.png)
-![Scooter](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/3.png)
-![System Monitoring](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/4.png)
-</details>
+![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/1.png)
 
 ## Hardware
 
@@ -81,3 +74,19 @@ All of my automations are in Node Red, Home Assistant is just my state machine. 
 
 - [d1mini](https://www.amazon.de/AZDelivery-D1-Mini-ESP8266-12E-kompatibel/dp/B01N9RXGHY) with [ina219](https://www.amazon.de/INA219-Bi-directional-Current-Arduino-Raspberry/dp/B01MZDKU6D/) current sensor and a [relay](https://www.amazon.de/gp/product/B06XHJ2PBJ/) to grab the doorbell signal and trigger the door opener
 - [esp8266](https://www.amazon.de/gp/product/B06Y1LZLLY/) with [hx711](https://www.amazon.de/gp/product/B07MY2PBY4/) and [load cells](https://www.amazon.de/gp/product/B00R1J7VA0/) to check who's in bed
+
+## Aditional Screenshots
+
+#### PC
+
+![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/1-1.png) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/2.png)
+:-------------------------:|:-------------------------:
+![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/3.png) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/4.png)
+![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/5.png) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/6.png)
+![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/7.png) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/8.png)
+
+#### Android
+
+![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/android/1.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/android/2.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/android/3.jpg)
+:-------------------------:|:-------------------------:|:-------------------------:
+![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/android/4.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/android/5.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/android/6.jpg)
