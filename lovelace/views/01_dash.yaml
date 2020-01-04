@@ -441,6 +441,9 @@ cards:
                           styles:
                             icon:
                               - color: '#ffbaba'
+                      styles:
+                        card:
+                          - background: none
                     ## ANDRE PROXIMITY HOME ##
                     - type: custom:button-card
                       template: people_button
@@ -455,6 +458,9 @@ cards:
                           styles:
                             state:
                               - color: 'rgba(0,0,0,0)'
+                      styles:
+                        card:
+                          - background: none
 
           - type: custom:vertical-stack-in-card
             cards:
@@ -514,12 +520,18 @@ cards:
                       entity: sensor.proximity_traveldir_julienne
                       show_icon: true
                       state: *state_traveldir
+                      styles:
+                        card:
+                          - background: none
                     ## JULIENNE PROXIMITY HOME ##
                     - type: custom:button-card
                       template: people_button
                       entity: proximity.home_julienne
                       show_state: true
                       state: *state_proximity
+                      styles:
+                        card:
+                          - background: none
       
       ## WEATHER
       - type: custom:weather-card
