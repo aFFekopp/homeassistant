@@ -56,6 +56,11 @@ popup_cards:
 cards:
   - type: vertical-stack
     cards:
+
+      - !include
+        - ../includes/titles.yaml
+        - title: UMGEBUNG
+        
       - type: horizontal-stack
         cards:
           - !include
@@ -81,30 +86,33 @@ cards:
   - type: vertical-stack
     style: !include ../includes/style.yaml
     cards:
-      - type: custom:vertical-stack-in-card
-        cards:     
-          - type: "custom:button-card"
-            template: header_light
-            name: Bad
-            entity: light.bad
-          - type: entities
-            entities:
-              - entity: light.badezimmerdecke
-                name: Decke
-                icon: mdi:ceiling-light
-                type: custom:slider-entity-row
-                hide_when_off: true
-                toggle: true
-              - entity: light.badezimmerspiegel
-                name: Spiegel
-                icon: mdi:led-strip
-                type: custom:slider-entity-row
-                hide_when_off: true
-                toggle: true
 
+      - !include
+        - ../includes/titles.yaml
+        - title: LICHT
 
       - type: entities
-        style: !include ../includes/style.yaml
+        style: !include ../includes/style_entities.yaml
+        entities:
+          - entity: light.badezimmerdecke
+            name: Decke
+            icon: mdi:ceiling-light
+            type: custom:slider-entity-row
+            hide_when_off: true
+            toggle: true
+          - entity: light.badezimmerspiegel
+            name: Spiegel
+            icon: mdi:led-strip
+            type: custom:slider-entity-row
+            hide_when_off: true
+            toggle: true
+
+      - !include
+        - ../includes/titles.yaml
+        - title: BEWEGUNG
+
+      - type: entities
+        style: !include ../includes/style_entities.yaml
         entities:
           - entity: binary_sensor.bewegungsmelder_bad_motion
             name: Bewegungsmelder

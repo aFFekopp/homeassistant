@@ -54,77 +54,85 @@ popup_cards:
             icon: true
             power_state: false
 cards:
-  - type: horizontal-stack
-    cards:
-      - !include
-        - ../includes/graphs.yaml
-        - entity: sensor.bewegungsmelder_wohnzimmer_temperature
-          name: Temperatur
-          font_size_header: 12
-          line_color: var(--custom_graph_color_1)
-      - !include
-        - ../includes/graphs.yaml
-        - entity: sensor.bewegungsmelder_wohnzimmer_light_level
-          name: Helligkeit
-          font_size_header: 12
-          line_color: var(--custom_graph_color_2)
+  - type: vertical-stack
+    cards: 
 
-  - type: horizontal-stack
-    style: !include ../includes/style.yaml
-    cards:
-      - type: custom:vertical-stack-in-card
-        cards:     
-          - type: "custom:button-card"
-            template: header_light
-            name: Deckenleuchte
-            entity: light.wohnzimmer
-          - type: entities
-            entities:
-              - entity: light.wohnzimmer_decke_1
-                name: Lampe 1
-                icon: mdi:track-light
-                type: custom:slider-entity-row
-                hide_when_off: true
-                toggle: true
-              - entity: light.wohnzimmer_decke_2
-                name: Lampe 2
-                icon: mdi:track-light
-                type: custom:slider-entity-row
-                hide_when_off: true
-                toggle: true
-              - entity: light.wohnzimmer_decke_3
-                name: Lampe 3
-                icon: mdi:track-light
-                type: custom:slider-entity-row
-                hide_when_off: true
-                toggle: true
-              - entity: light.wohnzimmer_decke_4
-                name: Lampe 4
-                icon: mdi:track-light
-                type: custom:slider-entity-row
-                hide_when_off: true
-                toggle: true
+      - !include
+        - ../includes/titles.yaml
+        - title: UMGEBUNG
+            
+      - type: horizontal-stack
+        cards:
+          - !include
+            - ../includes/graphs.yaml
+            - entity: sensor.bewegungsmelder_wohnzimmer_temperature
+              name: Temperatur
+              font_size_header: 12
+              line_color: var(--custom_graph_color_1)
+          - !include
+            - ../includes/graphs.yaml
+            - entity: sensor.bewegungsmelder_wohnzimmer_light_level
+              name: Helligkeit
+              font_size_header: 12
+              line_color: var(--custom_graph_color_2)
+
+      - !include
+        - ../includes/titles.yaml
+        - title: LICHT
+
+
+      - type: entities
+        style: !include ../includes/style_entities.yaml
+        entities:
+          - entity: light.wohnzimmer_decke_1
+            name: Lampe 1
+            icon: mdi:track-light
+            type: custom:slider-entity-row
+            hide_when_off: true
+            toggle: true
+          - entity: light.wohnzimmer_decke_2
+            name: Lampe 2
+            icon: mdi:track-light
+            type: custom:slider-entity-row
+            hide_when_off: true
+            toggle: true
+          - entity: light.wohnzimmer_decke_3
+            name: Lampe 3
+            icon: mdi:track-light
+            type: custom:slider-entity-row
+            hide_when_off: true
+            toggle: true
+          - entity: light.wohnzimmer_decke_4
+            name: Lampe 4
+            icon: mdi:track-light
+            type: custom:slider-entity-row
+            hide_when_off: true
+            toggle: true
 
   - type: vertical-stack
-    style: !include ../includes/style.yaml
     cards:        
-      - type: custom:vertical-stack-in-card
-        cards:     
-          - type: "custom:button-card"
-            template: header_light
-            name: Wandfluter
-            entity: light.wandfluter
-          - type: entities
-            entities:
-              - entity: light.wandfluter
-                name: Wandfluter
-                icon: mdi:floor-lamp
-                type: custom:slider-entity-row
-                hide_when_off: true
-                toggle: true
-          
+
+      - !include
+        - ../includes/titles.yaml
+        - title: LICHT
+
+
       - type: entities
-        style: !include ../includes/style.yaml
+        style: !include ../includes/style_entities.yaml
+        entities:
+          - entity: light.wandfluter
+            name: Wandfluter
+            icon: mdi:floor-lamp
+            type: custom:slider-entity-row
+            hide_when_off: true
+            toggle: true
+      
+      - !include
+        - ../includes/titles.yaml
+        - title: BEWEGUNG
+
+      - type: entities
+        style: !include ../includes/style_entities.yaml
         entities:
           - entity: binary_sensor.bewegungsmelder_wohnzimmer_motion
             name: Bewegungsmelder

@@ -5,6 +5,11 @@ cards:
   - type: vertical-stack
     style: !include ../includes/style.yaml
     cards:
+
+      - !include
+        - ../includes/titles.yaml
+        - title: SYSTEM & STATISTIKEN
+
       - type: conditional
         conditions:
           - entity: sensor.version_check
@@ -36,9 +41,6 @@ cards:
 
       - type: custom:vertical-stack-in-card
         cards: 
-          - type: "custom:button-card"
-            template: header
-            name: System Statistiken
           - type: horizontal-stack
             cards: 
               - !include
@@ -63,6 +65,7 @@ cards:
                   points_per_hour: 4
                   line_color: var(--custom_graph_color_3)
           - type: entities
+            style: !include ../includes/style_entities_embeded.yaml
             entities:
               - sensor.cpu_speed
               - sensor.cpu_temp
@@ -143,11 +146,12 @@ cards:
   - type: vertical-stack
     style: !include ../includes/style.yaml
     cards:
+      - !include
+        - ../includes/titles.yaml
+        - title: NETZMONITOR
+
       - type: custom:vertical-stack-in-card
         cards: 
-          - type: "custom:button-card"
-            template: header
-            name: Netzmonitor
           - type: horizontal-stack
             cards:        
               - type: custom:bar-card
@@ -186,17 +190,19 @@ cards:
                   hours_to_show: 12
                   extrema: true
           - type: entities
+            style: !include ../includes/style_entities_embeded.yaml
             entities:
               - sensor.net_received_monthly
               - sensor.net_sent_monthly
               - binary_sensor.remote_ui
               - sensor.net_uptime_pretty
       
+      - !include
+        - ../includes/titles.yaml
+        - title: ESP HOME
+
       - type: custom:vertical-stack-in-card
         cards:   
-          - type: "custom:button-card"
-            template: header
-            name: ESP Home
           - type: horizontal-stack
             cards:
               - type: "custom:button-card"

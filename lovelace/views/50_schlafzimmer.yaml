@@ -1,52 +1,76 @@
 icon: mdi:bed-empty
 title: Schlafzimmer
 cards:
-  - type: horizontal-stack
-    cards:
+  - type: vertical-stack
+    cards: 
+
       - !include
-        - ../includes/graphs.yaml
-        - entity: sensor.bewegungsmelder_schlafzimmer_temperature
-          name: Temperatur
-          font_size_header: 12
-          line_color: var(--custom_graph_color_1)
+        - ../includes/titles.yaml
+        - title: UMGEBUNG
+            
+      - type: horizontal-stack
+        cards:
+          - !include
+            - ../includes/graphs.yaml
+            - entity: sensor.bewegungsmelder_schlafzimmer_temperature
+              name: Temperatur
+              font_size_header: 12
+              line_color: var(--custom_graph_color_1)
+          - !include
+            - ../includes/graphs.yaml
+            - entity: sensor.bewegungsmelder_schlafzimmer_light_level
+              name: Helligkeit
+              font_size_header: 12
+              line_color: var(--custom_graph_color_2)
+
       - !include
-        - ../includes/graphs.yaml
-        - entity: sensor.bewegungsmelder_schlafzimmer_light_level
-          name: Helligkeit
-          font_size_header: 12
-          line_color: var(--custom_graph_color_2)
+        - ../includes/titles.yaml
+        - title: LICHT
 
-  - type: entities
-    style: !include ../includes/style.yaml
-    entities:
-      - entity: light.schlafzimmerdecke
-        name: Decke
-        icon: mdi:led-strip
-        type: custom:slider-entity-row
-        hide_when_off: true
-        toggle: true
+      - type: entities
+        style: !include ../includes/style_entities.yaml
+        entities:
+          - entity: light.schlafzimmerdecke
+            name: Decke
+            icon: mdi:led-strip
+            type: custom:slider-entity-row
+            hide_when_off: true
+            toggle: true
 
-  - type: entities
-    style: !include ../includes/style.yaml
-    entities:
-      - entity: binary_sensor.tv_schlafzimmer
-        name: Fernseher
-      - entity: binary_sensor.tv_schlafzimmer_netflix
-        name: Netflix
-        icon: mdi:netflix
+  - type: vertical-stack
+    cards: 
 
-  - type: entities
-    style: !include ../includes/style.yaml
-    entities:
-      - sensor.bed_people
-      - sensor.people_home
-      - sensor.bed_weight_filtered
+      - !include
+        - ../includes/titles.yaml
+        - title: FERNSEHER
 
-  - type: entities
-    style: !include ../includes/style.yaml
-    entities:
-      - entity: binary_sensor.bewegungsmelder_schlafzimmer_motion
-        name: Bewegungsmelder
-        secondary_info: last-changed
+      - type: entities
+        style: !include ../includes/style_entities.yaml
+        entities:
+          - entity: binary_sensor.tv_schlafzimmer
+            name: Fernseher
+          - entity: binary_sensor.tv_schlafzimmer_netflix
+            name: Netflix
+            icon: mdi:netflix
 
+      - !include
+          - ../includes/titles.yaml
+          - title: BETT
 
+      - type: entities
+        style: !include ../includes/style_entities.yaml
+        entities:
+          - sensor.bed_people
+          - sensor.people_home
+          - sensor.bed_weight_filtered
+
+      - !include
+          - ../includes/titles.yaml
+          - title: BEWEGUNG
+
+      - type: entities
+        style: !include ../includes/style_entities.yaml
+        entities:
+          - entity: binary_sensor.bewegungsmelder_schlafzimmer_motion
+            name: Bewegungsmelder
+            secondary_info: last-changed

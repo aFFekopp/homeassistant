@@ -33,26 +33,26 @@ popup_cards:
         - input_datetime.motion_sensor_schlafzimmer
 cards:
   - type: vertical-stack
-    style: !include ../includes/style.yaml
     cards:
-      - type: custom:vertical-stack-in-card
-        cards:
-          - type: "custom:button-card"
-            template: header
-            name: Einstellungen
-          - type: entities
-            entities:
-              - input_boolean.notifications
-              - input_boolean.auto_open_door
-              - input_boolean.notify_door_left_open
-              - input_boolean.cinema_lights
+      - !include
+        - ../includes/titles.yaml
+        - title: EINSTELLUNGEN
 
+      - type: entities
+        style: !include ../includes/style_entities.yaml
+        entities:
+          - input_boolean.notifications
+          - input_boolean.auto_open_door
+          - input_boolean.notify_door_left_open
+          - input_boolean.cinema_lights
+
+      - !include
+        - ../includes/titles.yaml
+        - title: GASTMODUS
       - type: custom:vertical-stack-in-card
         cards:
-          - type: "custom:button-card"
-            template: header
-            name: Gast Modus
           - type: entities
+            style: !include ../includes/style_entities.yaml
             entities:
               - input_boolean.guest_mode
           - type: conditional
@@ -75,6 +75,7 @@ cards:
                       - height: 30px
                       - font-size: 14px
                       - box-shadow: unset
+                      - background: none
                 - type: custom:button-card
                   entity: input_number.guest_mode_num_guests
                   show_state: true
@@ -85,32 +86,32 @@ cards:
                     action: more-info
                   styles:
                     card:
+                      - background: none
                       - width: 150px
                       - height: 30px
                       - font-size: 14px
                       - box-shadow: unset
 
   - type: vertical-stack
-    style: !include ../includes/style.yaml
     cards:
-      - type: custom:vertical-stack-in-card
-        cards:
-          - type: "custom:button-card"
-            template: header
-            name: Bewegungsmelder
-          - type: entities
-            entities:
-              - input_boolean.motion_sensor_flur_toggle
-              - input_boolean.motion_sensor_bad_toggle
-              - input_boolean.motion_sensor_kuche_toggle
-              - input_boolean.motion_sensor_wohnzimmer_toggle
-              - input_boolean.motion_sensor_schlafzimmer_toggle
+      - !include
+        - ../includes/titles.yaml
+        - title: BEWEGUNGSMELDER
 
-      - type: custom:vertical-stack-in-card
-        cards:
-          - type: "custom:button-card"
-            template: header
-            name: Stromkosten
-          - type: entities
-            entities:
-              - input_number.kwh_cost
+      - type: entities
+        style: !include ../includes/style_entities.yaml
+        entities:
+          - input_boolean.motion_sensor_flur_toggle
+          - input_boolean.motion_sensor_bad_toggle
+          - input_boolean.motion_sensor_kuche_toggle
+          - input_boolean.motion_sensor_wohnzimmer_toggle
+          - input_boolean.motion_sensor_schlafzimmer_toggle
+
+      - !include
+        - ../includes/titles.yaml
+        - title: STROMKOSTEN
+
+      - type: entities
+        style: !include ../includes/style_entities.yaml
+        entities:
+          - input_number.kwh_cost
