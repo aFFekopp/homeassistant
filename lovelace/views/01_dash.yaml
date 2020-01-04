@@ -653,14 +653,17 @@ cards:
             - ../includes/graphs.yaml
             - entity: sensor.temperature_mean
               name: Temperatur
+              line_color: var(--custom_graph_color_1)
           - !include
             - ../includes/graphs.yaml
             - entity: sensor.light_level_mean
               name: Helligkeit
+              line_color: var(--custom_graph_color_2)
           - !include
             - ../includes/graphs.yaml
             - entity: sensor.zha_bad_multisensor_humidity
               name: Luftfeuchtigkeit
+              line_color: var(--custom_graph_color_3)
 
       ## DOWNLOAD / UPLOAD ## 
       - type: horizontal-stack
@@ -672,14 +675,12 @@ cards:
               align_icon: left
               hours_to_show: 12
               points_per_hour: 4
-              graph: bar
           - !include
             - ../includes/graphs.yaml
             - entity: sensor.net_upload_cur
               name: Upload
               hours_to_show: 12
               points_per_hour: 4
-              graph: bar
 
   ## ROW 3 ###################################################################################################################
   # - type: vertical-stack
