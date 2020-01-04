@@ -73,7 +73,7 @@ button_card_templates:
   esp:
     styles:
       card:
-        - height: 30px
+        - height: 35px
         - font-size: 14px
     color_type: icon
     show_name: false
