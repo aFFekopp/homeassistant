@@ -2,7 +2,7 @@
 type: 'custom:mini-graph-card'
 style: |
   ha-card {
-    font-family: Raleway;
+    font-family: var(--primary-font-family);
   }
   .graph {
     padding-top: 15px;

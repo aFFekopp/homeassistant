@@ -3,7 +3,7 @@ type: 'custom:mini-graph-card'
 style: |
   ha-card {
     border: solid 1px var(--border-color);
-    font-family: Raleway;
+    font-family: var(--primary-font-family);
   }
   .graph {
     padding-top: 15px;
