@@ -1,6 +1,7 @@
 # Ignore folders
 .cloud
 .storage
+custom_components
 deps
 esphome
 node-red
