@@ -47,21 +47,21 @@ cards:
                   name: CPU
                   hours_to_show: 12
                   points_per_hour: 4
-                  graph: bar
+                  line_color: var(--custom_graph_color_1)
               - !include
                 - ../includes/graphs_embeded.yaml
                 - entity: sensor.memory_use_percent
                   name: Memory
                   hours_to_show: 12
                   points_per_hour: 4
-                  graph: bar
+                  line_color: var(--custom_graph_color_2)
               - !include
                 - ../includes/graphs_embeded.yaml
                 - entity: sensor.disk_use_percent
                   name: Disk
                   hours_to_show: 12
                   points_per_hour: 4
-                  graph: bar
+                  line_color: var(--custom_graph_color_3)
           - type: entities
             entities:
               - sensor.cpu_speed
@@ -152,7 +152,7 @@ cards:
             cards:        
               - type: custom:bar-card
                 entity: sensor.net_download_max
-                color: '#11ccaa'
+                color: 'var(--accent-color)'
                 indicator: 'off'
                 height: 12
                 title_position: inside
@@ -161,7 +161,7 @@ cards:
                 max: sensor.net_download_max
               - type: custom:bar-card
                 entity: sensor.net_upload_max
-                color: '#eeccaa'
+                color: 'var(--accent-color)'
                 indicator: 'off'
                 height: 12
                 title_position: inside
@@ -178,7 +178,6 @@ cards:
                   points_per_hour: 4
                   hours_to_show: 12
                   extrema: true
-                  graph: bar
               - !include
                 - ../includes/graphs_embeded.yaml
                 - entity: sensor.net_upload_cur
@@ -186,7 +185,6 @@ cards:
                   points_per_hour: 4
                   hours_to_show: 12
                   extrema: true
-                  graph: bar
           - type: entities
             entities:
               - sensor.net_received_monthly

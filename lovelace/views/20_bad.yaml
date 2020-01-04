@@ -63,16 +63,20 @@ cards:
             - entity: sensor.bewegungsmelder_bad_temperature
               name: Temperatur
               font_size_header: 12
+              line_color: var(--custom_graph_color_1)
           - !include
             - ../includes/graphs.yaml
             - entity: sensor.bewegungsmelder_bad_light_level
               name: Helligkeit
               font_size_header: 12
+              line_color: var(--custom_graph_color_2)
       - !include
         - ../includes/graphs.yaml
         - entity: sensor.zha_bad_multisensor_humidity
           name: Luftfeuchtigkeit
           font_size_header: 12
+          line_color: var(--custom_graph_color_3)
+          line_width: 2
 
   - type: vertical-stack
     style: !include ../includes/style.yaml

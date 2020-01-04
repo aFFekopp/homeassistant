@@ -133,7 +133,7 @@ cards:
                   - sensor.hs110_voltage
                 name: Spannung
                 hours_to_show: 24
-                line_color: 'var(--accent-color)' 
+                line_color: var(--custom_graph_color_2)
                 font_size: 60
                 font_size_header: 12
                 animate: true
@@ -148,7 +148,7 @@ cards:
                   - sensor.hs110_current_a
                 name: Ampere
                 hours_to_show: 24
-                line_color: 'var(--accent-color)' 
+                line_color: var(--custom_graph_color_4) 
                 font_size: 60
                 font_size_header: 12
                 animate: true
@@ -160,7 +160,7 @@ cards:
                   - sensor.hs110_current_power_w
                 name: Watt
                 hours_to_show: 24
-                line_color: 'var(--accent-color)' 
+                line_color: var(--custom_graph_color_3) 
                 font_size: 60
                 font_size_header: 12
                 animate: true

@@ -61,11 +61,13 @@ cards:
         - entity: sensor.bewegungsmelder_wohnzimmer_temperature
           name: Temperatur
           font_size_header: 12
+          line_color: var(--custom_graph_color_1)
       - !include
         - ../includes/graphs.yaml
         - entity: sensor.bewegungsmelder_wohnzimmer_light_level
           name: Helligkeit
           font_size_header: 12
+          line_color: var(--custom_graph_color_2)
 
   - type: horizontal-stack
     style: !include ../includes/style.yaml

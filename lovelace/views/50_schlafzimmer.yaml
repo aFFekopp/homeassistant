@@ -8,11 +8,13 @@ cards:
         - entity: sensor.bewegungsmelder_schlafzimmer_temperature
           name: Temperatur
           font_size_header: 12
+          line_color: var(--custom_graph_color_1)
       - !include
         - ../includes/graphs.yaml
         - entity: sensor.bewegungsmelder_schlafzimmer_light_level
           name: Helligkeit
           font_size_header: 12
+          line_color: var(--custom_graph_color_2)
 
   - type: entities
     style: !include ../includes/style.yaml
