@@ -172,7 +172,7 @@ button_card_templates:
     style: !include lovelace/includes/style.yaml 
   timer:
     color_type: card
-    color: rgba(255,0,0,0.5)
+    color: 'var(--custom_motion_off)'
     size: 25px
     show_icon: false
     show_name: false
