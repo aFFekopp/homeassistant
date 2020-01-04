@@ -12,21 +12,21 @@ light:
   paper-font-caption_-_font-family: "var(--primary-font-family)"
   paper-font-title_-_font-family: "var(--primary-font-family)"
 
-  background-color: "#f4f0fa"
-  primary-background-color: "#f4f0fa"
+  background-color: "#eaeef9"
+  primary-background-color: "#eaeef9"
   text-primary-color: '#FFF'
   primary-color: "var(--accent-color)"
-  secondary-text-color: "#BAC0C6"
-  text-light-color: '#BAC0C6' 
-  text-medium-color: '#8c96a5'
+  secondary-text-color: "#132328"
+  text-light-color: '#132328' 
+  text-medium-color: '#132328'
   paper-item-icon-color: 'var(--text-light-color)'  
 
   paper-card-background-color: 'rgba(255, 255, 255, 1)' 
-  accent-color: '#5447c8' 
+  accent-color: '#2c75f7' 
   accent-medium-color: 'var(--accent-color)' 
   paper-toggle-button-checked-bar-color: 'var(--accent-color)' 
   paper-item-icon-active-color: 'var(--accent-color)'   
-  border-color: '#dddddd'
+  border-color: '#e8f2fe'
   light-primary-color: '#e6e3ff' 
 
   # Sliders
