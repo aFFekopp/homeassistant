@@ -2,4 +2,6 @@
   ha-card {
     border: solid 1px var(--border-color);
     font-family: var(--primary-font-family);
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
