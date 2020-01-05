@@ -61,136 +61,261 @@ popup_cards:
   light.flur:
     title: Flur
     card:
-      type: entities
-      entities:
-        - entity: light.flurdecke
-          name: Decke
-          icon: mdi:ceiling-light
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
+      type: custom:vertical-stack-in-card
+      style: !include ../includes/style_entities_popup.yaml
+      cards:
+        - type: horizontal-stack
+          cards:
+            - !include
+              - ../includes/graphs_popup.yaml
+              - entity: sensor.bewegungsmelder_flur_temperature
+                name: Temperatur
+                font_size_header: 12
+                line_color: var(--custom_graph_color_1)
+            - !include
+              - ../includes/graphs_popup.yaml
+              - entity: sensor.bewegungsmelder_flur_light_level
+                name: Helligkeit
+                font_size_header: 12
+                line_color: var(--custom_graph_color_2)
+        - !include
+          - ../includes/titles.yaml
+          - title: TÜRE & KLINGEL
+        - type: entities
+          style: !include ../includes/style_entities_popup.yaml
+          entities:
+            - entity: binary_sensor.klingel
+              secondary_info: last-changed
+            - input_number.klingel_volume
+            - switch.summer
+            - entity: input_boolean.open_door
+              name: Türe öffnen
+              icon: mdi:door-open
+        - !include
+          - ../includes/titles.yaml
+          - title: LICHT & BEWEGUNG
+        - type: entities
+          style: !include ../includes/style_entities_popup.yaml
+          entities:
+            - entity: light.flurdecke
+              name: Decke
+              icon: mdi:ceiling-light
+              type: custom:slider-entity-row
+        - type: entities
+          style: !include ../includes/style_entities_popup.yaml
+          entities:
+            - entity: binary_sensor.bewegungsmelder_flur_motion
+              name: Bewegungsmelder
+              secondary_info: last-changed
+            - entity: binary_sensor.zha_flur_door_contact
+              secondary_info: last-changed
   light.bad:
     title: Bad
     card:
-      type: entities
-      entities:
-        - entity: light.bad
-          name: Bad
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
-        - type: divider
-        - entity: light.badezimmerdecke_1
-          name: Lampe 1
-          icon: mdi:ceiling-light
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
-        - entity: light.badezimmerdecke_2
-          name: Lampe 2
-          icon: mdi:ceiling-light
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
-        - entity: light.badezimmerdecke_3
-          name: Lampe 3
-          icon: mdi:ceiling-light
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
-        - entity: light.badezimmerspiegel
-          name: Spiegel
-          icon: mdi:led-strip
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
+      type: custom:vertical-stack-in-card
+      style: !include ../includes/style_entities_popup.yaml
+      cards:
+        - type: horizontal-stack
+          cards:
+            - !include
+              - ../includes/graphs_popup.yaml
+              - entity: sensor.bewegungsmelder_bad_temperature
+                name: Temperatur
+                font_size_header: 12
+                line_color: var(--custom_graph_color_1)
+            - !include
+              - ../includes/graphs_popup.yaml
+              - entity: sensor.bewegungsmelder_bad_light_level
+                name: Helligkeit
+                font_size_header: 12
+                line_color: var(--custom_graph_color_2)
+        - !include
+          - ../includes/graphs_popup.yaml
+          - entity: sensor.zha_bad_multisensor_humidity
+            name: Luftfeuchtigkeit
+            font_size_header: 12
+            line_color: var(--custom_graph_color_3)
+            line_width: 2
+        - !include
+          - ../includes/titles.yaml
+          - title: LICHT & BEWEGUNG
+        - type: entities
+          style: !include ../includes/style_entities_popup.yaml
+          entities:
+            - entity: light.badezimmerdecke
+              name: Decke
+              icon: mdi:ceiling-light
+              type: custom:slider-entity-row
+            - entity: light.badezimmerspiegel
+              name: Spiegel
+              icon: mdi:led-strip
+              type: custom:slider-entity-row
+        - type: entities
+          style: !include ../includes/style_entities_popup.yaml
+          entities:
+            - entity: binary_sensor.bewegungsmelder_bad_motion
+              name: Bewegungsmelder
+              secondary_info: last-changed
+            - entity: binary_sensor.zha_bad_window_contact
+              secondary_info: last-changed
   light.kuche:
     title: Küche
     card:
-      type: entities
-      entities:
-        - entity: light.kuche
-          name: Küche
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
-        - type: divider
-        - entity: light.kuchendecke
-          name: Decke
-          icon: mdi:ceiling-light
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
-        - entity: light.kuchenzeile
-          name: Zeile
-          icon: mdi:record
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
-        - entity: light.arbeitsplatte
-          name: Arbeitsplatte
-          icon: mdi:record
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
-        - entity: light.hangeschrank
-          name: Hängeschrank
-          icon: mdi:wall-sconce-flat
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
+      type: custom:vertical-stack-in-card
+      style: !include ../includes/style_entities_popup.yaml
+      cards: 
+        - type: horizontal-stack
+          cards:
+            - !include
+              - ../includes/graphs_popup.yaml
+              - entity: sensor.bewegungsmelder_kuche_temperature
+                name: Temperatur
+                font_size_header: 12
+                line_color: var(--custom_graph_color_1)
+            - !include
+              - ../includes/graphs_popup.yaml
+              - entity: sensor.bewegungsmelder_kuche_light_level
+                name: Helligkeit
+                font_size_header: 12
+                line_color: var(--custom_graph_color_2)
+        - !include
+          - ../includes/titles.yaml
+          - title: LICHT & BEWEGUNG
+        - type: entities
+          style: !include ../includes/style_entities_popup.yaml
+          entities:
+            - entity: light.kuchendecke
+              name: Decke
+              icon: mdi:ceiling-light
+              type: custom:slider-entity-row
+            - entity: light.kuchenzeile
+              name: Zeile
+              icon: mdi:record
+              type: custom:slider-entity-row
+            - entity: light.arbeitsplatte
+              name: Arbeitsplatte
+              icon: mdi:record
+              type: custom:slider-entity-row
+            - entity: light.hangeschrank
+              name: Hängeschrank
+              icon: mdi:wall-sconce-flat
+              type: custom:slider-entity-row
+        - type: entities
+          style: !include ../includes/style_entities_popup.yaml
+          entities:
+            - entity: binary_sensor.bewegungsmelder_kuche_motion
+              name: Bewegungsmelder
+              secondary_info: last-changed
   light.wohnzimmer:
     title: Wohnzimmer
     card:
-      type: entities
-      entities:
-        - entity: light.wohnzimmer
-          name: Wohnzimmer
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
-        - type: divider
-        - entity: light.wohnzimmer_decke_1
-          name: Lampe 1
-          icon: mdi:track-light
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
-        - entity: light.wohnzimmer_decke_2
-          name: Lampe 2
-          icon: mdi:track-light
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
-        - entity: light.wohnzimmer_decke_3
-          name: Lampe 3
-          icon: mdi:track-light
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
-        - entity: light.wohnzimmer_decke_4
-          name: Lampe 4
-          icon: mdi:track-light
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
-        - entity: light.wandfluter
-          name: Wandfluter
-          icon: mdi:floor-lamp
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
+      type: custom:vertical-stack-in-card
+      style: !include ../includes/style_entities_popup.yaml
+      cards:  
+        - type: horizontal-stack
+          cards:
+            - !include
+              - ../includes/graphs_popup.yaml
+              - entity: sensor.bewegungsmelder_wohnzimmer_temperature
+                name: Temperatur
+                font_size_header: 12
+                line_color: var(--custom_graph_color_1)
+            - !include
+              - ../includes/graphs_popup.yaml
+              - entity: sensor.bewegungsmelder_wohnzimmer_light_level
+                name: Helligkeit
+                font_size_header: 12
+                line_color: var(--custom_graph_color_2)
+        - !include
+          - ../includes/titles.yaml
+          - title: LICHT & BEWEGUNG
+        - type: entities
+          style: !include ../includes/style_entities_popup.yaml
+          entities:
+            - entity: light.wohnzimmer_decke_1
+              name: Lampe 1
+              icon: mdi:track-light
+              type: custom:slider-entity-row
+            - entity: light.wohnzimmer_decke_2
+              name: Lampe 2
+              icon: mdi:track-light
+              type: custom:slider-entity-row
+            - entity: light.wohnzimmer_decke_3
+              name: Lampe 3
+              icon: mdi:track-light
+              type: custom:slider-entity-row
+            - entity: light.wohnzimmer_decke_4
+              name: Lampe 4
+              icon: mdi:track-light
+              type: custom:slider-entity-row
+        - type: entities
+          style: !include ../includes/style_entities_popup.yaml
+          entities:
+            - entity: light.wandfluter
+              name: Wandfluter
+              icon: mdi:floor-lamp
+              type: custom:slider-entity-row
+        - type: entities
+          style: !include ../includes/style_entities_popup.yaml
+          entities:
+            - entity: binary_sensor.bewegungsmelder_wohnzimmer_motion
+              name: Bewegungsmelder
+              secondary_info: last-changed
   light.schlafzimmer:
     title: Schlafzimmer
     card:
-      type: entities
-      entities:
-        - entity: light.schlafzimmerdecke
-          name: Decke
-          icon: mdi:led-strip
-          type: custom:slider-entity-row
-          hide_when_off: true
-          toggle: true
+      type: custom:vertical-stack-in-card
+      style: !include ../includes/style_entities_popup.yaml
+      cards:     
+        - type: horizontal-stack
+          cards:
+            - !include
+              - ../includes/graphs_popup.yaml
+              - entity: sensor.bewegungsmelder_schlafzimmer_temperature
+                name: Temperatur
+                font_size_header: 12
+                line_color: var(--custom_graph_color_1)
+            - !include
+              - ../includes/graphs_popup.yaml
+              - entity: sensor.bewegungsmelder_schlafzimmer_light_level
+                name: Helligkeit
+                font_size_header: 12
+                line_color: var(--custom_graph_color_2)
+        - !include
+          - ../includes/titles.yaml
+          - title: LICHT & BEWEGUNG
+        - type: entities
+          style: !include ../includes/style_entities_popup.yaml
+          entities:
+            - entity: light.schlafzimmerdecke
+              name: Decke
+              icon: mdi:led-strip
+              type: custom:slider-entity-row
+        - type: entities
+          style: !include ../includes/style_entities_popup.yaml
+          entities:
+            - entity: binary_sensor.bewegungsmelder_schlafzimmer_motion
+              name: Bewegungsmelder
+              secondary_info: last-changed
+        - !include
+          - ../includes/titles.yaml
+          - title: FERNSEHEN
+        - type: entities
+          style: !include ../includes/style_entities_popup.yaml
+          entities:
+            - entity: binary_sensor.tv_schlafzimmer
+              name: Fernseher
+            - entity: binary_sensor.tv_schlafzimmer_netflix
+              name: Netflix
+              icon: mdi:netflix
+        - !include
+          - ../includes/titles.yaml
+          - title: BETT
+        - type: entities
+          style: !include ../includes/style_entities_popup.yaml
+          entities:
+            - sensor.bed_people
+            - sensor.bed_weight_filtered
   sensor.temperature_mean:
     title: Temperaturen
     card:
