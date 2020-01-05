@@ -668,6 +668,8 @@ cards:
           ha-card {
             border: solid 1px var(--border-color);
             font-family: Raleway;
+            margin-top: 5px;
+            margin-bottom: 5px;
           }
           .spacer {
           padding-top: 0em;
