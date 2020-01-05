@@ -6,9 +6,13 @@ deps
 esphome
 node-red
 tts
-www
+www/audio
+www/community
+www/floorplan
+www/presence
 
 # Ignore files
+www/floorplan.psd
 .google_maps_location_sharing.cookies.aff_hass_location_gmail_com
 .HA_VERSION
 .uuid
