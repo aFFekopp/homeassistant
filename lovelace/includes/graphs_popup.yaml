@@ -1,0 +1,36 @@
+# lovelace_gen
+type: 'custom:mini-graph-card'
+style: |
+  ha-card {
+    border: none;
+    font-family: var(--primary-font-family);
+    background: none;
+    box-shadow: none;
+  }
+  .graph {
+    padding-top: 15px;
+    padding-bottom: 0px;
+  }
+  .info {
+    padding-bottom: 0px;
+  }
+  .flex {
+    padding-bottom: 10px;
+  }
+entities: 
+  - {{ entity }}
+name: {{ name }}
+align_state: center
+align_icon: {{ align_icon|default('right') }}
+font_size: 60
+font_size_header: {{ font_size_header|default('11') }}
+hours_to_show: {{ hours_to_show|default('24') }}
+line_color: {{ line_color|default('var(--accent-color)') }}
+line_width: {{ line_width|default('4') }}
+animate: true
+points_per_hour: {{ points_per_hour|default('0.5') }}
+#lower_bound: 0
+show:
+  fill: false
+  graph: {{ graph|default('line') }}
+  extrema: {{ extrema|default('false') }}
