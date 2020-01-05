@@ -9,5 +9,6 @@ style: |
     margin-top: -0.9em;
     margin-left: -10px;
     margin-bottom: 0.5em;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
   }
 content: {{ title }}
