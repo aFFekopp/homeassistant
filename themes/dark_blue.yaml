@@ -33,7 +33,7 @@ dark_blue:
   # Card
   card-background-color: 'var(--paper-card-background-color)'
   paper-card-background-color: 'rgba(47,59,82,0.6)'
-  ha-card-box-shadow: "0px 0px 0px 0px"
+  ha-card-box-shadow: "3px 3px 13px -6px rgba(17,35,52,1)"
   ha-card-border-radius: "5px"
   border-color: 'rgba(0,0,0,0)' 
   
@@ -86,5 +86,3 @@ dark_blue:
   custom_graph_color_2: 'rgba(222,176,107,1)'
   custom_graph_color_3: 'rgba(0,202,139,1)'
   custom_graph_color_4: 'rgba(139,64,156,1)'
-  
-# box-shadow: 2px 5px 0px 1px rgba(27,45,62,0.6);
