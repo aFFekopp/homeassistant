@@ -22,6 +22,7 @@ light:
   paper-item-icon-color: 'var(--text-light-color)'  
 
   paper-card-background-color: 'rgba(255, 255, 255, 1)' 
+  card-background-color: 'var(--paper-card-background-color)'
   accent-color: '#2c75f7' 
   accent-medium-color: 'var(--accent-color)' 
   paper-toggle-button-checked-bar-color: 'var(--accent-color)' 
@@ -33,6 +34,9 @@ light:
   paper-slider-knob-color: 'var(--accent-color)'
   paper-slider-pin-color: 'var(--accent-color)'
   paper-slider-active-color: 'var(--accent-color)'
+
+  # Popups
+  paper-dialog-background-color: 'rgba(255,255,255,0.8)'
 
   # Custom
   custom_cch_background: 'rgba(255, 255, 255, 0.8)'
