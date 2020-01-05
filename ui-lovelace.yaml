@@ -25,6 +25,10 @@ resources:
     type: module
   - url: /community_plugin/lovelace-state-switch/state-switch.js
     type: module
+
+  - type: js
+    url: /local/hui-view-settings.js
+  
   
   - type: css
     url: 'https://fonts.googleapis.com/css?family=Raleway'
