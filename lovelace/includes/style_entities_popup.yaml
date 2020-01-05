@@ -1,0 +1,11 @@
+  |
+  ha-card {
+    border: none;
+    font-family: var(--primary-font-family);
+    background: none;
+    box-shadow: none;
+  }
+  .card-content {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
