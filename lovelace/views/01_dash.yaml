@@ -536,7 +536,7 @@ cards:
                         show_icon: true
                         hold_action:
                           action: navigate
-                          navigation_path: /lovelace/9/
+                          navigation_path: /lovelace/4/
                       ## ANDRE LAST CHANGED ##
                       - type: custom:button-card
                         template: people_button
@@ -627,7 +627,7 @@ cards:
                         show_icon: true
                         hold_action:
                           action: navigate
-                          navigation_path: /lovelace/9/
+                          navigation_path: /lovelace/4/
                       ## JULIENNE LAST CHANGED ##
                       - type: custom:button-card
                         template: people_button
