@@ -456,7 +456,7 @@ cards:
             show_state: true
             show_name: false
             color_type: icon
-            tap_action:
+            hold_action:
               action: call-service
               service: input_boolean.toggle
               service_data:
@@ -808,7 +808,7 @@ cards:
               name: Upload
               hours_to_show: 12
               points_per_hour: 4
-
+      
   ## ROW 3 ###################################################################################################################
   # - type: vertical-stack
   #   cards: 
