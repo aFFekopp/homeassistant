@@ -1,0 +1,160 @@
+icon: mdi:shower-head
+title: Bad
+popup_cards:
+  media_player.uberall:
+    title: Media Player
+    card:
+      type: entities
+      entities: 
+        - type: 'custom:mini-media-player'
+          entity: media_player.uberall
+          group: true
+          hide:
+            name: true
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            mute: true
+            power: true
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_dot_bad
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_show_kuche
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_l_wohnzimmer
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+        - type: 'custom:mini-media-player'
+          entity: media_player.echo_r_wohnzimmer
+          group: true
+          hide:
+            controls: true
+            progress: true
+            info: true
+            icon: true
+            power_state: false
+cards:
+  - type: vertical-stack
+    cards:
+
+      - !include
+        - ../includes/titles.yaml
+        - title: UMGEBUNG
+        
+      - type: horizontal-stack
+        cards:
+          - !include
+            - ../includes/graphs.yaml
+            - entity: sensor.bewegungsmelder_bad_temperature
+              name: Temperatur
+              font_size_header: 12
+              line_color: var(--custom_graph_color_1)
+          - !include
+            - ../includes/graphs.yaml
+            - entity: sensor.bewegungsmelder_bad_light_level
+              name: Helligkeit
+              font_size_header: 12
+              line_color: var(--custom_graph_color_2)
+      - !include
+        - ../includes/graphs.yaml
+        - entity: sensor.zha_bad_multisensor_humidity
+          name: Luftfeuchtigkeit
+          font_size_header: 12
+          line_color: var(--custom_graph_color_3)
+          line_width: 2
+
+  - type: vertical-stack
+    style: !include ../includes/style.yaml
+    cards:
+
+      - !include
+        - ../includes/titles.yaml
+        - title: LICHT
+
+      - type: entities
+        style: !include ../includes/style_entities.yaml
+        entities:
+          - entity: light.badezimmerdecke
+            name: Decke
+            icon: mdi:ceiling-light
+            type: custom:slider-entity-row
+            hide_when_off: true
+            toggle: true
+          - entity: light.badezimmerspiegel
+            name: Spiegel
+            icon: mdi:led-strip
+            type: custom:slider-entity-row
+            hide_when_off: true
+            toggle: true
+
+      - !include
+        - ../includes/titles.yaml
+        - title: BEWEGUNG
+
+      - type: entities
+        style: !include ../includes/style_entities.yaml
+        entities:
+          - entity: binary_sensor.bewegungsmelder_bad_motion
+            name: Bewegungsmelder
+            secondary_info: last-changed
+          - entity: binary_sensor.zha_bad_window_contact
+            secondary_info: last-changed
+
+      - type: conditional
+        conditions:
+          - entity: media_player.uberall
+            state_not: "off"
+          - entity: media_player.uberall
+            state_not: "standby"
+        card:
+          type: custom:mini-media-player
+          entity: media_player.uberall
+          name: Echo Dot
+          source: icon
+          info: scroll
+          show_source: true
+          idle_view:
+            when_paused: true
+          hide:
+            volume: true
+            source: true
+            power_state: false
+      - type: conditional
+        conditions:
+          - entity: media_player.echo_dot_bad
+            state_not: "off"
+          - entity: media_player.echo_dot_bad
+            state_not: "standby"
+        card:
+          type: custom:mini-media-player
+          entity: media_player.echo_dot_bad
+          name: Echo Dot
+          source: icon
+          info: scroll
+          show_source: true
+          idle_view:
+            when_paused: true
+          hide:
+            volume: true
+            source: true
+            power_state: false
