@@ -46,6 +46,7 @@ custom_header:
   hide_config: true
   hide_tabs: '9'
   chevrons: false
+  shadow: false
 
 button_card_templates:
   header:
