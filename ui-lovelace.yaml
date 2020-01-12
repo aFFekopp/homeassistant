@@ -44,7 +44,7 @@ custom_header:
   voice_hide: true
   hide_help: true
   hide_config: true
-  hide_tabs: '9'
+  hide_tabs: '4'
   chevrons: false
   shadow: false
 
