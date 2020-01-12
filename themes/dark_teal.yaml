@@ -1,4 +1,4 @@
-dark:  
+dark_teal:  
 
   # Fonts
   primary-font-family: 'Raleway,sans-serif'
@@ -64,6 +64,9 @@ dark:
   switch-checked-button-color: 'var(--accent-color)'
   switch-unchecked-track-color: 'var(--border-color)'
   switch-checked-track-color: 'var(--border-color)'
+
+  # Popups
+  paper-dialog-background-color: 'rgba(67, 73, 82, 0.4)'
 
   # Custom Header
   ch-background: 'rgba(69, 74, 83, 0.8)'
