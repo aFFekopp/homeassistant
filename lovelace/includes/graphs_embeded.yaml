@@ -31,3 +31,5 @@ show:
   fill: false
   graph: {{ graph|default('line') }}
   extrema: {{ extrema|default('false') }}
+  icon: {{ show_icon|default('true') }}
+  name: {{ show_name|default('true') }}
