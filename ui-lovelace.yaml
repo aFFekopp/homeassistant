@@ -28,6 +28,8 @@ resources:
 
   - type: js
     url: /local/hui-view-settings.js
+  - type: js
+    url: /local/popup-background.js
   
   
   - type: css
@@ -167,8 +169,10 @@ button_card_templates:
   dash_button:
     size: 25px
     color_type: card
-    hold_action:
+    tap_action:
       action: more-info
+    hold_action:
+      action: toggle
     styles:
       card:
         - height: 70px
