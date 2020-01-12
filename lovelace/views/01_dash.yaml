@@ -6,11 +6,14 @@ popup_cards:
     title: Andre
     card:
       type: custom:vertical-stack-in-card
+      style: !include ../includes/style_entities_popup.yaml
       cards:
         - type: history-graph
+          style: !include ../includes/style_entities_popup.yaml
           entities:
             - sensor.andre_status
         - type: entities
+          style: !include ../includes/style_entities_popup.yaml
           entities:
             - device_tracker.google_maps_108265044794977597376
             - device_tracker.life360_andre
@@ -20,11 +23,14 @@ popup_cards:
     title: Julienne
     card:
       type: custom:vertical-stack-in-card
+      style: !include ../includes/style_entities_popup.yaml
       cards:
         - type: history-graph
+          style: !include ../includes/style_entities_popup.yaml
           entities:
             - sensor.julienne_status
         - type: entities
+          style: !include ../includes/style_entities_popup.yaml
           entities:
             - device_tracker.google_maps_109408471456601103538
             - device_tracker.julienne_s10
@@ -50,11 +56,13 @@ popup_cards:
     large: true
     card:
       type: iframe
+      style: !include ../includes/style_entities_popup.yaml
       url: https://embed.windy.com/embed2.html?lat=51.297&lon=9.571&zoom=10&level=surface&overlay=rain&menu=&message=&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=51.297&detailLon=9.571&metricWind=default&metricTemp=default&radarRange=-1
   input_boolean.guest_mode:
     title: Guest Mode
     card:
       type: entities
+      style: !include ../includes/style_entities_popup.yaml
       entities:
         - input_boolean.guest_mode
         - input_datetime.guest_mode
@@ -320,6 +328,7 @@ popup_cards:
     title: Temperaturen
     card:
       type: entities
+      style: !include ../includes/style_entities_popup.yaml
       entities:
         - entity: sensor.bewegungsmelder_flur_temperature
           name: Flur
@@ -335,6 +344,7 @@ popup_cards:
     title: Helligkeit
     card:
       type: entities
+      style: !include ../includes/style_entities_popup.yaml
       entities:
         - entity: sensor.bewegungsmelder_flur_light_level
           name: Flur
@@ -350,6 +360,7 @@ popup_cards:
     title: Media
     card:
       type: entities
+      style: !include ../includes/style_entities_popup.yaml
       entities:
         - input_select.media_player_selection
         - input_select.media_player_playlist
@@ -405,6 +416,7 @@ popup_cards:
     title: NIU
     card:
       type: entities
+      style: !include ../includes/style_entities_popup.yaml
       entities:
         - input_datetime.charge_time
 
@@ -424,17 +436,9 @@ cards:
           - type: "custom:button-card"
             template: dash_button
             entity: input_boolean.guest_mode
-            tap_action:
-              action: more-info
           - type: "custom:button-card"
             template: dash_button
             entity: binary_sensor.remote_ui
-            tap_action:
-              action: call-service
-              service: cloud.remote_connect
-            hold_action:
-              action: call-service
-              service: cloud.remote_disconnect
           - type: "custom:button-card"
             template: dash_button
             entity: input_boolean.cinema_lights
