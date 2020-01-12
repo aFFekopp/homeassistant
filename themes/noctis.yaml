@@ -1,4 +1,4 @@
-dark_blue:  
+noctis:  
 
   # Fonts
   primary-font-family: 'Raleway,sans-serif'
@@ -66,7 +66,7 @@ dark_blue:
   switch-checked-track-color: 'var(--background-color-2)'
 
   # Popups
-  paper-dialog-background-color: 'rgba(47,59,82,0.8)'
+  paper-dialog-background-color: 'rgba(47,59,82,0.4)'
   
   # Custom Header
   ch-background: 'var(--background-color)'
