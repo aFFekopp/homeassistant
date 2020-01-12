@@ -135,45 +135,30 @@ cards:
                 name: Ladegerät
               - type: horizontal-stack
                 cards:
-                  - type: "custom:mini-graph-card"
-                    entities:
-                      - sensor.hs110_voltage
-                    name: Spannung
-                    hours_to_show: 24
-                    line_color: var(--custom_graph_color_2)
-                    font_size: 60
-                    font_size_header: 12
-                    animate: true
-                    icon: mdi:power-socket
-                    show: &show
-                      icon: false
-                      name: false
-                      fill: fade
-                    align_state: center
-                  - type: "custom:mini-graph-card"
-                    entities:
-                      - sensor.hs110_current_a
-                    name: Ampere
-                    hours_to_show: 24
-                    line_color: var(--custom_graph_color_4) 
-                    font_size: 60
-                    font_size_header: 12
-                    animate: true
-                    icon: mdi:flash
-                    show: *show
-                    align_state: center
-                  - type: "custom:mini-graph-card"
-                    entities:
-                      - sensor.hs110_current_power_w
-                    name: Watt
-                    hours_to_show: 24
-                    line_color: var(--custom_graph_color_3) 
-                    font_size: 60
-                    font_size_header: 12
-                    animate: true
-                    icon: mdi:lightbulb
-                    show: *show
-                    align_state: center
+                  - !include
+                    - ../includes/graphs_embeded.yaml
+                    - entity: sensor.hs110_voltage
+                      name: Spannung
+                      hours_to_show: 24
+                      line_color: var(--custom_graph_color_2)
+                      show_icon: false
+                      show_name: false
+                  - !include
+                    - ../includes/graphs_embeded.yaml
+                    - entity: sensor.hs110_current_a
+                      name: Ampere
+                      hours_to_show: 24
+                      line_color: var(--custom_graph_color_4) 
+                      show_icon: false
+                      show_name: false
+                  - !include
+                    - ../includes/graphs_embeded.yaml
+                    - entity: sensor.hs110_current_power_w
+                      name: Watt
+                      hours_to_show: 24
+                      line_color: var(--custom_graph_color_3) 
+                      show_icon: false
+                      show_name: false
 
   - type: vertical-stack
     cards:      
