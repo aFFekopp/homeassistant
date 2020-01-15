@@ -6,6 +6,7 @@ customElements.whenDefined("hui-view").then( () => {
       original.strings = [original.strings[0] + `
       <style>
         .column {
+          overflow: unset !important;
           padding-left: 9px;
           padding-right: 9px;
           padding-bottom: 9px;
