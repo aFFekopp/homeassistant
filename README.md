@@ -79,14 +79,12 @@ All of my automations are in Node Red, Home Assistant is just my state machine. 
 
 #### PC
 
-![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/1-1.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/2.jpg)
+![](https://raw.githubusercontent.com/aFFekopp/noctis/master/docs/screenshots/pc/1-1.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/noctis/master/docs/screenshots/pc/2.jpg)
 :-------------------------:|:-------------------------:
-![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/3.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/4.jpg)
-![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/5.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/6.jpg)
-![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/7.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/pc/8.jpg)
+![](https://raw.githubusercontent.com/aFFekopp/noctis/master/docs/screenshots/pc/3.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/noctis/master/docs/screenshots/pc/4.jpg)
+![](https://raw.githubusercontent.com/aFFekopp/noctis/master/docs/screenshots/pc/5.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/noctis/master/docs/screenshots/pc/6.jpg)
 
 #### Android
 
-![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/android/1.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/android/2.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/android/3.jpg)
+![](https://raw.githubusercontent.com/aFFekopp/noctis/master/docs/screenshots/android/1.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/noctis/master/docs/screenshots/android/2.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/noctis/master/docs/screenshots/android/3.jpg)
 :-------------------------:|:-------------------------:|:-------------------------:
-![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/android/4.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/android/5.jpg) | ![](https://raw.githubusercontent.com/aFFekopp/homeassistant/master/docs/screenshots/android/6.jpg)
