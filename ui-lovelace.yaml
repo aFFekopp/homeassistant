@@ -26,18 +26,19 @@ resources:
   - url: /community_plugin/lovelace-state-switch/state-switch.js
     type: module
 
-  - type: js
-    url: /local/hui-view-settings.js
-  - type: js
-    url: /local/popup-background.js
+  - url: /local/hui-view-settings.js
+    type: js
+  - url: /local/popup-background.js
+    type: js
+    
   
-  
-  - type: css
-    url: 'https://fonts.googleapis.com/css?family=Raleway'
-  - type: css
-    url: 'https://fonts.googleapis.com/css?family=Oswald'
-  - type: css
-    url: 'https://fonts.googleapis.com/css?family=Quicksand'
+  - url: 'https://fonts.googleapis.com/css?family=Raleway'
+    type: css
+  - url: 'https://fonts.googleapis.com/css?family=Oswald'
+    type: css
+  - url: 'https://fonts.googleapis.com/css?family=Quicksand'
+    type: css
+    
 
 custom_header:
   compact_mode: true
