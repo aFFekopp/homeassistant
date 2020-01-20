@@ -74,6 +74,7 @@ hue:
   bridges:
     - host: 192.168.0.22
       allow_hue_groups: true
+      allow_unreachable: true
 
 ## DEVICE TRACKERS ######################################################################
 device_tracker:
