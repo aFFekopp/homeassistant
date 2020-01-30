@@ -179,6 +179,11 @@ button_card_templates:
       card:
         - height: 70px
         - font-size: 11px
+        - background: >
+            [[[
+            if (entity.state == "on") return "var(--accent-color)";
+            else return "var(--paper-card-background-color)"; 
+            ]]]
     style: !include lovelace/includes/style.yaml 
   timer:
     color_type: card
