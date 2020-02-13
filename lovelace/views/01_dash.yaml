@@ -15,10 +15,9 @@ popup_cards:
         - type: entities
           style: !include ../includes/style_entities_popup.yaml
           entities:
-            - device_tracker.google_maps_108265044794977597376
+            - device_tracker.andre_mi9t_app
             - device_tracker.life360_andre
             - device_tracker.andre_mi9t
-            - device_tracker.andre_mi9t_bt
   sensor.julienne_status:
     title: Julienne
     card:
@@ -34,15 +33,14 @@ popup_cards:
           entities:
             - device_tracker.google_maps_109408471456601103538
             - device_tracker.julienne_s10
-            - device_tracker.julienne_s10_bt
-  device_tracker.google_maps_108265044794977597376:
+  device_tracker.andre_mi9t_app:
     title: Karte
     card:
       type: map
       aspect_ratio: 16:9
       default_zoom: 12
       entities:
-        - device_tracker.google_maps_108265044794977597376
+        - device_tracker.andre_mi9t_app
   device_tracker.google_maps_109408471456601103538:
     title: Karte
     card:
@@ -499,8 +497,8 @@ cards:
             cards:
               ## ANDRE CHARGING ##
               - type: custom:bar-card
-                entity: sensor.handy_andre_battery
-                charge_entity: sensor.handy_andre_charging
+                entity: sensor.andre_mi9t_battery_level
+                charge_entity: sensor.andre_mi9t_battery_charging
                 indicator: 'off'
                 delay: 1000
                 color: 'var(--accent-color)'
@@ -526,12 +524,12 @@ cards:
                       ## ANDRE BATTERY ##
                       - type: custom:button-card
                         template: people_button
-                        entity: sensor.handy_andre_battery
+                        entity: sensor.andre_mi9t_battery_level
                         show_state: true
                       ## ANDRE MAP ICON ##
                       - type: custom:button-card
                         template: people_button
-                        entity: device_tracker.google_maps_108265044794977597376
+                        entity: device_tracker.andre_mi9t_app
                         icon: mdi:map
                         show_icon: true
                         hold_action:
