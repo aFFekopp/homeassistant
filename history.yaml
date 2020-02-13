@@ -3,13 +3,11 @@ include:
   entities:
     - person.andre
     - device_tracker.andre_mi9t
-    - device_tracker.andre_mi9t_bt
-    - device_tracker.google_maps_108265044794977597376
+    - device_tracker.andre_mi9t_app
     - device_tracker.life360_andre
     - sensor.andre_status
     - person.julienne
     - device_tracker.julienne_s10
-    - device_tracker.julienne_s10_bt
     - device_tracker.google_maps_109408471456601103538
     - sensor.julienne_status
     - device_tracker.niu
@@ -24,7 +22,6 @@ include:
     - light.badezimmerdecke_3
     - light.badezimmerspiegel
     - light.flurdecke
-    - light.gateway_light_7811dcb06383
     - light.hangeschrank
     - light.kuche_mood
     - light.kuchendecke
