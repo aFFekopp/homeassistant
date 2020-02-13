@@ -222,3 +222,6 @@ binary_sensor.zha_bad_window_contact:
 group.motion_sensors:
   friendly_name: Bewegungsmelder
   icon: mdi:leak
+device_tracker.andre_mi9t_app:
+  entity_picture: /local/presence/andre.png
+  picture: /local/presence/andre.png
