@@ -46,6 +46,7 @@ custom_header:
   hide_help: true
   hide_config: true
   hide_tabs: '4'
+  hidden_tab_redirect: false
   chevrons: false
   shadow: false
 
