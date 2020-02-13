@@ -1,53 +1,15 @@
 - platform: template
   sensors:
-    handy_andre_battery:
-      value_template: '{{states.device_tracker.google_maps_108265044794977597376.attributes.battery_level | round(0)}}'
-      friendly_name: "Handy - Andre Batterie"
-      unit_of_measurement: '%'
-      icon_template: >
-        {%- if is_state("states.device_tracker.google_maps_108265044794977597376.attributes.battery_level", "unknown") %}mdi:battery-unknown
-        {%- elif states.device_tracker.google_maps_108265044794977597376.attributes.battery_level <= 5 %}mdi:battery-outline
-        {%- elif states.device_tracker.google_maps_108265044794977597376.attributes.battery_level <= 10 %}mdi:battery-10
-        {%- elif states.device_tracker.google_maps_108265044794977597376.attributes.battery_level <= 20 %}mdi:battery-20
-        {%- elif states.device_tracker.google_maps_108265044794977597376.attributes.battery_level <= 30 %}mdi:battery-30
-        {%- elif states.device_tracker.google_maps_108265044794977597376.attributes.battery_level <= 40 %}mdi:battery-40
-        {%- elif states.device_tracker.google_maps_108265044794977597376.attributes.battery_level <= 50 %}mdi:battery-50
-        {%- elif states.device_tracker.google_maps_108265044794977597376.attributes.battery_level <= 60 %}mdi:battery-60
-        {%- elif states.device_tracker.google_maps_108265044794977597376.attributes.battery_level <= 70 %}mdi:battery-70
-        {%- elif states.device_tracker.google_maps_108265044794977597376.attributes.battery_level <= 80 %}mdi:battery-80
-        {%- elif states.device_tracker.google_maps_108265044794977597376.attributes.battery_level <= 95 %}mdi:battery-90
-        {% else %}mdi:battery{%- endif %}
-
-    handy_andre_charging:
+    andre_mi9t_battery_charging:
       value_template: >
-        {%- if is_state_attr('device_tracker.google_maps_108265044794977597376','battery_charging',true) %}on
-        {%- elif is_state_attr('device_tracker.google_maps_108265044794977597376','battery_charging',false) %}Off
+        {%- if is_state_attr('sensor.andre_mi9t_battery_level','is_charging',true) %}on
+        {%- elif is_state_attr('sensor.andre_mi9t_battery_level','is_charging',false) %}Off
         {% else %}unknown{%- endif %}
       friendly_name: "Handy - Andre Laden"
       icon_template: >
-        {%- if is_state_attr('device_tracker.google_maps_108265044794977597376','battery_charging',true) %}mdi:flash
-        {%- elif is_state_attr('device_tracker.google_maps_108265044794977597376','battery_charging',false) %}mdi:blank
+        {%- if is_state_attr('sensor.andre_mi9t_battery_level','is_charging',true) %}mdi:flash
+        {%- elif is_state_attr('sensor.andre_mi9t_battery_level','is_charging',false) %}mdi:blank
         {% else %}mdi:alert-circle-outline{%- endif %}
-
-    handy_andre_adress:
-      value_template: '{{states.device_tracker.google_maps_108265044794977597376.attributes.address}}'
-      friendly_name: "Handy - Andre Adresse"
-      icon_template: mdi:google-maps
-
-    handy_andre_lastseen:
-      value_template: '{{states.device_tracker.google_maps_108265044794977597376.attributes.last_seen}}'
-      friendly_name: "Handy - Andre zuletzt gesehen"
-      icon_template: mdi:crosshairs-gps
-
-    handy_andre_latitude:
-      value_template: '{{states.device_tracker.google_maps_108265044794977597376.attributes.latitude}}'
-      friendly_name: "Handy - Andre Latitude"
-      icon_template: mdi:crosshairs-gps
-
-    handy_andre_longitude:
-      value_template: '{{states.device_tracker.google_maps_108265044794977597376.attributes.longitude}}'
-      friendly_name: "Handy - Andre Longitude"
-      icon_template: mdi:crosshairs-gps
 
 
     handy_julienne_battery:
@@ -79,22 +41,3 @@
         {%- elif is_state_attr('device_tracker.google_maps_109408471456601103538','battery_charging',false) %}mdi:blank
         {% else %}mdi:alert-circle-outline{%- endif %}
 
-    handy_julienne_adress:
-      value_template: '{{states.device_tracker.google_maps_109408471456601103538.attributes.address}}'
-      friendly_name: "Handy - Julienne Adresse"
-      icon_template: mdi:google-maps
-
-    handy_julienne_lastseen:
-      value_template: '{{states.device_tracker.google_maps_109408471456601103538.attributes.last_seen}}'
-      friendly_name: "Handy - Julienne zuletzt gesehen"
-      icon_template: mdi:crosshairs-gps
-
-    handy_julienne_latitude:
-      value_template: '{{states.device_tracker.google_maps_108265044794977597376.attributes.latitude}}'
-      friendly_name: "Handy - Julienne Latitude"
-      icon_template: mdi:crosshairs-gps
-
-    handy_julienne_longitude:
-      value_template: '{{states.device_tracker.google_maps_108265044794977597376.attributes.longitude}}'
-      friendly_name: "Handy - Julienne Longitude"
-      icon_template: mdi:crosshairs-gps
