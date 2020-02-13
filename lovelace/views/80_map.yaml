@@ -7,7 +7,7 @@ cards:
     default_zoom: 12
     entities:
       - device_tracker.niu
-      - device_tracker.google_maps_108265044794977597376
+      - device_tracker.andre_mi9t_app
       - device_tracker.google_maps_109408471456601103538       
       - zone.home
       - zone.elenaklinik
