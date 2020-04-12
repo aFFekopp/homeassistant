@@ -13,7 +13,7 @@ config:
 
 hassio:
 
-http:
+#http:
 
 updater:
 
@@ -25,6 +25,46 @@ recorder: !include recorder.yaml
 
 lovelace:
   mode: yaml
+  resources:
+    - url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
+      type: js
+    - url: /hacsfiles/custom-header/custom-header.js
+      type: module
+    - url: /hacsfiles/bar-card/bar-card.js
+      type: js
+    - url: /hacsfiles/lovelace-card-tools/card-tools.js
+      type: js
+    - url: /hacsfiles/lovelace-popup-card/popup-card.js
+      type: js
+    - url: /hacsfiles/button-card/button-card.js
+      type: module
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module
+    - url: /hacsfiles/mini-media-player/mini-media-player.js
+      type: module
+    - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
+      type: js
+    - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
+      type: js
+    - url: /hacsfiles/lovelace-card-mod/card-mod.js
+      type: js
+    - url: /hacsfiles/weather-card/weather-card.js
+      type: module
+    - url: /hacsfiles/lovelace-state-switch/state-switch.js
+      type: module
+
+    - url: /local/hui-view-settings.js
+      type: js
+    - url: /local/popup-background.js
+      type: js
+      
+    
+    - url: 'https://fonts.googleapis.com/css?family=Raleway'
+      type: css
+    - url: 'https://fonts.googleapis.com/css?family=Oswald'
+      type: css
+    - url: 'https://fonts.googleapis.com/css?family=Quicksand'
+      type: css
 
 system_health:
 
