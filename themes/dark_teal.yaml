@@ -43,6 +43,7 @@ dark_teal:
   
   # Left Menu
   paper-listbox-background-color: 'rgba(69, 74, 83, 1)'
+  sidebar-background-color: 'var(--paper-listbox-background-color)'
   sidebar-icon-color: 'var(--secondary-text-color)'
   sidebar-selected-icon-color: 'var(--accent-color)'
   sidebar-selected-text-color: 'var(--text-color)'
@@ -65,24 +66,9 @@ dark_teal:
   switch-unchecked-track-color: 'var(--border-color)'
   switch-checked-track-color: 'var(--border-color)'
 
-  # Popups
-  paper-dialog-background-color: 'rgba(67, 73, 82, 0.4)'
-
   # Custom Header
   ch-background: 'rgba(69, 74, 83, 0.8)'
   ch-active-tab-color: 'var(--accent-color)'
   ch-notification-dot-color: 'var(--accent-color)'
   ch-all-tabs-color: 'var(--sidebar-icon-color)'
   ch-tab-indicator-color: 'var(--accent-color)'
-
-  # Custom
-  custom_heading: '#ffffff'
-  custom_icon_light: '#ffffff'
-  custom_icon_dark: '#ffffff'
-  custom_card_background: 'rgba(67, 73, 82, 1)'
-  custom_motion_off: 'rgba(255,102,102,0.5)'
-  custom_motion_detected: 'rgba(0,196,172,1)'
-  custom_graph_color_1: 'var(--accent-color)'
-  custom_graph_color_2: 'var(--accent-color)'
-  custom_graph_color_3: 'var(--accent-color)'
-  custom_graph_color_4: 'var(--accent-color)'
