@@ -72,3 +72,15 @@ dark_teal:
   ch-notification-dot-color: 'var(--accent-color)'
   ch-all-tabs-color: 'var(--sidebar-icon-color)'
   ch-tab-indicator-color: 'var(--accent-color)'
+
+  # Custom
+  custom_heading: '#ffffff'
+  custom_icon_light: '#ffffff'
+  custom_icon_dark: '#ffffff'
+  custom_card_background: 'rgba(67, 73, 82, 1)'
+  custom_motion_off: 'rgba(255,102,102,0.5)'
+  custom_motion_detected: 'rgba(0,196,172,1)'
+  custom_graph_color_1: 'var(--accent-color)'
+  custom_graph_color_2: 'var(--accent-color)'
+  custom_graph_color_3: 'var(--accent-color)'
+  custom_graph_color_4: 'var(--accent-color)'
