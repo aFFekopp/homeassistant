@@ -39,6 +39,7 @@ popup_cards:
       type: map
       aspect_ratio: 16:9
       default_zoom: 12
+      hours_to_show: 24
       entities:
         - device_tracker.andre_mi9t_app
   device_tracker.google_maps_109408471456601103538:
@@ -47,6 +48,7 @@ popup_cards:
       type: map
       aspect_ratio: 16:9
       default_zoom: 12
+      hours_to_show: 24
       entities:
         - device_tracker.google_maps_109408471456601103538
   weather.openweathermap:
@@ -88,6 +90,7 @@ popup_cards:
           - ../includes/titles.yaml
           - title: TÜRE & KLINGEL
         - type: entities
+          show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
             - entity: binary_sensor.klingel
@@ -101,6 +104,7 @@ popup_cards:
           - ../includes/titles.yaml
           - title: LICHT & BEWEGUNG
         - type: entities
+          show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
             - entity: light.flurdecke
@@ -108,6 +112,7 @@ popup_cards:
               icon: mdi:ceiling-light
               type: custom:slider-entity-row
         - type: entities
+          show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
             - entity: binary_sensor.bewegungsmelder_flur_motion
@@ -146,6 +151,7 @@ popup_cards:
           - ../includes/titles.yaml
           - title: LICHT & BEWEGUNG
         - type: entities
+          show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
             - entity: light.badezimmerdecke
@@ -157,6 +163,7 @@ popup_cards:
               icon: mdi:led-strip
               type: custom:slider-entity-row
         - type: entities
+          show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
             - entity: binary_sensor.bewegungsmelder_bad_motion
@@ -188,6 +195,7 @@ popup_cards:
           - ../includes/titles.yaml
           - title: LICHT & BEWEGUNG
         - type: entities
+          show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
             - entity: light.kuchendecke
@@ -207,6 +215,7 @@ popup_cards:
               icon: mdi:wall-sconce-flat
               type: custom:slider-entity-row
         - type: entities
+          show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
             - entity: binary_sensor.bewegungsmelder_kuche_motion
@@ -236,6 +245,7 @@ popup_cards:
           - ../includes/titles.yaml
           - title: LICHT & BEWEGUNG
         - type: entities
+          show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
             - entity: light.wohnzimmer_decke_1
@@ -255,6 +265,7 @@ popup_cards:
               icon: mdi:track-light
               type: custom:slider-entity-row
         - type: entities
+          show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
             - entity: light.wandfluter
@@ -262,6 +273,7 @@ popup_cards:
               icon: mdi:floor-lamp
               type: custom:slider-entity-row
         - type: entities
+          show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
             - entity: binary_sensor.bewegungsmelder_wohnzimmer_motion
@@ -291,6 +303,7 @@ popup_cards:
           - ../includes/titles.yaml
           - title: LICHT & BEWEGUNG
         - type: entities
+          show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
             - entity: light.schlafzimmerdecke
@@ -298,6 +311,7 @@ popup_cards:
               icon: mdi:led-strip
               type: custom:slider-entity-row
         - type: entities
+          show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
             - entity: binary_sensor.bewegungsmelder_schlafzimmer_motion
@@ -307,6 +321,7 @@ popup_cards:
           - ../includes/titles.yaml
           - title: FERNSEHEN
         - type: entities
+          show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
             - entity: binary_sensor.tv_schlafzimmer
@@ -318,6 +333,7 @@ popup_cards:
           - ../includes/titles.yaml
           - title: BETT
         - type: entities
+          show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
             - sensor.bed_people

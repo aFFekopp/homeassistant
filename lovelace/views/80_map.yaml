@@ -5,6 +5,7 @@ cards:
   - type: map
     #aspect_ratio: 16x9
     default_zoom: 12
+    #hours_to_show: 48
     entities:
       - device_tracker.niu
       - device_tracker.andre_mi9t_app

@@ -39,6 +39,7 @@ cards:
         - title: EINSTELLUNGEN
 
       - type: entities
+        show_header_toggle: false
         style: !include ../includes/style_entities.yaml
         entities:
           - input_boolean.notifications
@@ -99,6 +100,7 @@ cards:
         - title: BEWEGUNGSMELDER
 
       - type: entities
+        show_header_toggle: false
         style: !include ../includes/style_entities.yaml
         entities:
           - input_boolean.motion_sensor_flur_toggle
