@@ -177,6 +177,7 @@ cards:
               style: !include ../includes/style.yaml
               entities:
                 - input_datetime.charge_time
+                - switch.charge_fully
       
       - !include
         - ../includes/titles.yaml
