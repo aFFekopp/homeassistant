@@ -499,6 +499,7 @@ cards:
               - type: custom:bar-card
                 entity: sensor.andre_mi9t_battery_level
                 charge_entity: sensor.andre_mi9t_battery_charging
+                show_value: false
                 indicator: 'off'
                 delay: 1000
                 color: 'var(--accent-color)'
@@ -595,6 +596,7 @@ cards:
               - type: custom:bar-card
                 entity: sensor.handy_julienne_battery
                 charge_entity: sensor.handy_julienne_charging
+                show_value: false
                 indicator: 'off'
                 delay: 1000
                 color: 'var(--accent-color)'
