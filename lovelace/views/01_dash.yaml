@@ -513,22 +513,23 @@ cards:
             cards:
               ## ANDRE CHARGING ##
               - type: custom:bar-card
+                style: |
+                  .card-content {
+                    padding: 0px;
+                  }
+                  #states > * {
+                    margin-top: 0;
+                  }
                 entity: sensor.andre_mi9t_battery_level
-                charge_entity: sensor.andre_mi9t_battery_charging
-                show_value: false
-                indicator: 'off'
-                delay: 1000
+                positions:
+                  icon: 'off'
+                  indicator: 'off'
+                  title: 'off'
+                  value: 'off'
                 color: 'var(--accent-color)'
-                title_position: inside
                 height: 2px
-                title_style: &title_style_charging
-                  text-align: left
-                  font-size: 0px
-                bar_style: &bar_style_charging
-                  align-items: flex-start
-                  font-size: 10px
-                value_style: &value_style_charging
-                  font-size: 0px
+                animation:
+                  state: 'on'
               - type: horizontal-stack
                 cards:
                   ## ANDRE PERSON STATUS ##
@@ -611,16 +612,22 @@ cards:
               ## JULIENNE CHARGING ##
               - type: custom:bar-card
                 entity: sensor.handy_julienne_battery
-                charge_entity: sensor.handy_julienne_charging
-                show_value: false
-                indicator: 'off'
-                delay: 1000
+                style: |
+                  .card-content {
+                    padding: 0px;
+                  }
+                  #states > * {
+                    margin-top: 0;
+                  }
+                positions:
+                  icon: 'off'
+                  indicator: 'off'
+                  title: 'off'
+                  value: 'off'
                 color: 'var(--accent-color)'
-                title_position: inside
                 height: 2px
-                title_style: *title_style_charging
-                bar_style: *bar_style_charging
-                value_style: *value_style_charging
+                animation:
+                  state: 'on'
               - type: horizontal-stack
                 cards:
                   ## JULIENNE PERSON STATUS ##

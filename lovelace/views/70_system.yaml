@@ -122,13 +122,15 @@ cards:
                 state: "on"
             card:
               type: custom:bar-card
+              positions:
+                  icon: 'off'
+                  indicator: 'off'
+                  title: inside
+                  value: inside
               unit_of_measurement: "h"
-              title_position: inside
               columns: 5
               height: 150px
               target: 40
-              width: 100%
-              padding: 2px
               direction: up
               color: '#d1c96f'
               entities:
@@ -155,23 +157,40 @@ cards:
           - type: horizontal-stack
             cards:        
               - type: custom:bar-card
+                style: |
+                  .card-content {
+                    padding: 3px;
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+                  }
                 entity: sensor.net_download_max
                 color: 'var(--accent-color)'
-                indicator: 'off'
-                height: 12
-                title_position: inside
-                align: split
+                positions:
+                  icon: inside
+                  indicator: 'off'
+                  title: inside
+                  value: inside
                 target: 100
-                max: sensor.net_download_max
+                max: 113
               - type: custom:bar-card
+                style: |
+                  .card-content {
+                    padding: 3px;
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+                  }
+                  #states > * {
+                    margin-top: 1;
+                  }
                 entity: sensor.net_upload_max
                 color: 'var(--accent-color)'
-                indicator: 'off'
-                height: 12
-                title_position: inside
-                align: split
+                positions:
+                  icon: inside
+                  indicator: 'off'
+                  title: inside
+                  value: inside
                 target: 10
-                max: sensor.net_upload_max
+                max: 11
           - type: horizontal-stack
             cards:
               - !include
