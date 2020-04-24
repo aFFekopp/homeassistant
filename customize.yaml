@@ -225,3 +225,5 @@ group.motion_sensors:
 device_tracker.andre_mi9t_app:
   entity_picture: /local/presence/andre.png
   picture: /local/presence/andre.png
+sensor.influxdb_size:
+  icon: mdi:database
