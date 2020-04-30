@@ -22,6 +22,20 @@
       column: 'value'
       unit_of_measurement: MB
 
+# - platform: influxdb
+#   host: a0d7b954-influxdb
+#   username: homeassistant
+#   password: !secret influxdb_password
+#   queries:
+#     - name: InfluxDb Size
+#       unit_of_measurement: MB
+#       value_template: '{{ (value | float / 1024 /1024) | round(1) }}'
+#       group_function: sum
+#       measurement: '"monitor"."shard"'
+#       database: _internal
+#       where: 'time > now() - 10s'
+#       field: diskBytes
+
 - platform: uptime
   name: Hass.io Uptime
 
