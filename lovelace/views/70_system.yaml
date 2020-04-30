@@ -165,6 +165,7 @@ cards:
                   }
                 entity: sensor.net_download_max
                 color: 'var(--accent-color)'
+                height: 30px
                 positions:
                   icon: inside
                   indicator: 'off'
@@ -184,6 +185,7 @@ cards:
                   }
                 entity: sensor.net_upload_max
                 color: 'var(--accent-color)'
+                height: 30px
                 positions:
                   icon: inside
                   indicator: 'off'
