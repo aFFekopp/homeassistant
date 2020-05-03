@@ -22,7 +22,7 @@ noctis:
   primary-color: 'var(--accent-color)'
   
   # Main Colors
-  app-header-background-color: 'var(--background-color)'
+  app-header-background-color: '#242e42'
   accent-color: '#1A89F5'
   accent-medium-color: 'var(--accent-color)'
 
