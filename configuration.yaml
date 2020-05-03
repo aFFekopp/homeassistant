@@ -218,10 +218,13 @@ proximity:
 
 lovelace_gen:
 
+pi_hole:
+  - host: 192.168.0.2:80
+    api_key: !secret pi_hole_api_key
+
 input_boolean: !include_dir_merge_named input_boolean
 input_select: !include_dir_merge_named input_select
 input_number: !include_dir_merge_named input_number
 scene: !include scenes.yaml
 script: !include_dir_merge_named scripts
 sensor: !include_dir_merge_list sensor
-zone: !include zones.yaml
