@@ -5,21 +5,17 @@ cards:
   - type: vertical-stack
     style: !include ../includes/style.yaml
     cards:
-
-      - !include
-        - ../includes/titles.yaml
-        - title: SYSTEM & STATISTIKEN
-
       - type: conditional
         conditions:
           - entity: sensor.version_check
             state: "False"
         card:
-          type: custom:vertical-stack-in-card
-          cards: 
-            - type: "custom:button-card"
-              template: header
-              name: Hass.io Update
+          type: vertical-stack
+          cards:
+            - !include
+              - ../includes/titles.yaml
+              - title: HASSIO
+
             - type: entities
               entities:
                 - sensor.version_current
@@ -30,14 +26,19 @@ cards:
           - entity: sensor.hacs
             state_not: "0"
         card:
-          type: custom:vertical-stack-in-card
-          cards: 
-            - type: "custom:button-card"
-              template: header
-              name: HACS
+          type: vertical-stack
+          cards:
+            - !include
+              - ../includes/titles.yaml
+              - title: HACS
+
             - type: entities
               entities:
                 - sensor.hacs
+
+      - !include
+        - ../includes/titles.yaml
+        - title: NUC
 
       - type: custom:vertical-stack-in-card
         cards: 
@@ -72,78 +73,43 @@ cards:
               - sensor.db_size
               - sensor.hass_io_uptime_pretty
               - sensor.nuc_uptime
-      - type: custom:vertical-stack-in-card
-        cards:     
-          - type: "custom:button-card"
-            template: header_clickable
-            entity: input_boolean.button_battery
-          - type: conditional
-            conditions:
-              - entity: input_boolean.button_battery
-                state: "on"
-            card:
-              type: custom:auto-entities
-              card:
-                type: custom:bar-card
-                title_position: inside
-                align: split
-                attribute: battery_level
-                height: 20px
-                title_style:
-                  font-size: 10px
-                value_style:
-                  font-size: 10px
-                severity:
-                  - value: 10
-                    color: '#d16f6f'
-                  - value: 20
-                    color: '#d18b6f'
-                  - value: 30
-                    color: '#d1ad6f'
-              show_empty: false
-              filter:
-                include:
-                  - domain: sensor
-                    attributes:
-                      battery_level: "< 30"
-                  - domain: binary_sensor
-                    attributes:
-                      battery_level: "< 30"
-                exclude: 
-                  - entity_id: sensor.temperature_158d0001e89713
 
-          - type: "custom:button-card"
-            template: header_clickable
-            entity: input_boolean.button_stats
-            name: Lichter
-          - type: conditional
-            conditions:
-              - entity: input_boolean.button_stats
-                state: "on"
-            card:
-              type: custom:bar-card
-              positions:
-                  icon: 'off'
-                  indicator: 'off'
-                  title: inside
-                  value: inside
-              unit_of_measurement: "h"
-              columns: 5
-              height: 150px
-              target: 40
-              direction: up
-              color: '#d1c96f'
-              entities:
-                - entity: sensor.flur_licht
-                  title: Flur
-                - entity: sensor.bad_licht
-                  title: Bad
-                - entity: sensor.kueche_licht
-                  title: Küche
-                - entity: sensor.wohnzimmer_licht
-                  title: Wohnz
-                - entity: sensor.schlafzimmer_licht
-                  title: Schlafz
+      - !include
+        - ../includes/titles.yaml
+        - title: PI-HOLE
+
+      - type: custom:vertical-stack-in-card
+        cards: 
+          - type: horizontal-stack
+            cards: 
+              - !include
+                - ../includes/graphs_embeded.yaml
+                - entity: sensor.glances_pi_cpu_used
+                  name: CPU
+                  hours_to_show: 12
+                  points_per_hour: 4
+                  line_color: var(--custom_graph_color_1)
+              - !include
+                - ../includes/graphs_embeded.yaml
+                - entity: sensor.glances_pi_ram_used_percent
+                  name: Memory
+                  hours_to_show: 12
+                  points_per_hour: 4
+                  line_color: var(--custom_graph_color_2)
+              - !include
+                - ../includes/graphs_embeded.yaml
+                - entity: sensor.glances_pi_used_percent
+                  name: Disk
+                  hours_to_show: 12
+                  points_per_hour: 4
+                  line_color: var(--custom_graph_color_3)
+          - type: entities
+            style: !include ../includes/style_entities_embeded.yaml
+            entities:
+              - sensor.pi_hole_dns_queries_today
+              - sensor.pi_hole_ads_blocked_today
+              - sensor.pi_hole_ads_percentage_blocked_today
+
 
   - type: vertical-stack
     style: !include ../includes/style.yaml
@@ -264,3 +230,76 @@ cards:
                 styles:
                   card:
                     - width: 200px
+
+      - type: custom:vertical-stack-in-card
+        cards:     
+          - type: "custom:button-card"
+            template: header_clickable
+            entity: input_boolean.button_battery
+          - type: conditional
+            conditions:
+              - entity: input_boolean.button_battery
+                state: "on"
+            card:
+              type: custom:auto-entities
+              card:
+                type: custom:bar-card
+                title_position: inside
+                align: split
+                attribute: battery_level
+                height: 20px
+                title_style:
+                  font-size: 10px
+                value_style:
+                  font-size: 10px
+                severity:
+                  - value: 10
+                    color: '#d16f6f'
+                  - value: 20
+                    color: '#d18b6f'
+                  - value: 30
+                    color: '#d1ad6f'
+              show_empty: false
+              filter:
+                include:
+                  - domain: sensor
+                    attributes:
+                      battery_level: "< 30"
+                  - domain: binary_sensor
+                    attributes:
+                      battery_level: "< 30"
+                exclude: 
+                  - entity_id: sensor.temperature_158d0001e89713
+
+          - type: "custom:button-card"
+            template: header_clickable
+            entity: input_boolean.button_stats
+            name: Lichter
+          - type: conditional
+            conditions:
+              - entity: input_boolean.button_stats
+                state: "on"
+            card:
+              type: custom:bar-card
+              positions:
+                  icon: 'off'
+                  indicator: 'off'
+                  title: inside
+                  value: inside
+              unit_of_measurement: "h"
+              columns: 5
+              height: 150px
+              target: 40
+              direction: up
+              color: '#d1c96f'
+              entities:
+                - entity: sensor.flur_licht
+                  title: Flur
+                - entity: sensor.bad_licht
+                  title: Bad
+                - entity: sensor.kueche_licht
+                  title: Küche
+                - entity: sensor.wohnzimmer_licht
+                  title: Wohnz
+                - entity: sensor.schlafzimmer_licht
+                  title: Schlafz
