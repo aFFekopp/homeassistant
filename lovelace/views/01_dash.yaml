@@ -559,53 +559,53 @@ cards:
                         entity: sensor.andre_status
                         show_last_changed: true
               ## CONDITIONAL PROXIMITY ##
-              - type: conditional
-                conditions:
-                  - entity: proximity.home_andre
-                    state_not: "0"
-                  - entity: proximity.home_andre
-                    state_not: "not set"
-                card:
-                  type: horizontal-stack
-                  cards:                                             
-                    ## ANDRE TRAVELDIR ##
-                    - type: custom:button-card
-                      template: people_button
-                      entity: sensor.proximity_traveldir_andre
-                      show_icon: true
-                      state: &state_traveldir
-                        - value: 'stationary'
-                          styles:
-                            icon:
-                              - color: 'rgba(0,0,0,0)'
-                        - value: 'towards'
-                          styles:
-                            icon:
-                              - color: '#c9ffba'
-                        - value: 'away_from'
-                          styles:
-                            icon:
-                              - color: '#ffbaba'
-                      styles:
-                        card:
-                          - background: none
-                    ## ANDRE PROXIMITY HOME ##
-                    - type: custom:button-card
-                      template: people_button
-                      entity: proximity.home_andre
-                      show_state: true
-                      state: &state_proximity
-                        - value: '0'
-                          styles:
-                            state:
-                              - color: 'rgba(0,0,0,0)'
-                        - value: 'not set'
-                          styles:
-                            state:
-                              - color: 'rgba(0,0,0,0)'
-                      styles:
-                        card:
-                          - background: none
+              # - type: conditional
+              #   conditions:
+              #     - entity: proximity.home_andre
+              #       state_not: "0"
+              #     - entity: proximity.home_andre
+              #       state_not: "not set"
+              #   card:
+              #     type: horizontal-stack
+              #     cards:                                             
+              #       ## ANDRE TRAVELDIR ##
+              #       - type: custom:button-card
+              #         template: people_button
+              #         entity: sensor.proximity_traveldir_andre
+              #         show_icon: true
+              #         state: &state_traveldir
+              #           - value: 'stationary'
+              #             styles:
+              #               icon:
+              #                 - color: 'rgba(0,0,0,0)'
+              #           - value: 'towards'
+              #             styles:
+              #               icon:
+              #                 - color: '#c9ffba'
+              #           - value: 'away_from'
+              #             styles:
+              #               icon:
+              #                 - color: '#ffbaba'
+              #         styles:
+              #           card:
+              #             - background: none
+              #       ## ANDRE PROXIMITY HOME ##
+              #       - type: custom:button-card
+              #         template: people_button
+              #         entity: proximity.home_andre
+              #         show_state: true
+              #         state: &state_proximity
+              #           - value: '0'
+              #             styles:
+              #               state:
+              #                 - color: 'rgba(0,0,0,0)'
+              #           - value: 'not set'
+              #             styles:
+              #               state:
+              #                 - color: 'rgba(0,0,0,0)'
+              #         styles:
+              #           card:
+              #             - background: none
 
           - type: custom:vertical-stack-in-card
             cards:
@@ -657,33 +657,33 @@ cards:
                         entity: sensor.julienne_status
                         show_last_changed: true
               ## CONDITIONAL PROXIMITY ##
-              - type: conditional
-                conditions:
-                  - entity: proximity.home_julienne
-                    state_not: "0"
-                  - entity: proximity.home_julienne
-                    state_not: "not set"
-                card:
-                  type: horizontal-stack
-                  cards:                                             
-                    ## JULIENNE TRAVELDIR ##
-                    - type: custom:button-card
-                      template: people_button
-                      entity: sensor.proximity_traveldir_julienne
-                      show_icon: true
-                      state: *state_traveldir
-                      styles:
-                        card:
-                          - background: none
-                    ## JULIENNE PROXIMITY HOME ##
-                    - type: custom:button-card
-                      template: people_button
-                      entity: proximity.home_julienne
-                      show_state: true
-                      state: *state_proximity
-                      styles:
-                        card:
-                          - background: none
+              # - type: conditional
+              #   conditions:
+              #     - entity: proximity.home_julienne
+              #       state_not: "0"
+              #     - entity: proximity.home_julienne
+              #       state_not: "not set"
+              #   card:
+              #     type: horizontal-stack
+              #     cards:                                             
+              #       ## JULIENNE TRAVELDIR ##
+              #       - type: custom:button-card
+              #         template: people_button
+              #         entity: sensor.proximity_traveldir_julienne
+              #         show_icon: true
+              #         state: *state_traveldir
+              #         styles:
+              #           card:
+              #             - background: none
+              #       ## JULIENNE PROXIMITY HOME ##
+              #       - type: custom:button-card
+              #         template: people_button
+              #         entity: proximity.home_julienne
+              #         show_state: true
+              #         state: *state_proximity
+              #         styles:
+              #           card:
+              #             - background: none
       
       ## WEATHER
       - type: custom:weather-card
