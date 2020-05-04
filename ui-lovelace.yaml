@@ -24,19 +24,6 @@ button_card_templates:
       card:
         - height: 30px
         - font-size: 14px
-  header_light:
-    color_type: card
-    color: auto-no-temperature
-    show_icon: false
-    hold_action:
-      action: more-info
-    styles:
-      card:
-        - height: 30px
-        - font-size: 14px
-    state:
-      - color: 'var(--secondary-background-color)'
-        value: 'off'
   esp:
     styles:
       card:
@@ -113,20 +100,6 @@ button_card_templates:
         - height: 27px
         - font-size: 12px
         - box-shadow: unset
-  floorplan:
-    color: 'var(--text-light-color)'
-    state:
-      - value: "off"
-        color: 'var(--primary-color)'
-    show_name: false
-    size: 65%
-    hold_action:
-      action: more-info
-    styles:
-      card:
-        - opacity: 0.65
-        - -webkit-box-shadow: 0px 0px 0px 0px
-        - box-shadow: 0px 0px 0px 0px
   dash_button:
     size: 25px
     color_type: card
@@ -156,7 +129,11 @@ button_card_templates:
         - height: 20px
         - font-size: 11px
         - font-weight: bold
-     
+  pi-hole:
+    size: 30px
+    styles:
+      card:
+        - font-size: 12px   
       
 
 title: Home Assistant
