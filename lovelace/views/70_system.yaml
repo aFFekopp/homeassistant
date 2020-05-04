@@ -109,7 +109,46 @@ cards:
               - sensor.pi_hole_dns_queries_today
               - sensor.pi_hole_ads_blocked_today
               - sensor.pi_hole_ads_percentage_blocked_today
-
+          - type: horizontal-stack
+            cards: 
+              - type: custom:button-card
+                template: pi-hole
+                name: Status
+                entity: binary_sensor.pi_hole
+              - type: custom:button-card
+                template: pi-hole
+                name: Enable
+                icon: mdi:check
+                tap_action:
+                  action: call-service
+                  service: pi_hole.enable
+              - type: custom:button-card
+                template: pi-hole
+                name: Disable
+                icon: mdi:cancel
+                tap_action:
+                  action: call-service
+                  service: pi_hole.disable
+                  service_data:
+                    duration: "00:00:30"
+              - type: custom:state-switch
+                entity: binary_sensor.pi_hole
+                states:
+                  "on":
+                    type: custom:button-card
+                    template: pi-hole
+                    name: Reboot
+                    icon: mdi:restart
+                    tap_action:
+                      action: call-service
+                      service: shell_command.reboot_pi
+                  "off":
+                    type: custom:button-card
+                    template: pi-hole
+                    name: Reboot
+                    icon: mdi:restart-off
+                    tap_action:
+                      action: none
 
   - type: vertical-stack
     style: !include ../includes/style.yaml
