@@ -227,3 +227,6 @@ device_tracker.andre_mi9t_app:
   picture: /local/presence/andre.png
 sensor.influxdb_size:
   icon: mdi:database
+binary_sensor.pi_hole:
+  device_class: connectivity
+  icon: mdi:pi-hole
