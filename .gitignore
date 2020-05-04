@@ -5,6 +5,7 @@ custom_components
 deps
 esphome
 node-red
+ssh
 tts
 www/audio
 www/community
