@@ -188,6 +188,11 @@ binary_sensor:
     count: 1
     scan_interval: 30
     name: TV Schlafzimmer
+  - platform: ping
+    host: 192.168.0.2
+    count: 1
+    scan_interval: 10
+    name: Pi-Hole
   - platform: command_line
     name: "TV Schlafzimmer - Netflix"
     command: '/usr/bin/nmap -p9080 192.168.0.37 | /bin/grep open > /dev/null && (echo ON) || (echo OFF)'
@@ -221,6 +226,9 @@ lovelace_gen:
 pi_hole:
   - host: 192.168.0.2:80
     api_key: !secret pi_hole_api_key
+
+shell_command:
+  reboot_pi: "ssh -i /config/ssh/id_rsa -o StrictHostKeyChecking=no pi@192.168.0.2 'sudo reboot'"
 
 input_boolean: !include_dir_merge_named input_boolean
 input_select: !include_dir_merge_named input_select
