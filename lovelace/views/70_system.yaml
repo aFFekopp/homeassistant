@@ -130,7 +130,7 @@ cards:
                   action: call-service
                   service: pi_hole.disable
                   service_data:
-                    duration: "00:00:30"
+                    duration: "00:05:00"
               - type: custom:state-switch
                 entity: binary_sensor.pi_hole
                 states:
