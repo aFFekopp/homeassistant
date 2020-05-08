@@ -42,7 +42,7 @@ lovelace:
       type: module
     - url: /hacsfiles/mini-media-player/mini-media-player.js
       type: module
-    - url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
+    - url: /hacsfiles/old-vertical-stack-in-card/vertical-stack-in-card.js
       type: module
     - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
       type: module
@@ -51,6 +51,8 @@ lovelace:
     - url: /hacsfiles/weather-card/weather-card.js
       type: module
     - url: /hacsfiles/lovelace-state-switch/state-switch.js
+      type: module
+    - url: /hacsfiles/lovelace-time-picker-card/time-picker-card.js
       type: module
 
     - url: /local/hui-view-settings.js
