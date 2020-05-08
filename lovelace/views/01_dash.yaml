@@ -429,10 +429,14 @@ popup_cards:
   input_boolean.enable_charge:
     title: NIU
     card:
-      type: entities
-      style: !include ../includes/style_entities_popup.yaml
-      entities:
-        - input_datetime.charge_time
+      type: 'custom:time-picker-card'
+      entity: input_datetime.charge_time
+      name: 'Ladezeit'
+      hour_mode: 24
+      hour_step: 1
+      minute_step: 5
+      hide:
+        name: false
 
 cards:
 
