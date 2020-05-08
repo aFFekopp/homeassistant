@@ -172,12 +172,21 @@ cards:
             conditions:
               - entity: input_boolean.enable_charge
                 state: "on"
-            card:          
-              type: entities
-              style: !include ../includes/style.yaml
-              entities:
-                - input_datetime.charge_time
-                - switch.charge_fully
+            card:
+              type: vertical-stack
+              cards:
+                - type: entities
+                  style: !include ../includes/style.yaml
+                  entities:
+                    - switch.charge_fully
+                - type: 'custom:time-picker-card'
+                  entity: input_datetime.charge_time
+                  name: 'Ladezeit'
+                  hour_mode: 24
+                  hour_step: 1
+                  minute_step: 5
+                  hide:
+                    name: true
       
       - !include
         - ../includes/titles.yaml
