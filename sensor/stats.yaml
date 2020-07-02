@@ -8,11 +8,16 @@
 
 - platform: cpuspeed
 
-- platform: command_line
-  name: CPU Temp
-  command: "cat /sys/class/thermal/thermal_zone0/temp"
-  unit_of_measurement: "°C"
-  value_template: '{{ value | multiply(0.001) | round(2)  }}'
+# - platform: command_line
+#   name: CPU Temp
+#   command: "cat /sys/class/thermal/thermal_zone0/temp"
+#   unit_of_measurement: "°C"
+#   value_template: '{{ value | multiply(0.001) | round(2)  }}'
+
+- platform: template
+  sensors:
+    cpu_temp:
+      value_template: '{{ states("input_number.cpu_temp") | multiply(0.001) | round(1) }}'
 
 - platform: sql
   db_url: mysql://hass:recon1@core-mariadb/homeassistant?charset=utf8

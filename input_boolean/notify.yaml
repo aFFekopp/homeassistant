@@ -2,10 +2,6 @@ notify_presence_andre:
   name: Andre Location Status
   icon: mdi:account
 
-notify_presence_julienne:
-  name: Julienne Location Status
-  icon: mdi:account
-
 notifications:
   name: Benachrichtungen
   icon: mdi:telegram

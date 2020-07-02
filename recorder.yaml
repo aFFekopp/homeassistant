@@ -38,6 +38,9 @@ include:
     - binary_sensor.zha_flur_door_contact
     - binary_sensor.zha_bad_window_contact
     - sensor.zha_bad_multisensor_humidity
+    - sensor.mi_wohnzimmer_humidity
+    - sensor.mi_kuche_humidity
+    - sensor.mi_schlafzimmer_humidity
     - sensor.fritz_netmonitor
     - sensor.hs110_current_power_w
     - sensor.hs110_voltage
@@ -78,6 +81,7 @@ include:
     - sensor.bewegungsmelder_schlafzimmer_temperature
     - sensor.temperature_mean
     - sensor.light_level_mean
+    - sensor.humidity_mean
     - binary_sensor.klingel
     - switch.summer
     - sensor.net_upload_cur

@@ -6,7 +6,6 @@ group:
     name: Personen
     entities:
       - person.andre
-      - person.julienne
 
 ################
 # INPUT_SELECT #
@@ -23,19 +22,7 @@ input_select:
       - Arbeit
       - Anne & Fred
       - Nicole & Marc
-      - Papito
-
-  presence_julienne:
-    options:
-      - Zu Hause
-      - Angekommen
-      - Verlassen
-      - Abwesend
-      - Extended Away
-      - Arbeit
-      - Anne & Fred
-      - Nicole & Marc
-      - Papito
+      - Julienne
 
 ##########
 # SENSOR #
@@ -46,6 +33,3 @@ sensor:
       andre_status:
         value_template: '{{ states.input_select.presence_andre.state }}'
         friendly_name: 'Andre'
-      julienne_status:
-        value_template: '{{ states.input_select.presence_julienne.state }}'
-        friendly_name: 'Julienne'

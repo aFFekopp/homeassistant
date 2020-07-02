@@ -97,7 +97,7 @@ button_card_templates:
       action: more-info
     styles:
       card:
-        - height: 27px
+        - height: 30x
         - font-size: 12px
         - box-shadow: unset
   dash_button:

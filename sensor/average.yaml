@@ -16,6 +16,14 @@
     - sensor.bewegungsmelder_wohnzimmer_light_level
     - sensor.bewegungsmelder_schlafzimmer_light_level
 
+- platform: min_max
+  name: humidity_level_max
+  entity_ids:
+    - sensor.zha_bad_multisensor_humidity
+    - sensor.mi_kuche_humidity
+    - sensor.mi_wohnzimmer_humidity
+    - sensor.mi_schlafzimmer_humidity
+
 - platform: template
   sensors:
     temperature_mean:
@@ -26,3 +34,7 @@
       value_template: "{{ (state_attr('sensor.light_level_max', 'mean')|float) }}"
       unit_of_measurement: "lx"
       friendly_name: "Helligkeit"
+    humidity_mean:
+      value_template: "{{ (state_attr('sensor.humidity_level_max', 'mean')|float) }}"
+      unit_of_measurement: "%"
+      friendly_name: "Luftfeuchtigkeit"

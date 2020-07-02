@@ -177,7 +177,7 @@ cards:
                   title: inside
                   value: inside
                 target: 100
-                max: 113
+                max: 110
               - type: custom:bar-card
                 style: |
                   .card-content {
@@ -196,8 +196,8 @@ cards:
                   indicator: 'off'
                   title: inside
                   value: inside
-                target: 10
-                max: 11
+                target: 40
+                max: 45
           - type: horizontal-stack
             cards:
               - !include

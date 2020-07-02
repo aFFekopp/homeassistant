@@ -1,5 +1,5 @@
 - platform: fritzbox_netmonitor
-  host: 192.168.0.1
+  host: 10.0.0.1
 
 - platform: template
   sensors:

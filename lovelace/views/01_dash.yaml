@@ -16,23 +16,7 @@ popup_cards:
           style: !include ../includes/style_entities_popup.yaml
           entities:
             - device_tracker.andre_mi9t_app
-            - device_tracker.life360_andre
             - device_tracker.andre_mi9t
-  sensor.julienne_status:
-    title: Julienne
-    card:
-      type: custom:vertical-stack-in-card
-      style: !include ../includes/style_entities_popup.yaml
-      cards:
-        - type: history-graph
-          style: !include ../includes/style_entities_popup.yaml
-          entities:
-            - sensor.julienne_status
-        - type: entities
-          style: !include ../includes/style_entities_popup.yaml
-          entities:
-            - device_tracker.google_maps_109408471456601103538
-            - device_tracker.julienne_s10
   device_tracker.andre_mi9t_app:
     title: Karte
     card:
@@ -87,19 +71,26 @@ popup_cards:
                 font_size_header: 12
                 line_color: var(--custom_graph_color_2)
         - !include
-          - ../includes/titles.yaml
-          - title: TÜRE & KLINGEL
-        - type: entities
-          show_header_toggle: false
-          style: !include ../includes/style_entities_popup.yaml
-          entities:
-            - entity: binary_sensor.klingel
-              secondary_info: last-changed
-            - input_number.klingel_volume
-            - switch.summer
-            - entity: input_boolean.open_door
-              name: Türe öffnen
-              icon: mdi:door-open
+          - ../includes/graphs_popup.yaml
+          - entity: sensor.mi_wohnzimmer_humidity
+            name: Luftfeuchtigkeit
+            font_size_header: 12
+            line_color: var(--custom_graph_color_3)
+            line_width: 2
+        # - !include
+        #   - ../includes/titles.yaml
+        #   - title: TÜRE & KLINGEL
+        # - type: entities
+        #   show_header_toggle: false
+        #   style: !include ../includes/style_entities_popup.yaml
+        #   entities:
+        #     - entity: binary_sensor.klingel
+        #       secondary_info: last-changed
+        #     - input_number.klingel_volume
+        #     - switch.summer
+        #     - entity: input_boolean.open_door
+        #       name: Türe öffnen
+        #       icon: mdi:door-open
         - !include
           - ../includes/titles.yaml
           - title: LICHT & BEWEGUNG
@@ -107,9 +98,13 @@ popup_cards:
           show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
-            - entity: light.flurdecke
-              name: Decke
-              icon: mdi:ceiling-light
+            - entity: light.fl_spot_1
+              name: Spot 1
+              icon: mdi:track-light
+              type: custom:slider-entity-row
+            - entity: light.fl_spot_2
+              name: Spot 2
+              icon: mdi:track-light
               type: custom:slider-entity-row
         - type: entities
           show_header_toggle: false
@@ -154,13 +149,13 @@ popup_cards:
           show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
-            - entity: light.badezimmerdecke
-              name: Decke
-              icon: mdi:ceiling-light
+            - entity: light.bd_spot_1
+              name: Spot 1
+              icon: mdi:track-light
               type: custom:slider-entity-row
-            - entity: light.badezimmerspiegel
-              name: Spiegel
-              icon: mdi:led-strip
+            - entity: light.bd_spot_2
+              name: Spot 2
+              icon: mdi:track-light
               type: custom:slider-entity-row
         - type: entities
           show_header_toggle: false
@@ -192,27 +187,22 @@ popup_cards:
                 font_size_header: 12
                 line_color: var(--custom_graph_color_2)
         - !include
+          - ../includes/graphs_popup.yaml
+          - entity: sensor.mi_kuche_humidity
+            name: Luftfeuchtigkeit
+            font_size_header: 12
+            line_color: var(--custom_graph_color_3)
+            line_width: 2
+        - !include
           - ../includes/titles.yaml
           - title: LICHT & BEWEGUNG
         - type: entities
           show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
-            - entity: light.kuchendecke
+            - entity: light.kuchenzeile
               name: Decke
               icon: mdi:ceiling-light
-              type: custom:slider-entity-row
-            - entity: light.kuchenzeile
-              name: Zeile
-              icon: mdi:record
-              type: custom:slider-entity-row
-            - entity: light.arbeitsplatte
-              name: Arbeitsplatte
-              icon: mdi:record
-              type: custom:slider-entity-row
-            - entity: light.hangeschrank
-              name: Hängeschrank
-              icon: mdi:wall-sconce-flat
               type: custom:slider-entity-row
         - type: entities
           show_header_toggle: false
@@ -242,35 +232,22 @@ popup_cards:
                 font_size_header: 12
                 line_color: var(--custom_graph_color_2)
         - !include
+          - ../includes/graphs_popup.yaml
+          - entity: sensor.mi_wohnzimmer_humidity
+            name: Luftfeuchtigkeit
+            font_size_header: 12
+            line_color: var(--custom_graph_color_3)
+            line_width: 2
+        - !include
           - ../includes/titles.yaml
           - title: LICHT & BEWEGUNG
         - type: entities
           show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
-            - entity: light.wohnzimmer_decke_1
-              name: Lampe 1
-              icon: mdi:track-light
-              type: custom:slider-entity-row
-            - entity: light.wohnzimmer_decke_2
-              name: Lampe 2
-              icon: mdi:track-light
-              type: custom:slider-entity-row
-            - entity: light.wohnzimmer_decke_3
-              name: Lampe 3
-              icon: mdi:track-light
-              type: custom:slider-entity-row
-            - entity: light.wohnzimmer_decke_4
-              name: Lampe 4
-              icon: mdi:track-light
-              type: custom:slider-entity-row
-        - type: entities
-          show_header_toggle: false
-          style: !include ../includes/style_entities_popup.yaml
-          entities:
             - entity: light.wandfluter
-              name: Wandfluter
-              icon: mdi:floor-lamp
+              name: Decke
+              icon: mdi:ceiling-light
               type: custom:slider-entity-row
         - type: entities
           show_header_toggle: false
@@ -300,15 +277,26 @@ popup_cards:
                 font_size_header: 12
                 line_color: var(--custom_graph_color_2)
         - !include
+          - ../includes/graphs_popup.yaml
+          - entity: sensor.mi_schlafzimmer_humidity
+            name: Luftfeuchtigkeit
+            font_size_header: 12
+            line_color: var(--custom_graph_color_3)
+            line_width: 2
+        - !include
           - ../includes/titles.yaml
           - title: LICHT & BEWEGUNG
         - type: entities
           show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
-            - entity: light.schlafzimmerdecke
-              name: Decke
-              icon: mdi:led-strip
+            - entity: light.sz_spot_1
+              name: Spot 1
+              icon: mdi:track-light
+              type: custom:slider-entity-row
+            - entity: light.sz_spot_2
+              name: Spot 2
+              icon: mdi:track-light
               type: custom:slider-entity-row
         - type: entities
           show_header_toggle: false
@@ -319,18 +307,6 @@ popup_cards:
               secondary_info: last-changed
         - !include
           - ../includes/titles.yaml
-          - title: FERNSEHEN
-        - type: entities
-          show_header_toggle: false
-          style: !include ../includes/style_entities_popup.yaml
-          entities:
-            - entity: binary_sensor.tv_schlafzimmer
-              name: Fernseher
-            - entity: binary_sensor.tv_schlafzimmer_netflix
-              name: Netflix
-              icon: mdi:netflix
-        - !include
-          - ../includes/titles.yaml
           - title: BETT
         - type: entities
           show_header_toggle: false
@@ -338,6 +314,7 @@ popup_cards:
           entities:
             - sensor.bed_people
             - sensor.bed_weight_filtered
+            - switch.bw_schlafzimmer_licht
   sensor.temperature_mean:
     title: Temperaturen
     card:
@@ -370,6 +347,22 @@ popup_cards:
           name: Wohnzimmer
         - entity: sensor.bewegungsmelder_schlafzimmer_light_level
           name: Schlafzimmer
+  sensor.humidity_mean:
+    title: Luftfeuchtigkeit
+    card:
+      type: entities
+      style: !include ../includes/style_entities_popup.yaml
+      entities:
+        - entity: sensor.mi_wohnzimmer_humidity
+          name: Flur
+        - entity: sensor.zha_bad_multisensor_humidity
+          name: Bad
+        - entity: sensor.mi_kuche_humidity
+          name: Küche
+        - entity: sensor.mi_wohnzimmer_humidity
+          name: Wohnzimmer
+        - entity: sensor.mi_schlafzimmer_humidity
+          name: Schlafzimmer
   input_select.media_player_selection:
     title: Media
     card:
@@ -400,7 +393,7 @@ popup_cards:
             icon: true
             power_state: false
         - type: 'custom:mini-media-player'
-          entity: media_player.echo_show_kuche
+          entity: media_player.echo_kueche
           group: true
           hide:
             controls: true
@@ -409,7 +402,7 @@ popup_cards:
             icon: true
             power_state: false
         - type: 'custom:mini-media-player'
-          entity: media_player.echo_l_wohnzimmer
+          entity: media_player.echo_show_wohnzimmer
           group: true
           hide:
             controls: true
@@ -418,7 +411,7 @@ popup_cards:
             icon: true
             power_state: false
         - type: 'custom:mini-media-player'
-          entity: media_player.echo_r_wohnzimmer
+          entity: media_player.echo_schlafzimmer
           group: true
           hide:
             controls: true
@@ -486,26 +479,23 @@ cards:
             styles:
               card:
                 - background-color: '[[[ if (states["media_player.uberall"].state == "playing") return "var(--accent-color)";
-                                    if (states["media_player.heimkino"].state == "playing") return "var(--accent-color)";
-                                    if (states["media_player.echo_show_kuche"].state == "playing") return "var(--accent-color)";
-                                    if (states["media_player.echo_r_wohnzimmer"].state == "playing") return "var(--accent-color)";
-                                    if (states["media_player.echo_l_wohnzimmer"].state == "playing") return "var(--accent-color)";
+                                    if (states["media_player.echo_kueche"].state == "playing") return "var(--accent-color)";
+                                    if (states["media_player.echo_schlafzimmer"].state == "playing") return "var(--accent-color)";
+                                    if (states["media_player.echo_show_wohnzimmer"].state == "playing") return "var(--accent-color)";
                                     if (states["media_player.echo_dot_bad"].state == "playing") return "var(--accent-color)";
                                     else return "var(--custom_card_background)"; ]]]'
               icon:
                 - color: '[[[ if (states["media_player.uberall"].state == "playing") return "var(--custom_icon_light)";
-                          if (states["media_player.heimkino"].state == "playing") return "var(--custom_icon_light)";
-                          if (states["media_player.echo_show_kuche"].state == "playing") return "var(--custom_icon_light)";
-                          if (states["media_player.echo_r_wohnzimmer"].state == "playing") return "var(--custom_icon_light)";
-                          if (states["media_player.echo_l_wohnzimmer"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_kueche"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_schlafzimmer"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_show_wohnzimmer"].state == "playing") return "var(--custom_icon_light)";
                           if (states["media_player.echo_dot_bad"].state == "playing") return "var(--custom_icon_light)";
                           else return "var(--custom_icon_dark)"; ]]]'
               state:
                 - color: '[[[ if (states["media_player.uberall"].state == "playing") return "var(--custom_icon_light)";
-                          if (states["media_player.heimkino"].state == "playing") return "var(--custom_icon_light)";
-                          if (states["media_player.echo_show_kuche"].state == "playing") return "var(--custom_icon_light)";
-                          if (states["media_player.echo_r_wohnzimmer"].state == "playing") return "var(--custom_icon_light)";
-                          if (states["media_player.echo_l_wohnzimmer"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_kueche"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_schlafzimmer"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_show_wohnzimmer"].state == "playing") return "var(--custom_icon_light)";
                           if (states["media_player.echo_dot_bad"].state == "playing") return "var(--custom_icon_light)";
                           else return "var(--custom_icon_dark)"; ]]]'
         
@@ -562,132 +552,6 @@ cards:
                         template: people_button
                         entity: sensor.andre_status
                         show_last_changed: true
-              ## CONDITIONAL PROXIMITY ##
-              # - type: conditional
-              #   conditions:
-              #     - entity: proximity.home_andre
-              #       state_not: "0"
-              #     - entity: proximity.home_andre
-              #       state_not: "not set"
-              #   card:
-              #     type: horizontal-stack
-              #     cards:                                             
-              #       ## ANDRE TRAVELDIR ##
-              #       - type: custom:button-card
-              #         template: people_button
-              #         entity: sensor.proximity_traveldir_andre
-              #         show_icon: true
-              #         state: &state_traveldir
-              #           - value: 'stationary'
-              #             styles:
-              #               icon:
-              #                 - color: 'rgba(0,0,0,0)'
-              #           - value: 'towards'
-              #             styles:
-              #               icon:
-              #                 - color: '#c9ffba'
-              #           - value: 'away_from'
-              #             styles:
-              #               icon:
-              #                 - color: '#ffbaba'
-              #         styles:
-              #           card:
-              #             - background: none
-              #       ## ANDRE PROXIMITY HOME ##
-              #       - type: custom:button-card
-              #         template: people_button
-              #         entity: proximity.home_andre
-              #         show_state: true
-              #         state: &state_proximity
-              #           - value: '0'
-              #             styles:
-              #               state:
-              #                 - color: 'rgba(0,0,0,0)'
-              #           - value: 'not set'
-              #             styles:
-              #               state:
-              #                 - color: 'rgba(0,0,0,0)'
-              #         styles:
-              #           card:
-              #             - background: none
-
-          - type: custom:vertical-stack-in-card
-            cards:
-              ## JULIENNE CHARGING ##
-              - type: custom:bar-card
-                entity: sensor.handy_julienne_battery
-                style: |
-                  .card-content {
-                    padding: 0px;
-                  }
-                  #states > * {
-                    margin-top: 0;
-                  }
-                positions:
-                  icon: 'off'
-                  indicator: 'off'
-                  name: 'off'
-                  value: 'off'
-                color: 'var(--accent-color)'
-                height: 2px
-                animation:
-                  state: 'on'
-              - type: horizontal-stack
-                cards:
-                  ## JULIENNE PERSON STATUS ##
-                  - type: custom:button-card
-                    template: people_state
-                    entity: sensor.julienne_status
-                    entity_picture: /local/presence/julienne.png        
-                  - type: vertical-stack
-                    cards:  
-                      ## JULIENNE BATTERY ##
-                      - type: custom:button-card
-                        template: people_button
-                        entity: sensor.handy_julienne_battery
-                        show_state: true
-                      ## JULIENNE MAP ICON ##
-                      - type: custom:button-card
-                        template: people_button
-                        entity: device_tracker.google_maps_109408471456601103538
-                        icon: mdi:map
-                        show_icon: true
-                        hold_action:
-                          action: navigate
-                          navigation_path: /lovelace/4/
-                      ## JULIENNE LAST CHANGED ##
-                      - type: custom:button-card
-                        template: people_button
-                        entity: sensor.julienne_status
-                        show_last_changed: true
-              ## CONDITIONAL PROXIMITY ##
-              # - type: conditional
-              #   conditions:
-              #     - entity: proximity.home_julienne
-              #       state_not: "0"
-              #     - entity: proximity.home_julienne
-              #       state_not: "not set"
-              #   card:
-              #     type: horizontal-stack
-              #     cards:                                             
-              #       ## JULIENNE TRAVELDIR ##
-              #       - type: custom:button-card
-              #         template: people_button
-              #         entity: sensor.proximity_traveldir_julienne
-              #         show_icon: true
-              #         state: *state_traveldir
-              #         styles:
-              #           card:
-              #             - background: none
-              #       ## JULIENNE PROXIMITY HOME ##
-              #       - type: custom:button-card
-              #         template: people_button
-              #         entity: proximity.home_julienne
-              #         show_state: true
-              #         state: *state_proximity
-              #         styles:
-              #           card:
-              #             - background: none
       
       ## WEATHER
       - type: custom:weather-card
@@ -703,45 +567,45 @@ cards:
             margin-bottom: 5px;
           }
           .spacer {
-          padding-top: 0em;
+          padding-top: 0em !important;
           }
           .current {
-          padding-top: 0em;
-          padding-left: 1em;
-          margin-top: 0.5em;
-          margin-bottom: 0em;
+          padding-top: 0em !important;
+          padding-left: 1em !important;
+          margin-top: 0.5em !important;
+          margin-bottom: 0em !important;
           }
           .temp {
-          font-size: 3.2em;
-          position: sticky;
+          font-size: 3.2em !important;
+          position: sticky !important;
           }
           .tempc {
-          font-size: 1.5em;
-          position: sticky;
+          font-size: 1.5em !important;
+          position: sticky !important;
           }
           .forecast {
-          margin-top: -3.5em;
-          margin-bottom: -0.7em;
+          margin-top: -4.5em !important;
+          margin-bottom: -0.7em !important;
           }
           .forecast .day:first-child {
-          margin-left: 7.5em;
+          margin-left: 7.5em !important;
           }
           .day {
-          border-right: none;
-          line-height: 2;
+          border-right: none !important;
+          line-height: 2 !important;
           }
           .precipitation {
-          display: none
+          display: none !important;
           }
           .icon {
-          width: 40px;
-          height: 40px;
+          width: 40px !important;
+          height: 40px !important;
           }
           .icon.bigger {
-          width: 4em;
-          height: 4em;
-          left: 2.5em;
-          top: 8em;
+          width: 4.5em !important;
+          height: 4.5em !important;
+          left: 2.5em !important;
+          top: 8em !important;
           }
           
   ## ROW 2 ###################################################################################################################
@@ -763,7 +627,7 @@ cards:
               motion_sensor_toggle: input_boolean.motion_sensor_flur_toggle
               media_player: light.flur
               motion_sensor_timer: timer.bewegungsmelder_flur
-
+    
           - !include
             - ../includes/dash_lights.yaml
             - light: light.bad
@@ -772,14 +636,14 @@ cards:
               motion_sensor_toggle: input_boolean.motion_sensor_bad_toggle
               media_player: media_player.echo_dot_bad
               motion_sensor_timer: timer.bewegungsmelder_bad
-
+    
           - !include
             - ../includes/dash_lights.yaml
             - light: light.kuche
               icon: mdi:food-fork-drink
               motion_sensor: binary_sensor.bewegungsmelder_kuche_motion
               motion_sensor_toggle: input_boolean.motion_sensor_kuche_toggle
-              media_player: media_player.echo_show_kuche
+              media_player: media_player.echo_kueche
               motion_sensor_timer: timer.bewegungsmelder_kuche
           
           - !include
@@ -788,16 +652,16 @@ cards:
               icon: mdi:sofa
               motion_sensor: binary_sensor.bewegungsmelder_wohnzimmer_motion
               motion_sensor_toggle: input_boolean.motion_sensor_wohnzimmer_toggle
-              media_player: media_player.heimkino
+              media_player: media_player.echo_show_wohnzimmer
               motion_sensor_timer: timer.bewegungsmelder_wohnzimmer
-
+    
           - !include
             - ../includes/dash_lights.yaml
             - light: light.schlafzimmer
               icon: mdi:bed-empty
               motion_sensor: binary_sensor.bewegungsmelder_schlafzimmer_motion
               motion_sensor_toggle: input_boolean.motion_sensor_schlafzimmer_toggle
-              media_player: light.schlafzimmer
+              media_player: media_player.echo_schlafzimmer
               motion_sensor_timer: timer.bewegungsmelder_schlafzimmer
 
       - !include
@@ -819,7 +683,7 @@ cards:
               line_color: var(--custom_graph_color_2)
           - !include
             - ../includes/graphs.yaml
-            - entity: sensor.zha_bad_multisensor_humidity
+            - entity: sensor.humidity_mean
               name: Luftfeuchtigkeit
               line_color: var(--custom_graph_color_3)
 

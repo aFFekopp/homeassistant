@@ -6,9 +6,13 @@ style: |
     font-family: Quicksand;
     height: 30px;
     background: none;
-    margin-top: -0.9em;
-    margin-left: -5px;
-    margin-bottom: 0.5em;
+    margin-top: 0em;
+    margin-left: 8px;
+    margin-bottom: -0.4em;
     box-shadow: none;
+  }
+  ha-markdown {
+    padding: 0px 0px 0px 8px !important;
+    border-left: 3px solid var(--accent-color);
   }
 content: {{ title }}

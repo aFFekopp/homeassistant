@@ -13,6 +13,8 @@ config:
 
 hassio:
 
+api:
+
 #http:
 
 updater:
@@ -40,7 +42,7 @@ lovelace:
       type: module
     - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
       type: module
-    - url: /hacsfiles/mini-media-player/mini-media-player.js
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
       type: module
     - url: /hacsfiles/old-vertical-stack-in-card/vertical-stack-in-card.js
       type: module
@@ -94,73 +96,39 @@ tts:
     language: 'de'
 
 ## MEDIA PLAYER #########################################################################
-media_player:
-  - platform: androidtv
-    name: FireTV - Wohnzimmer
-    host: 192.168.0.78
-    apps:
-      com.amazon.tv.launcher: "Fire TV"
-      com.netflix.ninja: "Netflix"
-      com.amazon.avod: "Amazon Video"
-      com.amazon.firetv.youtube: "YouTube"
-    state_detection_rules:
-      'com.amazon.tv.launcher':
-        - 'standby'
-      'com.netflix.ninja':
-        - 'media_session_state'
-      'com.amazon.avod':
-        - 'media_session_state'
+# media_player:
+#   - platform: androidtv
+#     name: FireTV - Wohnzimmer
+#     host: 192.168.0.78
+#     apps:
+#       com.amazon.tv.launcher: "Fire TV"
+#       com.netflix.ninja: "Netflix"
+#       com.amazon.avod: "Amazon Video"
+#       com.amazon.firetv.youtube: "YouTube"
+#     state_detection_rules:
+#       'com.amazon.tv.launcher':
+#         - 'standby'
+#       'com.netflix.ninja':
+#         - 'media_session_state'
+#       'com.amazon.avod':
+#         - 'media_session_state'
   
 ## HUE ##################################################################################
 hue:
   bridges:
-    - host: 192.168.0.22
+    - host: 10.0.0.10
       allow_hue_groups: true
       allow_unreachable: true
 
 ## DEVICE TRACKERS ######################################################################
 device_tracker:
   - platform: fritz
-    host: 192.168.0.1
+    host: 10.0.0.1
     track_new_devices: True
     consider_home: 90
-  - platform: bluetooth_tracker
-  - platform: google_maps
-    username: !secret gmaps_tracker_mail
-    max_gps_accuracy: 200
   - platform: mqtt_json
     devices:
       niu: home/niu/position
-
-life360:
-  max_update_wait:
-    minutes: 30
-  warning_threshold: 10
-  error_threshold: 15
-
-## TELEGRAM #############################################################################
-notify:
-  - name: telegram_bot
-    platform: telegram
-    chat_id: !secret telegram_bot_chatid
-  - name: telegram_status
-    platform: telegram
-    chat_id: !secret telegram_status_chatid
-  - name: telegram_logging
-    platform: telegram
-    chat_id: !secret telegram_logging_chatid
-  - name: telegram_emergency
-    platform: telegram
-    chat_id: !secret telegram_emergency_chatid
-
-telegram_bot:
-  - platform: polling
-    api_key: !secret telegram_api_key
-    allowed_chat_ids:
-      - !secret telegram_bot_chatid
-      - !secret telegram_status_chatid
-      - !secret telegram_logging_chatid
-      - !secret telegram_emergency_chatid
 
 ## WEATHER ##############################################################################
 weather:
@@ -186,51 +154,19 @@ utility_meter:
 ## PING #################################################################################
 binary_sensor:
   - platform: ping
-    host: 192.168.0.37
-    count: 1
-    scan_interval: 30
-    name: TV Schlafzimmer
-  - platform: ping
-    host: 192.168.0.2
+    host: 10.0.0.2
     count: 1
     scan_interval: 10
     name: Pi-Hole
-  - platform: command_line
-    name: "TV Schlafzimmer - Netflix"
-    command: '/usr/bin/nmap -p9080 192.168.0.37 | /bin/grep open > /dev/null && (echo ON) || (echo OFF)'
-    device_class: power
-
-proximity:
-  home_julienne: 
-    ignored_zones:
-      - AnneFred
-      - ElenaKlinik
-      - MarcNicole
-      - Neovia
-      - Papito
-    devices:
-      - device_tracker.google_maps_109408471456601103538
-    tolerance: 50
-  home_andre: 
-    ignored_zones:
-      - AnneFred
-      - ElenaKlinik
-      - MarcNicole
-      - Neovia
-      - Papito
-    devices:
-      - device_tracker.google_maps_108265044794977597376
-      - device_tracker.life360_andre
-    tolerance: 50
 
 lovelace_gen:
 
 pi_hole:
-  - host: 192.168.0.2:80
+  - host: 10.0.0.2:80
     api_key: !secret pi_hole_api_key
 
 shell_command:
-  reboot_pi: "ssh -i /config/ssh/id_rsa -o StrictHostKeyChecking=no pi@192.168.0.2 'sudo reboot'"
+  reboot_pi: "ssh -i /config/ssh/id_rsa -o StrictHostKeyChecking=no pi@10.0.0.2 'sudo reboot'"
 
 input_boolean: !include_dir_merge_named input_boolean
 input_select: !include_dir_merge_named input_select

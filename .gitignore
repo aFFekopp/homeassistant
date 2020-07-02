@@ -23,3 +23,4 @@ known_devices.yaml
 phue.conf
 secrets.yaml
 zigbee.db
+.vscode/settings.json
