@@ -16,6 +16,13 @@ style: |
   }
 entities: 
   - {{ entity }}
+  - entity: sensor.solar_elevation
+    color: 'rgba(0,0,0,0.2)'
+    line_width: 1
+    show_fill: false
+    show_legend: false
+    show_state: false
+    y_axis: secondary
 name: {{ name }}
 align_state: center
 align_icon: {{ align_icon|default('right') }}
@@ -26,7 +33,7 @@ line_color: {{ line_color|default('var(--accent-color)') }}
 line_width: {{ line_width|default('4') }}
 animate: true
 points_per_hour: {{ points_per_hour|default('0.5') }}
-#lower_bound: 0
+lower_bound_secondary: 0
 show:
   fill: false
   graph: {{ graph|default('line') }}
