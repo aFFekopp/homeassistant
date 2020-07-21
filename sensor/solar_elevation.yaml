@@ -1,0 +1,6 @@
+- platform: template
+  sensors:
+    solar_elevation:
+      friendly_name: "Sonnenstand"
+      unit_of_measurement: '°'
+      value_template: "{{ state_attr('sun.sun', 'elevation') }}"
