@@ -56,6 +56,8 @@ lovelace:
       type: module
     - url: /hacsfiles/lovelace-time-picker-card/time-picker-card.js
       type: module
+    - url: /hacsfiles/vacuum-card/vacuum-card.js
+      type: module
 
     - url: /local/hui-view-settings.js
       type: js
@@ -167,6 +169,17 @@ pi_hole:
 
 shell_command:
   reboot_pi: "ssh -i /config/ssh/id_rsa -o StrictHostKeyChecking=no pi@10.0.0.2 'sudo reboot'"
+
+vacuum:
+  - platform: xiaomi_miio
+    host: 10.0.0.16
+    token: 73374466445051533764425965534c74
+
+# alexa_media:
+#   accounts:
+#     - email: !secret amazon_user
+#       password: !secret amazon_password
+#       url: amazon.com
 
 input_boolean: !include_dir_merge_named input_boolean
 input_select: !include_dir_merge_named input_select
