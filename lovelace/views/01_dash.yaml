@@ -26,15 +26,6 @@ popup_cards:
       hours_to_show: 24
       entities:
         - device_tracker.andre_mi9t_app
-  device_tracker.google_maps_109408471456601103538:
-    title: Karte
-    card:
-      type: map
-      aspect_ratio: 16:9
-      default_zoom: 12
-      hours_to_show: 24
-      entities:
-        - device_tracker.google_maps_109408471456601103538
   weather.openweathermap:
     title: Weather
     large: true
@@ -314,7 +305,6 @@ popup_cards:
           entities:
             - sensor.bed_people
             - sensor.bed_weight_filtered
-            - switch.bw_schlafzimmer_licht
   sensor.temperature_mean:
     title: Temperaturen
     card:
@@ -393,7 +383,7 @@ popup_cards:
             icon: true
             power_state: false
         - type: 'custom:mini-media-player'
-          entity: media_player.echo_kueche
+          entity: media_player.echo_kuche
           group: true
           hide:
             controls: true
@@ -479,21 +469,21 @@ cards:
             styles:
               card:
                 - background-color: '[[[ if (states["media_player.uberall"].state == "playing") return "var(--accent-color)";
-                                    if (states["media_player.echo_kueche"].state == "playing") return "var(--accent-color)";
+                                    if (states["media_player.echo_kuche"].state == "playing") return "var(--accent-color)";
                                     if (states["media_player.echo_schlafzimmer"].state == "playing") return "var(--accent-color)";
                                     if (states["media_player.echo_show_wohnzimmer"].state == "playing") return "var(--accent-color)";
                                     if (states["media_player.echo_dot_bad"].state == "playing") return "var(--accent-color)";
                                     else return "var(--custom_card_background)"; ]]]'
               icon:
                 - color: '[[[ if (states["media_player.uberall"].state == "playing") return "var(--custom_icon_light)";
-                          if (states["media_player.echo_kueche"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_kuche"].state == "playing") return "var(--custom_icon_light)";
                           if (states["media_player.echo_schlafzimmer"].state == "playing") return "var(--custom_icon_light)";
                           if (states["media_player.echo_show_wohnzimmer"].state == "playing") return "var(--custom_icon_light)";
                           if (states["media_player.echo_dot_bad"].state == "playing") return "var(--custom_icon_light)";
                           else return "var(--custom_icon_dark)"; ]]]'
               state:
                 - color: '[[[ if (states["media_player.uberall"].state == "playing") return "var(--custom_icon_light)";
-                          if (states["media_player.echo_kueche"].state == "playing") return "var(--custom_icon_light)";
+                          if (states["media_player.echo_kuche"].state == "playing") return "var(--custom_icon_light)";
                           if (states["media_player.echo_schlafzimmer"].state == "playing") return "var(--custom_icon_light)";
                           if (states["media_player.echo_show_wohnzimmer"].state == "playing") return "var(--custom_icon_light)";
                           if (states["media_player.echo_dot_bad"].state == "playing") return "var(--custom_icon_light)";
@@ -542,8 +532,8 @@ cards:
                       - type: custom:button-card
                         template: people_button
                         entity: device_tracker.andre_mi9t_app
-                        icon: mdi:map
-                        show_icon: true
+                        name: Map
+                        show_name: true
                         hold_action:
                           action: navigate
                           navigation_path: /lovelace/4/
@@ -553,7 +543,166 @@ cards:
                         entity: sensor.andre_status
                         show_last_changed: true
       
+      - !include
+        - ../includes/titles.yaml
+        - title: SAUGER
+
+      - type: 'custom:vacuum-card'
+        entity: vacuum.xiaomi_vacuum_cleaner
+        show_name: false
+        #compact_view: true
+        style: |
+          ha-card {
+            margin-top: 5px;
+            margin-bottom: 5px;
+          }
+          .preview {
+            background: var(--paper-card-background-color) !important;
+          }
+          .stats {
+            border-top: 3px solid var(--background-color) !important;
+          }
+          .stats-block {
+            margin: 5px 0px;
+            border-right: 0px !important;
+          }
+          .toolbar {
+            background: var(--paper-card-background-color, var(--primary-background-color)) !important;
+            border-top: 3px solid var(--background-color) !important;
+            min-height: 30px;
+          }
+          .toolbar ha-icon-button {
+            color: var(--text-color) !important;
+          }
+          .vacuum {
+            max-height: 150px !important;
+            margin: 10px auto 10px auto !important;
+          }
+          .battery {
+            font-weight: normal !important;
+          }
+          .stats-hours {
+            font-size: 16px !important;
+          }
+        stats:
+          default:
+            - attribute: filter_left
+              unit: hours
+              subtitle: Filter
+            - attribute: side_brush_left
+              unit: hours
+              subtitle: Side brush
+            - attribute: main_brush_left
+              unit: hours
+              subtitle: Main brush
+            - attribute: sensor_dirty_left
+              unit: hours
+              subtitle: Sensors
+          cleaning:
+            - attribute: cleaned_area
+              unit: m2
+              subtitle: Cleaning area
+            - attribute: cleaning_time
+              unit: minutes
+              subtitle: Cleaning time
+        actions:
+          - name: Flur
+            service: xiaomi_miio.vacuum_clean_zone
+            service_data:
+              entity_id: vacuum.xiaomi_vacuum_cleaner
+              repeats: 1
+              zone: [[22055,21571,24555,23671]]
+            icon: mdi:broom
+          - name: Bad
+            service: xiaomi_miio.vacuum_clean_zone
+            service_data:
+              entity_id: vacuum.xiaomi_vacuum_cleaner
+              repeats: 1
+              zone: [[24397,19172,25947,21722]]
+            icon: mdi:shower-head
+          - name: Küche
+            service: xiaomi_miio.vacuum_clean_zone
+            service_data:
+              entity_id: vacuum.xiaomi_vacuum_cleaner
+              repeats: 1
+              zone: [[26930,19276,28580,21776]]
+            icon: mdi:food-fork-drink
+          - name: Wohnzimmer
+            service: xiaomi_miio.vacuum_clean_zone
+            service_data:
+              entity_id: vacuum.xiaomi_vacuum_cleaner
+              repeats: 1
+              zone: [[24487,21713,28487,26063]]
+            icon: mdi:sofa
+          - name: Schlafzimmer
+            service: xiaomi_miio.vacuum_clean_zone
+            service_data:
+              entity_id: vacuum.xiaomi_vacuum_cleaner
+              repeats: 1
+              zone: [[20593,22989,24493,26089]]
+            icon: mdi:bed-empty
+          
+  ## ROW 2 ###################################################################################################################
+  - type: vertical-stack
+    cards: 
+      
+      - !include
+        - ../includes/titles.yaml
+        - title: LICHTER & RÄUME
+
+      ## LICHTER ##
+      - type: horizontal-stack
+        cards:
+          - !include
+            - ../includes/dash_lights.yaml
+            - light: light.flur
+              icon: mdi:broom
+              motion_sensor: binary_sensor.bewegungsmelder_flur_motion
+              motion_sensor_toggle: input_boolean.motion_sensor_flur_toggle
+              media_player: light.flur
+              motion_sensor_timer: timer.bewegungsmelder_flur
+    
+          - !include
+            - ../includes/dash_lights.yaml
+            - light: light.bad
+              icon: mdi:shower-head
+              motion_sensor: binary_sensor.bewegungsmelder_bad_motion
+              motion_sensor_toggle: input_boolean.motion_sensor_bad_toggle
+              media_player: media_player.echo_dot_bad
+              motion_sensor_timer: timer.bewegungsmelder_bad
+    
+          - !include
+            - ../includes/dash_lights.yaml
+            - light: light.kuche
+              icon: mdi:food-fork-drink
+              motion_sensor: binary_sensor.bewegungsmelder_kuche_motion
+              motion_sensor_toggle: input_boolean.motion_sensor_kuche_toggle
+              media_player: media_player.echo_kuche
+              motion_sensor_timer: timer.bewegungsmelder_kuche
+          
+          - !include
+            - ../includes/dash_lights.yaml
+            - light: light.wohnzimmer
+              icon: mdi:sofa
+              motion_sensor: binary_sensor.bewegungsmelder_wohnzimmer_motion
+              motion_sensor_toggle: input_boolean.motion_sensor_wohnzimmer_toggle
+              media_player: media_player.echo_show_wohnzimmer
+              motion_sensor_timer: timer.bewegungsmelder_wohnzimmer
+    
+          - !include
+            - ../includes/dash_lights.yaml
+            - light: light.schlafzimmer
+              icon: mdi:bed-empty
+              motion_sensor: binary_sensor.bewegungsmelder_schlafzimmer_motion
+              motion_sensor_toggle: input_boolean.motion_sensor_schlafzimmer_toggle
+              media_player: media_player.echo_schlafzimmer
+              motion_sensor_timer: timer.bewegungsmelder_schlafzimmer
+
       ## WEATHER
+      - !include
+        - ../includes/titles.yaml
+        - title: WETTER
+
       - type: custom:weather-card
         entity: weather.openweathermap
         current: true
@@ -563,8 +712,8 @@ cards:
           ha-card {
             border: solid 1px var(--border-color);
             font-family: Raleway;
-            margin-top: 5px;
-            margin-bottom: 5px;
+            margin-top: 5px !important;
+            margin-bottom: 5px !important;
           }
           .spacer {
           padding-top: 0em !important;
@@ -607,67 +756,10 @@ cards:
           left: 2.5em !important;
           top: 8em !important;
           }
-          
-  ## ROW 2 ###################################################################################################################
-  - type: vertical-stack
-    cards: 
       
-      - !include
-        - ../includes/titles.yaml
-        - title: LICHTER & RÄUME
-
-      ## LICHTER ##
-      - type: horizontal-stack
-        cards:
-          - !include
-            - ../includes/dash_lights.yaml
-            - light: light.flur
-              icon: mdi:broom
-              motion_sensor: binary_sensor.bewegungsmelder_flur_motion
-              motion_sensor_toggle: input_boolean.motion_sensor_flur_toggle
-              media_player: light.flur
-              motion_sensor_timer: timer.bewegungsmelder_flur
-    
-          - !include
-            - ../includes/dash_lights.yaml
-            - light: light.bad
-              icon: mdi:shower-head
-              motion_sensor: binary_sensor.bewegungsmelder_bad_motion
-              motion_sensor_toggle: input_boolean.motion_sensor_bad_toggle
-              media_player: media_player.echo_dot_bad
-              motion_sensor_timer: timer.bewegungsmelder_bad
-    
-          - !include
-            - ../includes/dash_lights.yaml
-            - light: light.kuche
-              icon: mdi:food-fork-drink
-              motion_sensor: binary_sensor.bewegungsmelder_kuche_motion
-              motion_sensor_toggle: input_boolean.motion_sensor_kuche_toggle
-              media_player: media_player.echo_kueche
-              motion_sensor_timer: timer.bewegungsmelder_kuche
-          
-          - !include
-            - ../includes/dash_lights.yaml
-            - light: light.wohnzimmer
-              icon: mdi:sofa
-              motion_sensor: binary_sensor.bewegungsmelder_wohnzimmer_motion
-              motion_sensor_toggle: input_boolean.motion_sensor_wohnzimmer_toggle
-              media_player: media_player.echo_show_wohnzimmer
-              motion_sensor_timer: timer.bewegungsmelder_wohnzimmer
-    
-          - !include
-            - ../includes/dash_lights.yaml
-            - light: light.schlafzimmer
-              icon: mdi:bed-empty
-              motion_sensor: binary_sensor.bewegungsmelder_schlafzimmer_motion
-              motion_sensor_toggle: input_boolean.motion_sensor_schlafzimmer_toggle
-              media_player: media_player.echo_schlafzimmer
-              motion_sensor_timer: timer.bewegungsmelder_schlafzimmer
-
       - !include
         - ../includes/titles.yaml
         - title: SENSOREN
-      
       ## TEMPERATUR / LICHT / LUFTFEUCHTIGKEIT ##
       - type: horizontal-stack
         cards:
