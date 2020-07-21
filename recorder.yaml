@@ -100,3 +100,5 @@ include:
     - sensor.glances_pi_cpu_used
     - sensor.glances_pi_ram_used_percent
     - sensor.glances_pi_used_percent
+    - vacuum.xiaomi_vacuum_cleaner
+    - sensor.solar_elevation
