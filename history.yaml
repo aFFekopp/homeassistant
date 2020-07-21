@@ -79,3 +79,4 @@ include:
     - sensor.net_upload_cur
     - sensor.net_download_cur_filtered
     - sensor.bed_weight_filtered
+    - vacuum.xiaomi_vacuum_cleaner
