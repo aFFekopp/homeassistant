@@ -233,3 +233,5 @@ binary_sensor.pi_hole:
 sensor.cpu_temp:
   friendly_name: CPU Temp
   icon: mdi:thermometer
+vacuum.xiaomi_vacuum_cleaner:
+  friendly_name: Olgi
