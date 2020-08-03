@@ -45,6 +45,19 @@ include:
     - sensor.hs110_current_power_w
     - sensor.hs110_voltage
     - sensor.hs110_current_a
+    - sensor.hs110_today_energy_kwh
+    - sensor.hs110_total_energy_kwh
+    - sensor.niu_watts_cost
+    - sensor.gosundsp111_kuehlschrank_energy_current
+    - sensor.gosundsp111_kuehlschrank_energy_power
+    - sensor.gosundsp111_kuehlschrank_energy_voltage
+    - sensor.gosundsp111_kuehlschrank_energy_today
+    - sensor.kuehlschrank_watts_cost
+    - sensor.gosundsp111_schreibtisch_energy_current
+    - sensor.gosundsp111_schreibtisch_energy_power
+    - sensor.gosundsp111_schreibtisch_energy_voltage
+    - sensor.gosundsp111_schreibtisch_energy_today
+    - sensor.schreibtisch_watts_cost
     - sensor.processor_use
     - sensor.memory_use_percent
     - sensor.disk_use_percent
@@ -102,3 +115,9 @@ include:
     - sensor.glances_pi_used_percent
     - vacuum.xiaomi_vacuum_cleaner
     - sensor.solar_elevation
+    - sensor.watts_light_all
+    - sensor.lights_watts_daily
+    - sensor.lights_watts_cost
+    - sensor.watts_all
+    - sensor.all_watts_daily
+    - sensor.all_watts_cost
