@@ -1,4 +1,4 @@
-icon: mdi:settings
+icon: mdi:cog
 title: Einstellungen
 popup_cards:
   input_boolean.motion_sensor_flur_toggle:
