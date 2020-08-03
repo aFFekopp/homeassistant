@@ -16,10 +16,10 @@ styles:
   card:
     - background: >
         [[[
-        if (states['{{ motion_sensor }}'].state == "on"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--paper-card-background-color) 10px,var(--paper-card-background-color) 20px)";
+        if (states['{{ motion_sensor }}'].state == "on"  && entity.state == "off") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--ha-card-background) 10px,var(--ha-card-background) 20px)";
         if (states['{{ motion_sensor }}'].state == "on"  && entity.state == "on") return "repeating-linear-gradient(45deg,var(--custom_motion_detected),var(--custom_motion_detected) 10px,var(--accent-color) 10px,var(--accent-color) 20px)";
         if (entity.state == "on") return "var(--accent-color)";
-        else return "var(--paper-card-background-color)"; 
+        else return "var(--ha-card-background)"; 
         ]]]
   grid:
     - position: relative
