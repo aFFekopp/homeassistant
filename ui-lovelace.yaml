@@ -24,6 +24,7 @@ button_card_templates:
       card:
         - height: 30px
         - font-size: 14px
+        - background-color: 'var(--ha-card-background)'
   esp:
     styles:
       card:
