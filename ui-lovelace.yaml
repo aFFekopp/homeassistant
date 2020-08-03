@@ -3,7 +3,7 @@ custom_header:
   voice_hide: true
   hide_help: true
   hide_config: true
-  hide_tabs: '4'
+  hide_tabs: '5'
   hidden_tab_redirect: false
   chevrons: false
   shadow: false
@@ -114,7 +114,7 @@ button_card_templates:
         - background: >
             [[[
             if (entity.state == "on") return "var(--accent-color)";
-            else return "var(--paper-card-background-color)"; 
+            else return "var(--ha-card-background)"; 
             ]]]
     style: !include lovelace/includes/style.yaml 
   timer:
@@ -134,6 +134,17 @@ button_card_templates:
     styles:
       card:
         - font-size: 12px   
+  power:
+    styles:
+      card:
+        - height: 40px
+        - font-size: 13.5px
+      name:
+      - color: var(--secondary-text-color)
+      - font-size: 10px
+    show_name: true
+    show_icon: false
+    show_state: true
       
 
 title: Home Assistant
