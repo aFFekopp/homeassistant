@@ -3,6 +3,7 @@ type: 'custom:mini-graph-card'
 style: |
   ha-card {
     font-family: var(--primary-font-family);
+    border-bottom: 2px solid var(--background-color);
   }
   .graph {
     padding-top: 15px;
@@ -17,11 +18,12 @@ style: |
 entities: 
   - {{ entity }}
   - entity: sensor.solar_elevation
-    color: 'rgba(0,0,0,0.2)'
+    color: 'rgba(0,0,0,0.3)'
     line_width: 1
-    show_fill: false
+    show_line: false
     show_legend: false
     show_state: false
+    show_points: false
     y_axis: secondary
 name: {{ name }}
 align_state: center
@@ -35,7 +37,7 @@ animate: true
 points_per_hour: {{ points_per_hour|default('0.5') }}
 lower_bound_secondary: 0
 show:
-  fill: false
+  fill: fade
   graph: {{ graph|default('line') }}
   extrema: {{ extrema|default('false') }}
   icon: {{ show_icon|default('true') }}
