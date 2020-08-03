@@ -1,11 +1,11 @@
 sensor.niu_watts_yearly:
-  friendly_name: Jahresverbrauch
+  friendly_name: Jahr
   unit_of_measurement: kWh
 switch.wohnzimmer:
   friendly_name: NIU Ladegerät
   icon: mdi:power-plug
 sensor.niu_watts_monthly:
-  friendly_name: Monatsverbrauch
+  friendly_name: Monat
   unit_of_measurement: kWh
 sensor.humidity_158d0001e89713:
   friendly_name: Luftfeuchtigkeit
@@ -235,3 +235,27 @@ sensor.cpu_temp:
   icon: mdi:thermometer
 vacuum.xiaomi_vacuum_cleaner:
   friendly_name: Olgi
+sensor.kuehlschrank_watts_monthly:
+  friendly_name: Monat
+sensor.kuehlschrank_watts_previous_month:
+  friendly_name: Letzter Monat
+  icon: mdi:counter
+  unit_of_measurement: kWh
+sensor.kuehlschrank_watts_yearly:
+  friendly_name: Jahr
+sensor.kuehlschrank_watts_cost:
+  friendly_name: Jahreskosten
+  icon: mdi:currency-eur
+  unit_of_measurement: €
+sensor.schreibtisch_watts_monthly:
+  friendly_name: Monat
+sensor.schreibtisch_watts_yearly:
+  friendly_name: Jahr
+sensor.schreibtisch_watts_previous_month:
+  friendly_name: Letzter Monat
+  icon: mdi:counter
+  unit_of_measurement: kWh
+sensor.schreibtisch_watts_cost:
+  friendly_name: Jahreskosten
+  icon: mdi:currency-eur
+  unit_of_measurement: €
