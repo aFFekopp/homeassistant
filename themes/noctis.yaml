@@ -131,7 +131,11 @@ noctis:
         background: rgba(0,0,0,.6);
       } 
       .mdc-dialog .mdc-dialog__container .mdc-dialog__surface {
-        box-shadow: none;
+        box-shadow: none !important;
         border-radius: var(--ha-card-border-radius);
+      }
+    .: |
+      :host {
+        --ha-card-box-shadow: none;
       }
     
