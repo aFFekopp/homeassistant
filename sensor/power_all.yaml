@@ -1,0 +1,67 @@
+- platform: template
+  sensors:
+    watts_all:
+      friendly_name: "Stromverbrauch"
+      unit_of_measurement: W
+      value_template: >-
+        {{ ((states('sensor.watts_light_all') | float) +
+            (states('sensor.gosundsp111_kuehlschrank_energy_power') | float) +
+            (states('sensor.gosundsp111_schreibtisch_energy_power') | float) +
+            (states('sensor.hs110_current_power_w') | float)) | round(2) }}
+
+    all_watts_daily:
+      value_template: >-
+        {{ ((states('sensor.gosundsp111_kuehlschrank_energy_today') | float) +
+            (states('sensor.gosundsp111_schreibtisch_energy_today') | float) +
+            (states('sensor.hs110_today_energy_kwh') | float) +
+            (states('sensor.lights_watts_daily') | float)) | round(2) }}
+      friendly_name: "Heute"
+      unit_of_measurement: kWh
+      icon_template: mdi:counter
+
+    all_watts_monthly:
+      value_template: >-
+        {{ ((states('sensor.kuehlschrank_watts_monthly') | float) +
+            (states('sensor.schreibtisch_watts_monthly') | float) +
+            (states('sensor.niu_watts_monthly') | float) +
+            (states('sensor.lights_watts_monthly') | float)) | round(2) }}
+      friendly_name: "Monat"
+      unit_of_measurement: kWh
+      icon_template: mdi:counter
+
+    all_watts_yearly:
+      value_template: >-
+        {{ ((states('sensor.kuehlschrank_watts_yearly') | float) +
+            (states('sensor.schreibtisch_watts_yearly') | float) +
+            (states('sensor.niu_watts_yearly') | float) +
+            (states('sensor.lights_watts_yearly') | float)) | round(2) }}
+      friendly_name: "Jahr"
+      unit_of_measurement: kWh
+      icon_template: mdi:counter
+
+    all_watts_previous_month:
+      value_template: >-
+        {{ ((states('sensor.kuehlschrank_watts_previous_month') | float) +
+            (states('sensor.schreibtisch_watts_previous_month') | float) +
+            (states('sensor.niu_watts_previous_month') | float) +
+            (states('sensor.lights_watts_previous_month') | float)) | round(2) }}
+      friendly_name: "Letzter Monat"
+      unit_of_measurement: kWh
+      icon_template: mdi:counter
+
+    all_watts_cost:
+      value_template: >-
+        {{ ((states('sensor.kuehlschrank_watts_cost') | float) +
+            (states('sensor.schreibtisch_watts_cost') | float) +
+            (states('sensor.niu_watts_cost') | float) +
+            (states('sensor.lights_watts_cost') | float)) | round(2) }}
+      friendly_name: "Jahreskosten"
+      unit_of_measurement: €
+      icon_template: mdi:currency-eur
+
+- platform: integration
+  source: sensor.watts_all
+  name: kwh_all
+  unit_prefix: k
+  #unit: kWh
+  round: 8

@@ -1,0 +1,10 @@
+- platform: template
+  sensors:
+    kuehlschrank_watts_previous_month:
+      value_template: '{{states.sensor.kuehlschrank_watts_monthly.attributes.last_period | round(2)}}'
+    kuehlschrank_watts_cost:
+      value_template: '{{ ((states.sensor.kuehlschrank_watts_yearly.state | float) * (states.input_number.kwh_cost.state | float)) | round(2) }}'
+    schreibtisch_watts_previous_month:
+      value_template: '{{states.sensor.schreibtisch_watts_monthly.attributes.last_period | round(2)}}'
+    schreibtisch_watts_cost:
+      value_template: '{{ ((states.sensor.schreibtisch_watts_yearly.state | float) * (states.input_number.kwh_cost.state | float)) | round(2) }}'

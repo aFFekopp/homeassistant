@@ -1,0 +1,98 @@
+# E27 Color = 10W
+# E14 Color = 6.5W
+# E14 Ambiance = 6W
+# GU10 Color = 6.5W
+# GU10 Ambiance = 5W
+
+- platform: template
+  sensors:
+    watts_light_flur:
+      friendly_name: "Verbrauch Flur-Licht"
+      unit_of_measurement: W
+      value_template: >-
+        {% if is_state('light.flur', 'on') %}
+          {{((state_attr("light.flur", "brightness")*0.85) * 10 / 255) | round(2) }}
+        {% else %}
+          0.4
+        {% endif %}
+    watts_light_wohnzimmer:
+      friendly_name: "Verbrauch Wohnzimmer-Licht"
+      unit_of_measurement: W
+      value_template: >-
+        {% if is_state('light.wohnzimmer', 'on') %}
+          {{((state_attr("light.wohnzimmer", "brightness")*0.85) * 18 / 255) | round(2) }}
+        {% else %}
+          0.6
+        {% endif %}
+    watts_light_bad:
+      friendly_name: "Verbrauch Bad-Licht"
+      unit_of_measurement: W
+      value_template: >-
+        {% if is_state('light.bad', 'on') %}
+          {{((state_attr("light.bad", "brightness")*0.85) * 10 / 255) | round(2) }}
+        {% else %}
+          0.4
+        {% endif %}
+    watts_light_kueche:
+      friendly_name: "Verbrauch Küche-Licht"
+      unit_of_measurement: W
+      value_template: >-
+        {% if is_state('light.kuche', 'on') %}
+          {{((state_attr("light.kuche", "brightness")*0.85) * 10 / 255) | round(2) }}
+        {% else %}
+          0.2
+        {% endif %}
+    watts_light_schlafzimmer:
+      friendly_name: "Verbrauch Schlafzimmer-Licht"
+      unit_of_measurement: W
+      value_template: >-
+        {% if is_state('light.schlafzimmer', 'on') %}
+          {{((state_attr("light.schlafzimmer", "brightness")*0.85) * 10 / 255) | round(2) }}
+        {% else %}
+          0.4
+        {% endif %}
+    watts_light_all:
+      friendly_name: "Leistung"
+      unit_of_measurement: W
+      value_template: >-
+        {{ ((states('sensor.watts_light_flur') | float) +
+            (states('sensor.watts_light_wohnzimmer') | float) +
+            (states('sensor.watts_light_bad') | float) +
+            (states('sensor.watts_light_kueche') | float) +
+            (states('sensor.watts_light_schlafzimmer') | float)) | round(2) }}
+
+    lights_watts_daily:
+      value_template: '{{states("sensor.lights_watts_daily_raw") | round(2)}}'
+      friendly_name: "Heute"
+      unit_of_measurement: kWh
+      icon_template: mdi:counter
+    lights_watts_monthly:
+      value_template: '{{states("sensor.lights_watts_monthly_raw") | round(2)}}'
+      friendly_name: "Monat"
+      unit_of_measurement: kWh
+      icon_template: mdi:counter
+    lights_watts_yearly:
+      value_template: '{{states("sensor.lights_watts_yearly_raw") | round(2)}}'
+      friendly_name: "Jahr"
+      unit_of_measurement: kWh
+      icon_template: mdi:counter
+    lights_watts_previous_month_raw:
+      value_template: '{{states.sensor.lights_watts_monthly_raw.attributes.last_period | round(2)}}'
+    lights_watts_previous_month:
+      value_template: '{{states("sensor.lights_watts_previous_month_raw") | round(2)}}'
+      friendly_name: "Letzter Monat"
+      unit_of_measurement: kWh
+      icon_template: mdi:counter
+    lights_watts_cost:
+      value_template: '{{ ((states.sensor.lights_watts_yearly.state | float) * (states.input_number.kwh_cost.state | float)) | round(2) }}'
+      friendly_name: "Jahreskosten"
+      unit_of_measurement: €
+      icon_template: mdi:currency-eur
+
+
+- platform: integration
+  source: sensor.watts_light_all
+  name: kwh_lights_all
+  unit_prefix: k
+  #unit: kWh
+  round: 8
