@@ -141,6 +141,10 @@ cards:
                   entities:
                     - switch.charge_fully
                 - type: 'custom:time-picker-card'
+                  style: |
+                    .time-picker-row {
+                      padding: 0px !important;
+                    }
                   entity: input_datetime.charge_time
                   name: 'Ladezeit'
                   hour_mode: 24
