@@ -121,45 +121,6 @@ cards:
               width: 55%
               height: 45%
 
-      - !include
-        - ../includes/titles.yaml
-        - title: STECKDOSE
-
-      - type: horizontal-stack
-        style: !include ../includes/style.yaml
-        cards:
-          - type: custom:vertical-stack-in-card
-            cards:
-              - type: "custom:button-card"
-                template: header
-                name: Ladegerät
-              - type: horizontal-stack
-                cards:
-                  - !include
-                    - ../includes/graphs_embeded.yaml
-                    - entity: sensor.hs110_voltage
-                      name: Spannung
-                      hours_to_show: 24
-                      line_color: var(--custom_graph_color_2)
-                      show_icon: false
-                      show_name: false
-                  - !include
-                    - ../includes/graphs_embeded.yaml
-                    - entity: sensor.hs110_current_a
-                      name: Ampere
-                      hours_to_show: 24
-                      line_color: var(--custom_graph_color_4) 
-                      show_icon: false
-                      show_name: false
-                  - !include
-                    - ../includes/graphs_embeded.yaml
-                    - entity: sensor.hs110_current_power_w
-                      name: Watt
-                      hours_to_show: 24
-                      line_color: var(--custom_graph_color_3) 
-                      show_icon: false
-                      show_name: false
-
   - type: vertical-stack
     cards:      
       - type: vertical-stack
@@ -190,17 +151,54 @@ cards:
       
       - !include
         - ../includes/titles.yaml
-        - title: STATISTIKEN
+        - title: STECKDOSE
 
-      - type: horizontal-stack
+      - type: custom:vertical-stack-in-card
         cards:
+          - type: horizontal-stack
+            style: !include ../includes/style.yaml
+            cards:
+              - !include
+                - ../includes/graphs_embeded.yaml
+                - entity: sensor.hs110_voltage
+                  name: Spannung
+                  hours_to_show: 24
+                  line_color: var(--custom_graph_color_2)
+                  show_icon: false
+                  show_name: false
+              - !include
+                - ../includes/graphs_embeded.yaml
+                - entity: sensor.hs110_current_a
+                  name: Ampere
+                  hours_to_show: 24
+                  line_color: var(--custom_graph_color_4) 
+                  show_icon: false
+                  show_name: false
+              - !include
+                - ../includes/graphs_embeded.yaml
+                - entity: sensor.hs110_current_power_w
+                  name: Watt
+                  hours_to_show: 24
+                  line_color: var(--custom_graph_color_3) 
+                  show_icon: false
+                  show_name: false
+                  points_per_hour: 2
+
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.hs110_today_energy_kwh
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.niu_watts_monthly
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.niu_watts_previous_month
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.niu_watts_yearly
           - type: entities
-            style: !include ../includes/style_entities.yaml
+            style: !include ../includes/style_entities_embeded.yaml
             entities:
-              - switch.wohnzimmer
-              - sensor.hs110_today_energy_kwh
-              - sensor.hs110_total_energy_kwh
-              - sensor.niu_watts_monthly
-              - sensor.niu_watts_previous_month
-              - sensor.niu_watts_yearly
               - sensor.niu_watts_cost
