@@ -36,8 +36,6 @@ lovelace:
       type: module
     - url: /hacsfiles/lovelace-card-tools/card-tools.js
       type: module
-    - url: /hacsfiles/lovelace-popup-card/popup-card.js
-      type: js
     - url: /hacsfiles/button-card/button-card.js
       type: module
     - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
@@ -58,13 +56,9 @@ lovelace:
       type: module
     - url: /hacsfiles/vacuum-card/vacuum-card.js
       type: module
-
-    - url: /local/hui-view-settings.js
-      type: js
-    - url: /local/popup-background.js
-      type: js
+    - url: /hacsfiles/lovelace-multiple-entity-row/multiple-entity-row.js
+      type: module
       
-    
     - url: 'https://fonts.googleapis.com/css?family=Raleway'
       type: css
     - url: 'https://fonts.googleapis.com/css?family=Oswald'
@@ -116,11 +110,11 @@ tts:
 #         - 'media_session_state'
   
 ## HUE ##################################################################################
-hue:
-  bridges:
-    - host: 10.0.0.10
-      allow_hue_groups: true
-      allow_unreachable: true
+# hue:
+#   bridges:
+#     - host: 10.0.0.10
+#       allow_hue_groups: true
+#       allow_unreachable: true
 
 ## DEVICE TRACKERS ######################################################################
 device_tracker:
@@ -140,18 +134,40 @@ weather:
 
 ## UTILITY METER ########################################################################
 utility_meter:
-  niu_watts_monthly:
-    source: sensor.hs110_today_energy_kwh
-    cycle: monthly
-  niu_watts_yearly:
-    source: sensor.hs110_today_energy_kwh
-    cycle: yearly
   net_received_monthly:
     source: sensor.net_received
     cycle: monthly
   net_sent_monthly:
     source: sensor.net_sent
     cycle: monthly
+    
+  niu_watts_monthly:
+    source: sensor.hs110_today_energy_kwh
+    cycle: monthly
+  niu_watts_yearly:
+    source: sensor.hs110_today_energy_kwh
+    cycle: yearly
+  kuehlschrank_watts_monthly:
+    source: sensor.gosundsp111_kuehlschrank_energy_today
+    cycle: monthly
+  kuehlschrank_watts_yearly:
+    source: sensor.gosundsp111_kuehlschrank_energy_today
+    cycle: yearly
+  schreibtisch_watts_monthly:
+    source: sensor.gosundsp111_schreibtisch_energy_today
+    cycle: monthly
+  schreibtisch_watts_yearly:
+    source: sensor.gosundsp111_schreibtisch_energy_today
+    cycle: yearly
+  lights_watts_daily_raw:
+    source: sensor.kwh_lights_all
+    cycle: daily
+  lights_watts_monthly_raw:
+    source: sensor.kwh_lights_all
+    cycle: monthly
+  lights_watts_yearly_raw:
+    source: sensor.kwh_lights_all
+    cycle: yearly
 
 ## PING #################################################################################
 binary_sensor:
@@ -180,6 +196,14 @@ vacuum:
 #     - email: !secret amazon_user
 #       password: !secret amazon_password
 #       url: amazon.com
+
+mqtt:
+  discovery: true
+  discovery_prefix: homeassistant
+
+browser_mod:
+  disable:
+    - all
 
 input_boolean: !include_dir_merge_named input_boolean
 input_select: !include_dir_merge_named input_select
