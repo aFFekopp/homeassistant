@@ -57,6 +57,12 @@ include:
     - sensor.hs110_current_power_w
     - sensor.hs110_voltage
     - sensor.hs110_current_a
+    - sensor.gosundsp111_kuehlschrank_energy_power
+    - sensor.gosundsp111_kuehlschrank_energy_voltage
+    - sensor.gosundsp111_kuehlschrank_energy_current
+    - sensor.gosundsp111_schreibtisch_energy_power
+    - sensor.gosundsp111_schreibtisch_energy_voltage
+    - sensor.gosundsp111_schreibtisch_energy_current
     - sensor.handy_andre_battery
     - sensor.handy_andre_charging
     - sensor.handy_julienne_battery
