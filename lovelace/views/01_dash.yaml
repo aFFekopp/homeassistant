@@ -236,7 +236,15 @@ popup_cards:
           show_header_toggle: false
           style: !include ../includes/style_entities_popup.yaml
           entities:
-            - entity: light.wandfluter
+            - entity: light.wz_decke_1
+              name: Decke
+              icon: mdi:ceiling-light
+              type: custom:slider-entity-row
+            - entity: light.wz_decke_2
+              name: Decke
+              icon: mdi:ceiling-light
+              type: custom:slider-entity-row
+            - entity: light.wz_decke_3
               name: Decke
               icon: mdi:ceiling-light
               type: custom:slider-entity-row
@@ -491,7 +499,7 @@ cards:
         
       ## PEOPLE STATUS ##
       - type: horizontal-stack
-        style: !include ../includes/style.yaml 
+        style: !include ../includes/style.yaml
         cards:
           - type: custom:vertical-stack-in-card
             cards:
@@ -557,7 +565,7 @@ cards:
             margin-bottom: 5px;
           }
           .preview {
-            background: var(--paper-card-background-color) !important;
+            background: var(--ha-card-background) !important;
           }
           .stats {
             border-top: 3px solid var(--background-color) !important;
@@ -567,7 +575,7 @@ cards:
             border-right: 0px !important;
           }
           .toolbar {
-            background: var(--paper-card-background-color, var(--primary-background-color)) !important;
+            background: (var(--ha-card-background), var(--primary-background-color)) !important;
             border-top: 3px solid var(--background-color) !important;
             min-height: 30px;
           }
