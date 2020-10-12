@@ -157,7 +157,7 @@ cards:
         - ../includes/titles.yaml
         - title: STECKDOSE
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - type: horizontal-stack
             style: !include ../includes/style.yaml
@@ -202,7 +202,14 @@ cards:
               - type: "custom:button-card"
                 template: power
                 entity: sensor.niu_watts_yearly
-          - type: entities
-            style: !include ../includes/style_entities_embeded.yaml
-            entities:
-              - sensor.niu_watts_cost
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.niu_watts_cost_month
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.niu_watts_cost_previous_month
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.niu_watts_cost_year
