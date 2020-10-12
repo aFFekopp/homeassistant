@@ -9,7 +9,7 @@ cards:
         - ../includes/titles.yaml
         - title: GESAMT
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - !include
             - ../includes/graphs_embeded.yaml
@@ -34,10 +34,17 @@ cards:
               - type: "custom:button-card"
                 template: power
                 entity: sensor.all_watts_yearly
-          - type: entities
-            style: !include ../includes/style_entities_embeded.yaml
-            entities:
-              - sensor.all_watts_cost
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.all_watts_cost_month
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.all_watts_cost_previous_month
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.all_watts_cost_year
 
   - type: vertical-stack
     cards:
@@ -45,7 +52,7 @@ cards:
         - ../includes/titles.yaml
         - title: LICHTER
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - !include
             - ../includes/graphs_embeded.yaml
@@ -71,10 +78,17 @@ cards:
               - type: "custom:button-card"
                 template: power
                 entity: sensor.lights_watts_yearly
-          - type: entities
-            style: !include ../includes/style_entities_embeded.yaml
-            entities:
-              - sensor.lights_watts_cost
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.lights_watts_cost_month
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.lights_watts_cost_previous_month
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.lights_watts_cost_year
 
   - type: vertical-stack
     cards:
@@ -83,7 +97,7 @@ cards:
         - ../includes/titles.yaml
         - title: KÜHLSCHRANK
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - !include
             - ../includes/graphs_embeded.yaml
@@ -109,10 +123,17 @@ cards:
               - type: "custom:button-card"
                 template: power
                 entity: sensor.kuehlschrank_watts_yearly
-          - type: entities
-            style: !include ../includes/style_entities_embeded.yaml
-            entities:
-              - sensor.kuehlschrank_watts_cost
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.kuehlschrank_watts_cost_month
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.kuehlschrank_watts_cost_previous_month
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.kuehlschrank_watts_cost_year
 
   - type: vertical-stack
     cards:
@@ -121,7 +142,7 @@ cards:
         - ../includes/titles.yaml
         - title: SCHREIBTISCH
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - !include
             - ../includes/graphs_embeded.yaml
@@ -147,10 +168,17 @@ cards:
               - type: "custom:button-card"
                 template: power
                 entity: sensor.schreibtisch_watts_yearly
-          - type: entities
-            style: !include ../includes/style_entities_embeded.yaml
-            entities:
-              - sensor.schreibtisch_watts_cost
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.schreibtisch_watts_cost_month
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.schreibtisch_watts_cost_previous_month
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.schreibtisch_watts_cost_year
 
   - type: vertical-stack
     cards:
@@ -159,7 +187,7 @@ cards:
         - ../includes/titles.yaml
         - title: NIU
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - !include
             - ../includes/graphs_embeded.yaml
@@ -185,7 +213,14 @@ cards:
               - type: "custom:button-card"
                 template: power
                 entity: sensor.niu_watts_yearly
-          - type: entities
-            style: !include ../includes/style_entities_embeded.yaml
-            entities:
-              - sensor.niu_watts_cost
+          - type: horizontal-stack
+            cards:
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.niu_watts_cost_month
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.niu_watts_cost_previous_month
+              - type: "custom:button-card"
+                template: power
+                entity: sensor.niu_watts_cost_year
