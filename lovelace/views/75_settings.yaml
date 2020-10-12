@@ -50,7 +50,7 @@ cards:
       - !include
         - ../includes/titles.yaml
         - title: GASTMODUS
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:
           - type: entities
             style: !include ../includes/style_entities.yaml
