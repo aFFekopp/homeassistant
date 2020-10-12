@@ -115,14 +115,119 @@ noctis:
 
   # Card-Mod
   card-mod-theme: noctis
+  
+  card-mod-root-yaml: |
+
+    ha-app-layout$: |
+        /* This corrects top padding for the view. */
+        #contentContainer {
+          padding-top: 48px !important;
+        }
+
+    paper-tabs$: |
+        /* This hides tab scroll arrows, remove next 3 lines if you want them. */
+        paper-icon-button {
+          display: none;
+        }
+        /* This makes it so arrows are only displayed when needed. */
+        .not-visible {
+          display: none;
+        }
+    .: |
+      /* This shifts the unused portion of the header up. */
+      app-toolbar:not([class="edit-mode"]) {
+        margin-top: -64px;
+        z-index: 1;
+      }
+      /* This shifts the menu button back down. */
+      app-toolbar:not([class="edit-mode"]) ha-button-menu {
+        margin-top: 110px
+      }
+      /* Bring edit UI overflow menu back in */
+      ha-button-menu {
+        right: 0;
+        position: absolute;
+        /*Uncomment this out to hide the overflow menu
+        display: none;
+        */
+      }
+      /* This shifts the voice button back down. */
+      app-toolbar:not([class="edit-mode"]) mwc-icon-button[label] {
+        /* Uncomment line below to hide voice button. */
+        display: none; 
+        margin-top: 110px
+      }
+      /* This shifts the options button back down. */
+      app-toolbar:not([class="edit-mode"]) ha-menu-button {
+        /* Uncomment line below to hide options button. */
+        /* display: none; */
+        margin-top: 110px
+      }
+      /* This hides the menu button when sidebar is open. */
+      menu-button[style="visibility: hidden;"] {
+        display: none;
+      }
+      /* This adds room for the menu button when sidebar is open. */
+      :host-context(home-assistant-main[expanded]) paper-tabs {
+        margin-left: 5px !important;
+      }
+      /* This leaves space for the buttons on the right of the tabs bar.
+         Change 112px to 56px if you don't use voice icon. */
+      paper-tabs {
+          margin-right: 56px !important;
+      }
+      /* This corrects the sizing of the view. */
+      #view {
+        min-height: calc(100vh - 48px) !important;
+      }
+      /* Set bar color*/
+      paper-tabs {
+        --paper-tabs-selection-bar-color: transparent !important;
+        margin-left: 0px !important;
+      }
+      /* Color selected tabs */
+      paper-tab[aria-selected="true"] > ha-icon {
+        color: var(--accent-color) !important;
+      }
+      paper-tab[aria-selected="true"] {
+        color: var(--accent-color) !important;
+      }
+      /* Color deselected tabs */
+      paper-tab[aria-selected="false"] > ha-icon {
+        color: var(--secondary-text-color) !important;
+      }
+      /* Hide buttons that are taking up space, but invisible */
+      menu-button[style="visibility: hidden;"] {
+        display: none;
+      }
+      /* Styles for mobile */
+      @media (orientation: portrait) {
+        /* Hide sidebar button and keep room for the overflow menu button */
+        paper-tabs {
+          margin-left: 5px !important;
+          margin-right: 48px !important;
+        }
+        /* Hide voice button */
+        mwc-icon-button[label="Start conversation"] {
+          display: none !important;
+        }
+        /* Hide sidebar button */
+        ha-menu-button {
+          display: none !important;
+        }
+      }
 
   card-mod-view: |
-    #columns .column > * {
-      overflow: unset !important;
-      padding-left: 9px;
-      padding-right: 9px;
-      padding-bottom: 9px;
+    #view {
+      min-height: 100vh !important;
     }
+  # card-mod-view: |
+  #   #columns .column > * {
+  #     overflow: unset !important;
+  #     padding-left: 9px;
+  #     padding-right: 9px;
+  #     padding-bottom: 9px;
+  #   }
   card-mod-more-info-yaml: |
     $: |
       .mdc-dialog {
