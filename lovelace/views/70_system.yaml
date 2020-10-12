@@ -40,7 +40,7 @@ cards:
         - ../includes/titles.yaml
         - title: NUC
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards: 
           - type: horizontal-stack
             cards: 
@@ -78,7 +78,7 @@ cards:
         - ../includes/titles.yaml
         - title: PI-HOLE
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards: 
           - type: horizontal-stack
             cards: 
@@ -114,14 +114,16 @@ cards:
               - type: custom:button-card
                 template: pi-hole
                 name: Status
-                entity: binary_sensor.pi_hole
+                entity: switch.pi_hole
               - type: custom:button-card
                 template: pi-hole
                 name: Enable
                 icon: mdi:check
                 tap_action:
                   action: call-service
-                  service: pi_hole.enable
+                  service: switch.turn_on
+                  service_data:
+                    entity_id: switch.pi_hole
               - type: custom:button-card
                 template: pi-hole
                 name: Disable
@@ -130,6 +132,7 @@ cards:
                   action: call-service
                   service: pi_hole.disable
                   service_data:
+                    entity_id: switch.pi_hole
                     duration: "00:05:00"
               - type: custom:state-switch
                 entity: binary_sensor.pi_hole
@@ -157,7 +160,7 @@ cards:
         - ../includes/titles.yaml
         - title: NETZMONITOR
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards: 
           - type: horizontal-stack
             cards:        
@@ -227,7 +230,7 @@ cards:
         - ../includes/titles.yaml
         - title: ESP HOME
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:   
           - type: horizontal-stack
             cards:
@@ -270,7 +273,7 @@ cards:
                   card:
                     - width: 200px
 
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
         cards:     
           - type: "custom:button-card"
             template: header_clickable
@@ -308,7 +311,8 @@ cards:
                     attributes:
                       battery_level: "< 30"
                 exclude: 
-                  - entity_id: sensor.temperature_158d0001e89713
+                  - name: '/Bewegungsmelder light level/'
+                  - name: '/Bewegungsmelder temperature/'
 
           - type: "custom:button-card"
             template: header_clickable
