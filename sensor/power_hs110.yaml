@@ -1,31 +1,47 @@
 - platform: template
   sensors:
     hs110_current_power_w:
-      value_template: '{{states.switch.wohnzimmer.attributes.current_power_w | round(2)}}'
+      value_template: "{{state_attr('switch.wohnzimmer', 'current_power_w') | round(2)}}"
       friendly_name: "Leistung"
       unit_of_measurement: 'W'
 
     hs110_total_energy_kwh:
-      value_template: '{{states.switch.wohnzimmer.attributes.total_energy_kwh | round(2)}}'
+      value_template: "{{state_attr('switch.wohnzimmer', 'total_energy_kwh') | round(2)}}"
       friendly_name: "Gesamt"
       unit_of_measurement: 'kWh'
 
     hs110_voltage:
-      value_template: '{{states.switch.wohnzimmer.attributes.voltage | round(2)}}'
+      value_template: "{{state_attr('switch.wohnzimmer', 'voltage') | round(2)}}"
       friendly_name: "Spannung"
       unit_of_measurement: 'V'
 
     hs110_current_a:
-      value_template: '{{states.switch.wohnzimmer.attributes.current_a | round(2)}}'
+      value_template: "{{state_attr('switch.wohnzimmer', 'current_a') | round(2)}}"
       friendly_name: "Ampere"
       unit_of_measurement: 'A'
 
     hs110_today_energy_kwh:
-      value_template: '{{states.switch.wohnzimmer.attributes.today_energy_kwh | round(2)}}'
+      value_template: "{{state_attr('switch.wohnzimmer', 'today_energy_kwh') | round(2)}}"
       friendly_name: "Heute"
       unit_of_measurement: 'kWh'
 
     niu_watts_previous_month:
-      value_template: '{{states.sensor.niu_watts_monthly.attributes.last_period | round(2)}}'
-    niu_watts_cost:
-      value_template: '{{ ((states.sensor.niu_watts_yearly.state | float) * (states.input_number.kwh_cost.state | float)) | round(2) }}'
+      value_template: "{{state_attr('sensor.niu_watts_monthly', 'last_period') | round(2)}}"
+
+    niu_watts_cost_year:
+      value_template: "{{ ((states('sensor.niu_watts_yearly') | float) * (states('input_number.kwh_cost') | float)) | round(2) }}"
+      friendly_name: "Jahreskosten"
+      unit_of_measurement: €
+      icon_template: mdi:currency-eur
+
+    niu_watts_cost_month:
+      value_template: "{{ ((states('sensor.niu_watts_monthly') | float) * (states('input_number.kwh_cost') | float)) | round(2)}}"
+      friendly_name: "Monatskosten"
+      unit_of_measurement: €
+      icon_template: mdi:currency-eur
+      
+    niu_watts_cost_previous_month:
+      value_template: "{{ ((state_attr('sensor.niu_watts_monthly', 'last_period') | float) * (states('input_number.kwh_cost') | float)) | round(2)}}"
+      friendly_name: "Letzer Monat"
+      unit_of_measurement: €
+      icon_template: mdi:currency-eur
