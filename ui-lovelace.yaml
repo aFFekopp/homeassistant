@@ -1,13 +1,3 @@
-custom_header:
-  compact_mode: true
-  voice_hide: true
-  hide_help: true
-  hide_config: true
-  hide_tabs: '5'
-  hidden_tab_redirect: false
-  chevrons: false
-  shadow: false
-
 button_card_templates:
   header:
     styles:
@@ -148,5 +138,5 @@ button_card_templates:
     show_state: true
       
 
-title: Home Assistant
+title: ""
 views: !include_dir_list lovelace/views/
