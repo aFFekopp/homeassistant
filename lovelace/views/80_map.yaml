@@ -1,5 +1,5 @@
-icon: mdi:map
-title: Map
+icon: ""
+title: " "
 panel: true
 cards:
   - type: map
