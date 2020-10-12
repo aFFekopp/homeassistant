@@ -4,6 +4,7 @@
 custom_components
 deps
 esphome
+image
 node-red
 ssh
 tts
