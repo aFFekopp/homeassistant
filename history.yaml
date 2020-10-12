@@ -4,34 +4,23 @@ include:
     - person.andre
     - device_tracker.andre_mi9t
     - device_tracker.andre_mi9t_app
-    - device_tracker.life360_andre
     - sensor.andre_status
-    - person.julienne
-    - device_tracker.julienne_s10
-    - device_tracker.google_maps_109408471456601103538
-    - sensor.julienne_status
     - device_tracker.niu
     - light.bad
     - light.flur
     - light.kuche
     - light.schlafzimmer
     - light.wohnzimmer
-    - light.arbeitsplatte
-    - light.badezimmerdecke_1
-    - light.badezimmerdecke_2
-    - light.badezimmerdecke_3
-    - light.badezimmerspiegel
-    - light.flurdecke
-    - light.hangeschrank
-    - light.kuche_mood
-    - light.kuchendecke
-    - light.kuchenzeile
-    - light.schlafzimmerdecke
-    - light.wandfluter
-    - light.wohnzimmer_decke_1
-    - light.wohnzimmer_decke_2
-    - light.wohnzimmer_decke_3
-    - light.wohnzimmer_decke_4
+    - light.bd_spot_1
+    - light.bd_spot_2
+    - light.fl_spot_1
+    - light.fl_spot_2
+    - light.schreibtischleuchte
+    - light.sz_spot_1
+    - light.sz_spot_2
+    - light.wz_decke_1
+    - light.wz_decke_2
+    - light.wz_decke_3
     - binary_sensor.zha_flur_door_contact
     - binary_sensor.zha_bad_window_contact
     - binary_sensor.klingel
@@ -63,10 +52,8 @@ include:
     - sensor.gosundsp111_schreibtisch_energy_power
     - sensor.gosundsp111_schreibtisch_energy_voltage
     - sensor.gosundsp111_schreibtisch_energy_current
-    - sensor.handy_andre_battery
-    - sensor.handy_andre_charging
-    - sensor.handy_julienne_battery
-    - sensor.handy_julienne_charging          
+    - sensor.andre_mi9t_battery_level
+    - sensor.andre_mi9t_battery_charging      
     - sensor.niu_mqtt_batterypct
     - sensor.niu_mqtt_ecubatterypct                                                                   
     - sensor.bewegungsmelder_bad_light_level
@@ -86,3 +73,5 @@ include:
     - sensor.net_download_cur_filtered
     - sensor.bed_weight_filtered
     - vacuum.xiaomi_vacuum_cleaner
+    - sensor.dwd_weather_humidity
+    - sensor.dwd_weather_temperature
