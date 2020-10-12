@@ -5,7 +5,8 @@
   batt_entities: true
   encryptors:
     'A4:C1:38:C4:4B:F6': '0f813303d1ac196f0ecc5ccf11ff1705'
-    'A4:C1:38:DC:56:02': 'ddeb33d07c949b114090ed9ffe4aba07'
+    #'A4:C1:38:DC:56:02': 'ddeb33d07c949b114090ed9ffe4aba07' # Schlafzimmer
     'A4:C1:38:84:97:09': 'd36057347afc9fc775565fdb13040b5e'
     'A4:C1:38:4B:EC:4B': 'eaa01404f6e1957f68a0f759d7aa18b8'
-  whitelist: true
+  whitelist: 
+    - 'A4:C1:38:DC:56:02'
