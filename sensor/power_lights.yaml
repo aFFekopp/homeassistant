@@ -66,16 +66,19 @@
       friendly_name: "Heute"
       unit_of_measurement: kWh
       icon_template: mdi:counter
+
     lights_watts_monthly:
       value_template: '{{states("sensor.lights_watts_monthly_raw") | round(2)}}'
       friendly_name: "Monat"
       unit_of_measurement: kWh
       icon_template: mdi:counter
+
     lights_watts_yearly:
       value_template: '{{states("sensor.lights_watts_yearly_raw") | round(2)}}'
       friendly_name: "Jahr"
       unit_of_measurement: kWh
       icon_template: mdi:counter
+
     lights_watts_previous_month_raw:
       value_template: '{{states.sensor.lights_watts_monthly_raw.attributes.last_period | round(2)}}'
     lights_watts_previous_month:
@@ -83,9 +86,22 @@
       friendly_name: "Letzter Monat"
       unit_of_measurement: kWh
       icon_template: mdi:counter
-    lights_watts_cost:
-      value_template: '{{ ((states.sensor.lights_watts_yearly.state | float) * (states.input_number.kwh_cost.state | float)) | round(2) }}'
+
+    lights_watts_cost_year:
+      value_template: "{{ ((states('sensor.lights_watts_yearly') | float) * (states('input_number.kwh_cost') | float)) | round(2) }}"
       friendly_name: "Jahreskosten"
+      unit_of_measurement: €
+      icon_template: mdi:currency-eur
+
+    lights_watts_cost_month:
+      value_template: "{{ ((states('sensor.lights_watts_monthly') | float) * (states('input_number.kwh_cost') | float)) | round(2)}}"
+      friendly_name: "Monatskosten"
+      unit_of_measurement: €
+      icon_template: mdi:currency-eur
+      
+    lights_watts_cost_previous_month:
+      value_template: "{{ ((states('sensor.lights_watts_previous_month') | float) * (states('input_number.kwh_cost') | float)) | round(2)}}"
+      friendly_name: "Letzer Monat"
       unit_of_measurement: €
       icon_template: mdi:currency-eur
 
