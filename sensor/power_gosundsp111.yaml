@@ -1,10 +1,44 @@
 - platform: template
   sensors:
     kuehlschrank_watts_previous_month:
-      value_template: '{{states.sensor.kuehlschrank_watts_monthly.attributes.last_period | round(2)}}'
-    kuehlschrank_watts_cost:
-      value_template: '{{ ((states.sensor.kuehlschrank_watts_yearly.state | float) * (states.input_number.kwh_cost.state | float)) | round(2) }}'
+      value_template: "{{state_attr('sensor.kuehlschrank_watts_monthly', 'last_period') | round(2)}}"
+
+    kuehlschrank_watts_cost_year:
+      value_template: "{{ ((states('sensor.kuehlschrank_watts_yearly') | float) * (states('input_number.kwh_cost') | float)) | round(2)}}"
+      friendly_name: "Jahreskosten"
+      unit_of_measurement: €
+      icon_template: mdi:currency-eur
+
+    kuehlschrank_watts_cost_month:
+      value_template: "{{ ((states('sensor.kuehlschrank_watts_monthly') | float) * (states('input_number.kwh_cost') | float)) | round(2)}}"
+      friendly_name: "Monatskosten"
+      unit_of_measurement: €
+      icon_template: mdi:currency-eur
+
+    kuehlschrank_watts_cost_previous_month:
+      value_template: "{{ ((state_attr('sensor.kuehlschrank_watts_monthly', 'last_period') | float) * (states('input_number.kwh_cost') | float)) | round(2)}}"
+      friendly_name: "Letzer Monat"
+      unit_of_measurement: €
+      icon_template: mdi:currency-eur
+
+
     schreibtisch_watts_previous_month:
-      value_template: '{{states.sensor.schreibtisch_watts_monthly.attributes.last_period | round(2)}}'
-    schreibtisch_watts_cost:
-      value_template: '{{ ((states.sensor.schreibtisch_watts_yearly.state | float) * (states.input_number.kwh_cost.state | float)) | round(2) }}'
+      value_template: "{{state_attr('sensor.schreibtisch_watts_monthly', 'last_period') | round(2)}}"
+
+    schreibtisch_watts_cost_year:
+      value_template: "{{ ((states('sensor.schreibtisch_watts_yearly') | float) * (states('input_number.kwh_cost') | float)) | round(2)}}"
+      friendly_name: "Jahreskosten"
+      unit_of_measurement: €
+      icon_template: mdi:currency-eur
+
+    schreibtisch_watts_cost_month:
+      value_template: "{{ ((states('sensor.schreibtisch_watts_monthly') | float) * (states('input_number.kwh_cost') | float)) | round(2)}}"
+      friendly_name: "Monatskosten"
+      unit_of_measurement: €
+      icon_template: mdi:currency-eur
+      
+    schreibtisch_watts_cost_previous_month:
+      value_template: "{{ ((state_attr('sensor.schreibtisch_watts_monthly', 'last_period') | float) * (states('input_number.kwh_cost') | float)) | round(2)}}"
+      friendly_name: "Letzer Monat"
+      unit_of_measurement: €
+      icon_template: mdi:currency-eur
