@@ -5,7 +5,7 @@ popup_cards:
   sensor.andre_status:
     title: Andre
     card:
-      type: custom:vertical-stack-in-card
+      type: custom:stack-in-card
       style: !include ../includes/style_entities_popup.yaml
       cards:
         - type: history-graph
@@ -26,7 +26,7 @@ popup_cards:
       hours_to_show: 24
       entities:
         - device_tracker.andre_mi9t_app
-  weather.openweathermap:
+  weather.dwd_weather_kassel:
     title: Weather
     large: true
     card:
@@ -44,7 +44,7 @@ popup_cards:
   light.flur:
     title: Flur
     card:
-      type: custom:vertical-stack-in-card
+      type: custom:stack-in-card
       style: !include ../includes/style_entities_popup.yaml
       cards:
         - type: horizontal-stack
@@ -109,7 +109,7 @@ popup_cards:
   light.bad:
     title: Bad
     card:
-      type: custom:vertical-stack-in-card
+      type: custom:stack-in-card
       style: !include ../includes/style_entities_popup.yaml
       cards:
         - type: horizontal-stack
@@ -160,7 +160,7 @@ popup_cards:
   light.kuche:
     title: Küche
     card:
-      type: custom:vertical-stack-in-card
+      type: custom:stack-in-card
       style: !include ../includes/style_entities_popup.yaml
       cards: 
         - type: horizontal-stack
@@ -205,7 +205,7 @@ popup_cards:
   light.wohnzimmer:
     title: Wohnzimmer
     card:
-      type: custom:vertical-stack-in-card
+      type: custom:stack-in-card
       style: !include ../includes/style_entities_popup.yaml
       cards:  
         - type: horizontal-stack
@@ -262,7 +262,7 @@ popup_cards:
   light.schlafzimmer:
     title: Schlafzimmer
     card:
-      type: custom:vertical-stack-in-card
+      type: custom:stack-in-card
       style: !include ../includes/style_entities_popup.yaml
       cards:     
         - type: horizontal-stack
@@ -509,7 +509,7 @@ cards:
       - type: horizontal-stack
         style: !include ../includes/style.yaml
         cards:
-          - type: custom:vertical-stack-in-card
+          - type: custom:stack-in-card
             cards:
               ## ANDRE CHARGING ##
               - type: custom:bar-card
@@ -520,7 +520,7 @@ cards:
                   #states > * {
                     margin-top: 0;
                   }
-                entity: sensor.andre_mi9t_battery_level
+                entity: sensor.mi_9t_battery_level
                 positions:
                   icon: 'off'
                   indicator: 'off'
@@ -552,7 +552,7 @@ cards:
                         show_name: true
                         hold_action:
                           action: navigate
-                          navigation_path: /lovelace/4/
+                          navigation_path: /lovelace/5/
                       ## ANDRE LAST CHANGED ##
                       - type: custom:button-card
                         template: people_button
@@ -720,7 +720,7 @@ cards:
         - title: WETTER
 
       - type: custom:weather-card
-        entity: weather.openweathermap
+        entity: weather.dwd_weather_kassel
         current: true
         details: false
         forecast: true
@@ -779,21 +779,106 @@ cards:
       ## TEMPERATUR / LICHT / LUFTFEUCHTIGKEIT ##
       - type: horizontal-stack
         cards:
-          - !include
-            - ../includes/graphs.yaml
-            - entity: sensor.temperature_mean
-              name: Temperatur
-              line_color: var(--custom_graph_color_1)
+          - type: 'custom:mini-graph-card'
+            style: |
+              ha-card {
+                border: solid 1px var(--border-color);
+                font-family: var(--primary-font-family);
+                margin-top: 5px;
+                margin-bottom: 5px;
+              }
+              .graph {
+                padding-top: 15px;
+                padding-bottom: 0px;
+              }
+              .info {
+                padding-bottom: 0px;
+              }
+              .flex {
+                padding-bottom: 10px;
+              }
+            entities: 
+              - entity: sensor.temperature_mean
+                name: Innen
+              - entity: sensor.dwd_weather_temperature
+                name: Außen
+                color: 'rgba(73,85,108,0.5)'
+              - entity: sensor.solar_elevation
+                color: 'rgba(0,0,0,0.3)'
+                line_width: 1
+                show_line: false
+                show_legend: false
+                show_state: false
+                show_points: false
+                y_axis: secondary
+            name: Temperatur
+            align_state: center
+            align_icon: right
+            font_size: 60
+            font_size_header: 11
+            hours_to_show: 48
+            line_color: var(--custom_graph_color_1)
+            line_width: 4
+            animate: true
+            points_per_hour: 0.5
+            lower_bound_secondary: 0
+            show:
+              fill: fade
+              graph: line
+              extrema: false
           - !include
             - ../includes/graphs.yaml
             - entity: sensor.light_level_mean
               name: Helligkeit
               line_color: var(--custom_graph_color_2)
-          - !include
-            - ../includes/graphs.yaml
-            - entity: sensor.humidity_mean
-              name: Luftfeuchtigkeit
-              line_color: var(--custom_graph_color_3)
+              hours_to_show: 48
+          - type: 'custom:mini-graph-card'
+            style: |
+              ha-card {
+                border: solid 1px var(--border-color);
+                font-family: var(--primary-font-family);
+                margin-top: 5px;
+                margin-bottom: 5px;
+              }
+              .graph {
+                padding-top: 15px;
+                padding-bottom: 0px;
+              }
+              .info {
+                padding-bottom: 0px;
+              }
+              .flex {
+                padding-bottom: 10px;
+              }
+            entities: 
+              - entity: sensor.humidity_mean
+                name: Innen
+              - entity: sensor.dwd_weather_humidity
+                name: Außen
+                color: 'rgba(73,85,108,0.5)'
+              - entity: sensor.solar_elevation
+                color: 'rgba(0,0,0,0.3)'
+                line_width: 1
+                show_line: false
+                show_legend: false
+                show_state: false
+                show_points: false
+                y_axis: secondary
+            name: Luftfeuchtigkeit
+            align_state: center
+            align_icon: right
+            font_size: 60
+            font_size_header: 11
+            hours_to_show: 48
+            line_color: var(--custom_graph_color_3)
+            line_width: 4
+            animate: true
+            points_per_hour: 0.5
+            lower_bound_secondary: 0
+            show:
+              fill: fade
+              graph: line
+              extrema: false
 
       ## DOWNLOAD / UPLOAD ## 
       - type: horizontal-stack
